@@ -12,7 +12,7 @@ public interface Diary extends Remote{
 
     /**
      * Method to register a file for a client
-     * 
+     *  
      * @param clientName client name
      * @param fileName    file name
      * @throws RemoteException if an error occurs during the remote communication
