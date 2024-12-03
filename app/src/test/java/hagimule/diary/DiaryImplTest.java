@@ -1,19 +1,22 @@
 package hagimule.diary;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.rmi.RemoteException;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
+// Test class for the DiaryImpl class
 class DiaryImplTest {
 
+    // Instance of the DiaryImpl class
     private DiaryImpl diary;
 
-    @Before
+    // Method to set up the test environment before each test
+    @BeforeEach
     void setUp() throws RemoteException {
         diary = new DiaryImpl();
     }

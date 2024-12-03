@@ -18,6 +18,7 @@ public class DiaryImpl extends UnicastRemoteObject implements Diary {
     // Constructor
     public DiaryImpl() throws RemoteException {
         super();
+        this.clientFiles = new HashMap<>();
     }
 
 
