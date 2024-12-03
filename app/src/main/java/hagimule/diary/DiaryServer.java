@@ -3,23 +3,19 @@ package hagimule.diary;
 import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
 
-
-/**
- * Server class for the Diary service
- */
 public class DiaryServer {
     public static void main(String[] args) {
         try {
-            // Create and export a remote object
-            DiaryImpl diary = new DiaryImpl();
-
-            // Start the RMI registry on port 1099
+            // Crée le registre RMI
             LocateRegistry.createRegistry(1099);
 
-            // Bind the remote object's stub in the registry
-            Naming.rebind("DiaryService", diary);
+            // Instancie le service Diary
+            Diary diary = new DiaryImpl();
 
-            System.out.println("DiaryService is running...");
+            // Lie le service Diary au registre RMI
+            Naming.rebind("rmi://localhost/Diary", diary);
+
+            System.out.println("RMI Diary Server is running...");
         } catch (Exception e) {
             e.printStackTrace();
         }
