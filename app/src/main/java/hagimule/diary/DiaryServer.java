@@ -24,4 +24,4 @@ public class DiaryServer {
             e.printStackTrace();
         }
     }
-}
+}   
