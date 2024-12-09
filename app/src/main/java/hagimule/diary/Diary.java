@@ -25,7 +25,7 @@ public interface Diary extends Remote {
      * Method to find all clients daemons addresses who own a specific file
      * @param fileName
      * @return
-     * @throws RemoteException
+     * @throws RemoteException  
      */
     List<String> findDaemonAddressesByFile(String fileName) throws RemoteException;
 

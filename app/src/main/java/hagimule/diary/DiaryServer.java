@@ -13,6 +13,11 @@ public class DiaryServer {
             // create the RMI registry
             LocateRegistry.createRegistry(1099);
 
+             /* Suite :
+             * ip de la machine local : InetAddress.getLocalHost().getHostAddress()
+             *  Naming.rebind("rmi://" + Ip_machine_local + "/Diary", diary); 
+             */
+            
             // Create a new instance of the Diary service
             Diary diary = new DiaryImpl();
 

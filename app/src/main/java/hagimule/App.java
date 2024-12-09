@@ -19,10 +19,12 @@ public class App {
             System.exit(1);
         }
 
+        // Exécuter le programme correspondant à l'argument
+        // le choix le application à lancer 
         switch (args[0].toLowerCase()) {
-            case "server" -> startDiaryServer();
-            case "create-files" -> startFileCreator();
-            case "client" -> startFileDownloader();
+            case "server" -> startDiaryServer(); // Appelle la méthode startDiaryServer
+            case "create-files" -> startFileCreator(); // Appelle ClientfileCreator
+            case "client" -> startFileDownloader(); // appelle DiaryClient (qui va demander la téléchargement)
             default -> {
                 System.out.println("Option invalide : " + args[0]);
                 System.out.println("Options disponibles : server, create-files, client");

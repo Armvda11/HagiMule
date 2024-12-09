@@ -51,18 +51,19 @@ public class ClientFileCreator {
     }
 
     /**
-     * Méthode utilitaire pour créer un fichier de taille spécifiée (en octets).
-     *
-     * @param directory le dossier où créer le fichier
-     * @param fileName  le nom du fichier
-     * @param size      la taille du fichier à créer (en octets)
-     * @return le fichier créé
-     * @throws IOException en cas d'erreur d'écriture
+     * createFile : method to create a file with a specific size
+     * @param directory     the directory where the file will be created
+     * @param fileName      the name of the file
+     * @param size          the size of the file
+     * @return              the created file
+     * @throws IOException  if an error occurs during the file creation
      */
     private static File createFile(File directory, String fileName, long size) throws IOException {
         File file = new File(directory, fileName);
         
-        try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))) {
+        try (
+            //
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))) {
             StringBuilder content = new StringBuilder();
             
             // Créer un contenu d'environ 1 Ko à répéter pour obtenir la taille désirée
