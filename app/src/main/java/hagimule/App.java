@@ -25,6 +25,8 @@ public class App {
             case "server" -> startDiaryServer(); // Appelle la méthode startDiaryServer
             case "create-files" -> startFileCreator(); // Appelle ClientfileCreator
             case "client" -> startFileDownloader(); // appelle DiaryClient (qui va demander la téléchargement)
+            case "client1" -> creerClient1(); // appelle ClientfileCreator avec les paramètres spécifiés
+            case "client2" -> creerClient2(); // appelle ClientfileCreator avec les paramètres spécifiés
             default -> {
                 System.out.println("Option invalide : " + args[0]);
                 System.out.println("Options disponibles : server, create-files, client");
@@ -71,4 +73,26 @@ public class App {
             e.printStackTrace();
         }
     }
+
+
+    private static void creerClient1() {
+        try {
+            System.out.println("Création des fichiers pour les clients...");
+            ClientFileCreator.main(new String[]{"Client1", "fichier1.txt", "1000000", "8080"}); // Appelle le main du créateur de fichiers
+        } catch (Exception e) {
+            System.out.println("Erreur lors de la création des fichiers :");
+            e.printStackTrace();
+        }
+    }
+
+    private static void creerClient2() {
+        try {
+            System.out.println("Création des fichiers pour les clients...");
+            ClientFileCreator.main(new String[]{"Client2", "fichier2.txt", "2000000", "8081"}); // Appelle le main du créateur de fichiers
+        } catch (Exception e) {
+            System.out.println("Erreur lors de la création des fichiers :");
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -4,16 +4,30 @@ import hagimule.diary.Diary;
 import hagimule.client.daemon.Daemon;
 
 import java.io.*;
+import java.net.InetAddress;
 import java.rmi.Naming;
+import java.util.UUID;
 
 /**
- * Classe qui crée des fichiers de 2 Mo pour différents clients et les enregistre dans le Diary.
+ * Classe Client universelle
+ * Chaque client crée un fichier et démarre un Daemon qui partage ce fichier
  */
 public class ClientFileCreator {
 
     public static void main(String[] args) {
         try {
-            // Connecter au Diary
+            // Lecture des paramètres d'exécution (nom du fichier, taille et port)
+            String clientName = (args.length > 0) ? args[0] : "Client_" + UUID.randomUUID();
+            String fileName = (args.length > 1) ? args[1] : "file" + clientName + ".txt";
+            long fileSize = (args.length > 2) ? Long.parseLong(args[2]) : 2 * 1024 * 1024; // Par défaut 2 Mo
+            int daemonPort = (args.length > 3) ? Integer.parseInt(args[3]) : 8080;
+
+            System.out.println("Lancement de " + clientName);
+            System.out.println("Fichier : " + fileName);
+            System.out.println("Taille du fichier : " + (fileSize / (1024 * 1024)) + " Mo");
+            System.out.println("Port du Daemon : " + daemonPort);
+
+            // Connexion au Diary ( le diary 147.27.133.14   ( pixie ))
             Diary diary = (Diary) Naming.lookup("rmi://localhost/Diary");
 
             // Chemin du dossier partagé
@@ -22,57 +36,45 @@ public class ClientFileCreator {
                 sharedDirectory.mkdirs(); // Crée le dossier s'il n'existe pas
             }
 
-            // Créer des fichiers de 2 Mo
-            File file1 = createFile(sharedDirectory, "file1.txt", 2 * 1024 * 1024); // 2 Mo
-            File file2 = createFile(sharedDirectory, "file2.txt", 2 * 1024 * 1024); // 2 Mo
-          
-            // Démarrer les Daemons
-            Daemon daemon1 = new Daemon(8080);
-            Daemon daemon2 = new Daemon(8081);
-            Daemon daemon3 = new Daemon(8082);
+            // Crée un fichier unique de la taille demandée
+            File file = createFile(sharedDirectory, fileName, fileSize);
+            
+            // Démarre le Daemon sur le port défini
+            Daemon daemon = new Daemon(daemonPort);
+            daemon.addFile(file.getName(), file);
+            new Thread(daemon::start).start();
 
-            daemon1.addFile("file1.txt", file1);
-            daemon2.addFile("file1.txt", file2);
-            daemon3.addFile("file2.txt", file2);
+            // Enregistre le fichier et le Daemon dans le Diary
+            String machineIP = InetAddress.getLocalHost().getHostAddress();
+            String daemonAddress = machineIP + ":" + daemonPort;
+            diary.registerFile(file.getName(), clientName, daemonAddress);
 
-            new Thread(daemon1::start).start();
-            new Thread(daemon2::start).start();
-            new Thread(daemon3::start).start();
-
-            // Enregistrer les fichiers et Daemons dans le Diary
-            diary.registerFile("file1.txt", "Client1", "127.0.0.1:8080");
-            diary.registerFile("file1.txt", "Client2", "127.0.0.1:8081");
-            diary.registerFile("file2.txt", "Client3", "127.0.0.1:8082");
-
-            System.out.println("Fichiers de 2 Mo créés et enregistrés dans le Diary.");
+            System.out.println("Fichier '" + fileName + "' de " + (fileSize / (1024 * 1024)) + " Mo créé et enregistré dans le Diary.");
+            System.out.println("Daemon à l'écoute sur : " + daemonAddress);
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     /**
-     * createFile : method to create a file with a specific size
-     * @param directory     the directory where the file will be created
-     * @param fileName      the name of the file
-     * @param size          the size of the file
-     * @return              the created file
-     * @throws IOException  if an error occurs during the file creation
+     * Méthode utilitaire pour créer un fichier de taille spécifiée.
+     * 
+     * @param directory Le dossier où créer le fichier.
+     * @param fileName Le nom du fichier.
+     * @param size La taille du fichier à créer (en octets).
+     * @return Le fichier créé.
+     * @throws IOException En cas d'erreur de création du fichier.
      */
     private static File createFile(File directory, String fileName, long size) throws IOException {
         File file = new File(directory, fileName);
         
-        try (
-            //
-            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))) {
+        try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))) {
             StringBuilder content = new StringBuilder();
-            
-            // Créer un contenu d'environ 1 Ko à répéter pour obtenir la taille désirée
-            content.append("Contenu simulé du fichier. ").append(System.currentTimeMillis()).append("\n");
-
+            content.append("Contenu du fichier simulé. ").append(System.currentTimeMillis()).append("\n");
             byte[] contentBytes = content.toString().getBytes(); // Convertir en bytes
             long bytesWritten = 0;
 
-            // Écrire des données dans le fichier jusqu'à atteindre la taille demandée
             while (bytesWritten < size) {
                 bos.write(contentBytes);
                 bytesWritten += contentBytes.length;

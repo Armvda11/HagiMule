@@ -64,7 +64,7 @@ public class Daemon {
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())); // to read the client request
             OutputStream out = clientSocket.getOutputStream()) {
     
-            // Lire la commande du client
+            // Read the client request
             String request = in.readLine(); // Read the client request
             if (request == null || request.isEmpty()) {
                 out.write("Request invalide\n".getBytes());

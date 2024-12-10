@@ -152,7 +152,8 @@ public class DiaryClient {
     }
 
     private static void reassembleFile(String fileName, String tempFolder, String outputFilePath) throws IOException {
-        try (FileOutputStream fos = new FileOutputStream(outputFilePath)) {
+        try (
+            FileOutputStream fos = new FileOutputStream(outputFilePath)) {
             int part = 0;
             while (true) {
                 File fragment = new File(tempFolder, fileName + ".part" + part);
