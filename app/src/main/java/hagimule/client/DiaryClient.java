@@ -1,11 +1,20 @@
 package hagimule.client;
 
-import hagimule.diary.Diary;
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.rmi.Naming;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import hagimule.diary.Diary;
 
 public class DiaryClient {
     // optimisation idea
@@ -105,16 +114,35 @@ public class DiaryClient {
      */
     private static void downloadFragments(String fileName, List<String> daemonAddresses, long fileSize,
                                           String outputFolder) throws IOException {
+        int nbDaemons = daemonAddresses.size();
+        long fragmentSize = fileSize /nbDaemons;
 
-        long fragmentSize = fileSize / daemonAddresses.size();
 
-        for (int i = 0; i < daemonAddresses.size(); i++) {
+        // Créer un pool avec nbDeamons threads, un pour chaque Daemon possédant le fichier
+        ExecutorService executor = Executors.newFixedThreadPool(nbDaemons);
+
+        for (int i = 0; i < nbDaemons; i++)
+         {
             String daemonAddress = daemonAddresses.get(i);
             long startByte = i * fragmentSize;
-            long endByte = (i == daemonAddresses.size() - 1) ? fileSize : (startByte + fragmentSize);
+            long endByte = (i == nbDaemons - 1) ? fileSize : (startByte + fragmentSize);
 
             String fragmentPath = outputFolder + "/" + fileName + ".part" + i;
-            downloadFragment(daemonAddress, fileName, startByte, endByte, fragmentPath);
+
+            int iFinal= i;
+
+            executor.submit(() -> {
+
+                try {
+                    System.out.println("Téléchargement du fragment " + iFinal + "en cours");
+                    downloadFragment(daemonAddress, fileName, startByte, endByte, fragmentPath);
+                    System.out.println("Fragment " + iFinal + " téléchargé.");
+                } catch (IOException  e) {
+                    Thread.currentThread().interrupt();
+                    System.err.println("Erreur lors du téléchargement du fragment " + iFinal + ": " + e.getMessage());
+                }
+            
+            });
         }
     }
 
@@ -143,6 +171,7 @@ public class DiaryClient {
             out.println("GET " + fileName + " " + startByte + " " + endByte);
 
             // Lire et sauvegarder le fragment
+            /* Mettre une constante BUFFER SIZE */
             byte[] buffer = new byte[8192];
             int bytesRead;
             while ((bytesRead = in.read(buffer)) != -1) {
