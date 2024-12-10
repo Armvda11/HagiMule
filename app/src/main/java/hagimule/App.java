@@ -78,7 +78,7 @@ public class App {
     private static void creerClient1() {
         try {
             System.out.println("Création des fichiers pour les clients...");
-            ClientFileCreator.main(new String[]{"Client1", "fichier1.txt", "1000000", "8080"}); // Appelle le main du créateur de fichiers
+            ClientFileCreator.main(new String[]{"Client1", "fichier1.txt", "10000000", "8080"}); // Appelle le main du créateur de fichiers
         } catch (Exception e) {
             System.out.println("Erreur lors de la création des fichiers :");
             e.printStackTrace();
@@ -88,7 +88,7 @@ public class App {
     private static void creerClient2() {
         try {
             System.out.println("Création des fichiers pour les clients...");
-            ClientFileCreator.main(new String[]{"Client2", "fichier2.txt", "2000000", "8081"}); // Appelle le main du créateur de fichiers
+            ClientFileCreator.main(new String[]{"Client2", "fichier1.txt", "10000000", "8081"}); // Appelle le main du créateur de fichiers
         } catch (Exception e) {
             System.out.println("Erreur lors de la création des fichiers :");
             e.printStackTrace();
