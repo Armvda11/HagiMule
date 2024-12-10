@@ -74,8 +74,7 @@ public class DiaryClient {
         try (
             // Create a socket to connect to the daemon, at the specified address and port
             Socket socket = new Socket(host, port);
-            // !!!! j'ai utiliser un PrintWriter pour envoyer la commande SIZE car je l'es trouver bien mieux ( pas besoin de le convertir en byte)
-            // !!! demandé à Freaky ????
+   
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
     
@@ -108,6 +107,7 @@ public class DiaryClient {
 
         long fragmentSize = fileSize / daemonAddresses.size();
 
+        // !!!!!! problème il faut que le download se fait en parallèle pour que ça soit plus rapide
         for (int i = 0; i < daemonAddresses.size(); i++) {
             String daemonAddress = daemonAddresses.get(i);
             long startByte = i * fragmentSize;
@@ -151,7 +151,15 @@ public class DiaryClient {
         }
     }
 
+    /**
+     * ReassembleFile : method to reassemble the file from the fragments
+     * @param fileName
+     * @param tempFolder
+     * @param outputFilePath
+     * @throws IOException
+     */
     private static void reassembleFile(String fileName, String tempFolder, String outputFilePath) throws IOException {
+        // il faut adapter le code pour que ça marche avec les fragments qui arrive en désordre (il faut les trier)
         try (
             FileOutputStream fos = new FileOutputStream(outputFilePath)) {
             int part = 0;
