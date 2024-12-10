@@ -1,182 +1,156 @@
 package hagimule.client;
 
-import hagimule.diary.Diary;
-
 import java.io.*;
-import java.net.Socket;
+import java.net.*;
 import java.rmi.Naming;
 import java.util.List;
+import java.util.concurrent.*;
+
+import hagimule.diary.Diary;
 
 public class DiaryClient {
-    // optimisation idea
-    // 1. use socker send instead of printwriter (and use byte[] instead of string)
+
+    private static final long MIN_FRAGMENT_SIZE = 512 * 1024; // Taille minimale d'un fragment (512 Ko)
 
 
     public static void main(String[] args) {
         try {
-            /**
-             * Suite:
-             * nouvelle adresse pour le client : InetAddress.getLocalHost().getHostAddress()
-             * fait < "rmi://cette nouvelle addres /Diary" > pour se connecter au Diary
-             */
-
-
-            // Connecter au Diary
+            // Se connecter au Diary via RMI
             Diary diary = (Diary) Naming.lookup("rmi://localhost/Diary");
 
-            String fileName = "file1.txt";
-            System.out.println("Demande du fichier : " + fileName);
+            String fileName = "fichier1.txt"; 
+            System.out.println("Demande de téléchargement du fichier : " + fileName);
 
-            // Obtenir les adresses des Daemons possédant le fichier
+            // Récupérer la liste des Daemons qui possèdent le fichier
             List<String> daemonAddresses = diary.findDaemonAddressesByFile(fileName);
             if (daemonAddresses.isEmpty()) {
                 System.out.println("Aucun Daemon ne possède ce fichier.");
                 return;
             }
 
-            System.out.println("Adresses des Daemons trouvées : " + daemonAddresses);
-
-            // Obtenir la taille du fichier auprès d'un des Daemons
+            // Obtenir la taille du fichier à partir d'un des Daemons
             long fileSize = getFileSize(daemonAddresses.get(0), fileName);
             if (fileSize <= 0) {
                 System.out.println("Impossible d'obtenir la taille du fichier.");
                 return;
             }
 
-            System.out.println("Taille du fichier : " + fileSize + " octets");
+            String outputFilePath = "received_" + fileName;
 
-            // Diviser le fichier en fragments dynamiquement
-            String outputFolder = "";
-            File outputFile = new File(outputFolder, "received_" + fileName);
+            // Télécharger les fragments et reconstituer le fichier
+            downloadFragments(fileName, daemonAddresses, fileSize, outputFilePath);
 
-            downloadFragments(fileName, daemonAddresses, fileSize, outputFolder);
-
-            // Reconstituer le fichier
-            reassembleFile(fileName, outputFolder, outputFile.getAbsolutePath());
-
-            System.out.println("Fichier reconstitué avec succès : " + outputFile.getAbsolutePath());
+            System.out.println("Fichier reconstitué avec succès : " + outputFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     /**
-     * GetFilesize : method to get the size of the file
-     * @param daemonAddress the address of the daemon
-     * @param fileName      the name of the file
-     * @return              the size of the file
+     * Télécharge les fragments du fichier et les écrit directement dans le fichier final.
+     * 
+     * @param fileName      Nom du fichier
+     * @param daemonAddresses Adresses des Daemons
+     * @param fileSize      Taille du fichier
+     * @param outputFilePath Chemin du fichier final reconstitué
+     */
+    private static void downloadFragments(String fileName, List<String> daemonAddresses, long fileSize, String outputFilePath) throws IOException {
+        int totalFragments = (int) Math.ceil((double) fileSize / MIN_FRAGMENT_SIZE);
+        int nbThreads = Math.min(totalFragments, daemonAddresses.size() * 2);
+        ExecutorService executor = Executors.newFixedThreadPool(nbThreads);
+    
+        try (RandomAccessFile raf = new RandomAccessFile(outputFilePath, "rw")) {
+            raf.setLength(fileSize);
+        }
+    
+        for (int i = 0; i < totalFragments; i++) {
+            int fragmentIndex = i;
+            long startByte = i * MIN_FRAGMENT_SIZE;
+            long endByte = Math.min(startByte + MIN_FRAGMENT_SIZE, fileSize);
+    
+            executor.submit(() -> {
+                try {
+                    // Rotation round-robin des Daemons
+                    int daemonIndex = fragmentIndex % daemonAddresses.size();
+                    String daemonAddress = daemonAddresses.get(daemonIndex);
+                    
+                    // Téléchargement du fragment
+                    byte[] data = downloadFragment(daemonAddress, fileName, startByte, endByte);
+                    
+                    // Écriture du fragment dans le fichier final
+                    try (RandomAccessFile raf = new RandomAccessFile(outputFilePath, "rw")) {
+                        raf.seek(startByte);
+                        raf.write(data);
+                    }
+    
+                    System.out.println("Fragment " + fragmentIndex + " téléchargé et écrit de " + startByte + " à " + endByte);
+                } catch (IOException e) {
+                    System.err.println("Erreur d'écriture du fragment " + fragmentIndex + ": " + e.getMessage());
+                }
+            });
+        }
+    
+        executor.shutdown();
+        try {
+            executor.awaitTermination(Long.MAX_VALUE, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+
+            e.printStackTrace();
+        }
+    }
+    
+    /**
+     * Télécharge un fragment du fichier à partir d'un Daemon.
+     * 
+     * @param daemonAddress Adresse du Daemon (ex: 127.0.0.1:8080)
+     * @param fileName      Nom du fichier
+     * @param startByte     Byte de début
+     * @param endByte       Byte de fin
+     * @return              Les octets du fragment
+     */
+    private static byte[] downloadFragment(String daemonAddress, String fileName, long startByte, long endByte) throws IOException {
+        String[] parts = daemonAddress.split(":");
+        String host = parts[0];
+        int port = Integer.parseInt(parts[1]);
+
+        try (Socket socket = new Socket(host, port);
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+             InputStream in = socket.getInputStream()) {
+
+            out.println("GET " + fileName + " " + startByte + " " + endByte);
+            
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            byte[] buffer = new byte[8192];
+            int bytesRead;
+            while ((bytesRead = in.read(buffer)) != -1) {
+                baos.write(buffer, 0, bytesRead);
+            }
+            return baos.toByteArray();
+        }
+    }
+
+    /**
+     * Récupère la taille du fichier auprès d'un Daemon.
+     * 
+     * @param daemonAddress Adresse du Daemon
+     * @param fileName      Nom du fichier
+     * @return              Taille du fichier
      */
     private static long getFileSize(String daemonAddress, String fileName) {
         String[] parts = daemonAddress.split(":");
         String host = parts[0];
         int port = Integer.parseInt(parts[1]);
-    
-        try (
-            // Create a socket to connect to the daemon, at the specified address and port
-            Socket socket = new Socket(host, port);
-   
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
-    
-            // send the command SIZE to get the size of the file
+
+        try (Socket socket = new Socket(host, port);
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
+
             out.println("SIZE " + fileName);
-    
-            // read the response from the daemon
             String response = in.readLine();
-            try {
-                return Long.parseUnsignedLong(response.trim()); // Convert the response to a long (the size of the file)
-            } catch (NumberFormatException e) {
-                System.err.println("Erreur lors de la récupération de la taille : " + response);
-            }
-        } catch (IOException e) {
+            return Long.parseUnsignedLong(response.trim());
+        } catch (IOException | NumberFormatException e) {
             e.printStackTrace();
         }
-        return -1; // En cas d'erreur
-    }
-    
-    /**
-     * DownloadFragments : method to download the fragments of the file
-     * @param fileName          the name of the file
-     * @param daemonAddresses   the addresses of the daemons
-     * @param fileSize          the size of the file
-     * @param outputFolder      the folder where to save the fragments
-     * @throws IOException      if an error occurs during the download
-     */
-    private static void downloadFragments(String fileName, List<String> daemonAddresses, long fileSize,
-                                          String outputFolder) throws IOException {
-
-        long fragmentSize = fileSize / daemonAddresses.size();
-
-        // !!!!!! problème il faut que le download se fait en parallèle pour que ça soit plus rapide
-        for (int i = 0; i < daemonAddresses.size(); i++) {
-            String daemonAddress = daemonAddresses.get(i);
-            long startByte = i * fragmentSize;
-            long endByte = (i == daemonAddresses.size() - 1) ? fileSize : (startByte + fragmentSize);
-
-            String fragmentPath = outputFolder + "/" + fileName + ".part" + i;
-            downloadFragment(daemonAddress, fileName, startByte, endByte, fragmentPath);
-        }
-    }
-
-    /**
-     * DownloadFragment : method to download a fragment of the file
-     * @param daemonAddress the address of the daemon
-     * @param fileName      the name of the file
-     * @param startByte     the strating byte of the fragment
-     * @param endByte       the ending byte of the fragment
-     * @param fragmentPath  the path where to save the fragment
-     * @throws IOException  if an error occurs during the download
-     */
-    private static void downloadFragment(String daemonAddress, String fileName, long startByte, long endByte,
-                                         String fragmentPath) throws IOException {
-        String[] parts = daemonAddress.split(":");
-        String host = parts[0];
-        int port = Integer.parseInt(parts[1]);
-
-        try (
-            Socket socket = new Socket(host, port);
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            InputStream in = socket.getInputStream();
-            FileOutputStream fos = new FileOutputStream(fragmentPath)) {
-
-            // send the command GET to get the fragment of the file
-            out.println("GET " + fileName + " " + startByte + " " + endByte);
-
-            // Lire et sauvegarder le fragment
-            byte[] buffer = new byte[8192];
-            int bytesRead;
-            while ((bytesRead = in.read(buffer)) != -1) {
-                fos.write(buffer, 0, bytesRead);
-            }
-        }
-    }
-
-    /**
-     * ReassembleFile : method to reassemble the file from the fragments
-     * @param fileName
-     * @param tempFolder
-     * @param outputFilePath
-     * @throws IOException
-     */
-    private static void reassembleFile(String fileName, String tempFolder, String outputFilePath) throws IOException {
-        // il faut adapter le code pour que ça marche avec les fragments qui arrive en désordre (il faut les trier)
-        try (
-            FileOutputStream fos = new FileOutputStream(outputFilePath)) {
-            int part = 0;
-            while (true) {
-                File fragment = new File(tempFolder, fileName + ".part" + part);
-                if (!fragment.exists()) break;
-
-                try (FileInputStream fis = new FileInputStream(fragment)) {
-                    byte[] buffer = new byte[8192];
-                    int bytesRead;
-                    while ((bytesRead = fis.read(buffer)) != -1) {
-                        fos.write(buffer, 0, bytesRead);
-                    }
-                }
-                fragment.delete();
-                part++;
-            }
-        }
+        return -1;
     }
 }
