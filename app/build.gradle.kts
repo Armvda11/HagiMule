@@ -17,6 +17,12 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
 
+    // Base de données SQLite
+    implementation("org.xerial:sqlite-jdbc:3.41.2.1")  // Dépendance SQLite JDBC
+
+    // Logging (SLF4J with Logback for better logging support)
+    implementation("ch.qos.logback:logback-classic:1.4.11")
+
     // Other dependencies for the application (e.g., Guava, logging)
     // implementation("com.google.guava:guava:31.1-jre")
 }

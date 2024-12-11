@@ -1,7 +1,17 @@
 package hagimule.client.daemon;
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.RandomAccessFile;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class Daemon {
     
@@ -23,6 +33,46 @@ public class Daemon {
      */
     public void addFile(String fileName, File file) {
         this.file = file;
+
+        // URL de connexion JDBC (adaptée à votre base de données)
+        String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "\\src\\main\\java\\hagimule\\client\\daemon\\" + "testdb.db";
+        String path = "C:/Users/Utilisateur/Documents/"; // Exemple de chemin d'accès au fichier
+        String size = "2"; // Exemple de taille du fichier
+
+        // Requête SQL pour insérer les données
+        String sql = "INSERT INTO files (file_name, file_path, file_size) VALUES (" + fileName + "," + path +"," + size + ")";
+
+
+        try (Connection connection = DriverManager.getConnection(url)) {
+            System.out.println("Connexion réussie à H2 ! \n database créée ici : " + url);
+
+            // Créer la table "files" si elle n'existe pas déjà
+            String createTableSQL = "CREATE TABLE IF NOT EXISTS files (" +
+                                    "id INT AUTO_INCREMENT PRIMARY KEY, " +
+                                    "file_name VARCHAR(255), " +
+                                    "file_path VARCHAR(255), " +
+                                    "file_size INT)";
+            try (PreparedStatement createStmt = connection.prepareStatement(createTableSQL)) {
+                createStmt.executeUpdate();
+            } catch (SQLException e) {
+                System.err.println("Erreur SQL : " + e.getMessage());
+            }
+
+            // Exécuter l'insertion dans la base de données avec les valeurs par défaut
+            String insertSQL = "INSERT INTO files (file_name, file_path, file_size) VALUES (?, ?, ?)";
+            try (PreparedStatement insertStmt = connection.prepareStatement(insertSQL)) {
+                insertStmt.setString(1, fileName);  // Nom du fichier
+                insertStmt.setString(2, path);      // Chemin du fichier
+                insertStmt.setString(3, size);      // Taille par défaut
+                insertStmt.executeUpdate();
+                System.out.println("Les informations ont été ajoutées avec succès."); 
+                                  
+            } catch (SQLException e) {
+                System.err.println("Erreur SQL : " + e.getMessage());
+            }
+        } catch (SQLException e) {
+            System.err.println("Erreur SQL : " + e.getMessage());
+        }
     }
 
     /**
