@@ -28,6 +28,7 @@ public class ClientFileCreator {
             System.out.println("Port du Daemon : " + daemonPort);
 
             // Connexion au Diary ( le diary 147.27.133.14   ( pixie ))
+            //Diary diary = (Diary) Naming.lookup("rmi://147.27.133.14/Diary");
             Diary diary = (Diary) Naming.lookup("rmi://localhost/Diary");
 
             // Chemin du dossier partagé
