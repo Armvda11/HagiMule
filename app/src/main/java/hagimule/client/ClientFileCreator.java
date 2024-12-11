@@ -1,12 +1,15 @@
 package hagimule.client;
 
-import hagimule.diary.Diary;
-import hagimule.client.daemon.Daemon;
-
-import java.io.*;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.InetAddress;
 import java.rmi.Naming;
 import java.util.UUID;
+
+import hagimule.client.daemon.Daemon;
+import hagimule.diary.Diary;
 
 /**
  * Classe Client universelle
