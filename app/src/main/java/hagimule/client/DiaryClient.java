@@ -1,16 +1,24 @@
 package hagimule.client;
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.RandomAccessFile;
+import java.net.Socket;
 import java.rmi.Naming;
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import hagimule.diary.Diary;
 
 public class DiaryClient {
 
-    private static final long MIN_FRAGMENT_SIZE = 512 * 1024; // Taille minimale d'un fragment (512 Ko)
+    private static final long FRAGMENT_SIZE = 512 * 1024; // Taille d'un fragment (512 Ko)
 
 
     public static void main(String[] args) {
@@ -55,7 +63,7 @@ public class DiaryClient {
      * @param outputFilePath Chemin du fichier final reconstitué
      */
     private static void downloadFragments(String fileName, List<String> daemonAddresses, long fileSize, String outputFilePath) throws IOException {
-        int totalFragments = (int) Math.ceil((double) fileSize / MIN_FRAGMENT_SIZE);
+        int totalFragments = (int) Math.ceil((double) fileSize / FRAGMENT_SIZE);
         int nbThreads = Math.min(totalFragments, daemonAddresses.size() * 2);
         ExecutorService executor = Executors.newFixedThreadPool(nbThreads);
     
@@ -65,8 +73,9 @@ public class DiaryClient {
     
         for (int i = 0; i < totalFragments; i++) {
             int fragmentIndex = i;
-            long startByte = i * MIN_FRAGMENT_SIZE;
-            long endByte = Math.min(startByte + MIN_FRAGMENT_SIZE, fileSize);
+            long startByte = i * FRAGMENT_SIZE;
+            // Si le dernier fragment est plus petit que FRAGMENT_SIZE on réduit le fragment
+            long endByte = Math.min(startByte + FRAGMENT_SIZE, fileSize);
     
             executor.submit(() -> {
                 try {
