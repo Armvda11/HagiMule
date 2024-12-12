@@ -1,8 +1,9 @@
 package hagimule;
 
-import hagimule.diary.DiaryServer;
 import hagimule.client.ClientFileCreator;
+import hagimule.client.ClientUser;
 import hagimule.client.DiaryClient;
+import hagimule.diary.DiaryServer;
 
 /**
  * Classe principale pour exécuter différents fichiers en fonction des arguments passés.
@@ -14,6 +15,7 @@ public class App {
             System.out.println("Veuillez fournir un argument pour spécifier le programme à exécuter.");
             System.out.println("Options disponibles :");
             System.out.println("  server       : Démarrer le serveur Diary");
+            System.out.println("  daemon       : Démarrer le daemon");
             System.out.println("  create-files : Créer des fichiers pour différents clients");
             System.out.println("  client       : Télécharger un fichier en tant que client");
             System.exit(1);
@@ -24,6 +26,7 @@ public class App {
         switch (args[0].toLowerCase()) {
             case "server" -> startDiaryServer(); // Appelle la méthode startDiaryServer
             case "create-files" -> startFileCreator(); // Appelle ClientfileCreator
+            case "daemon" -> startDaemon(); // Appelle ClientUser
             case "client" -> startFileDownloader(); // appelle DiaryClient (qui va demander la téléchargement)
             case "client1" -> creerClient1(); // appelle ClientfileCreator avec les paramètres spécifiés
             case "client2" -> creerClient2(); // appelle ClientfileCreator avec les paramètres spécifiés
@@ -57,6 +60,19 @@ public class App {
             ClientFileCreator.main(new String[]{}); // Appelle le main du créateur de fichiers
         } catch (Exception e) {
             System.out.println("Erreur lors de la création des fichiers :");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Démarre un Daemon pour un client.
+     */
+    private static void startDaemon() {
+        try {
+            System.out.println("Démarrage du Daemon...");
+            ClientUser.main(new String[]{"Client1", "8080"}); // Appelle le main du client
+        } catch (Exception e) {
+            System.out.println("Erreur lors du démarrage du Daemon :");
             e.printStackTrace();
         }
     }
