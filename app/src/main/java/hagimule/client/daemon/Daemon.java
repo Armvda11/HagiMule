@@ -38,6 +38,10 @@ public class Daemon {
         this.filePartage = file;
     }
 
+    public String checksum(String fileName, long size) {
+        return fileName + String.valueOf(size);
+    }
+
     // Créer la base de données si elle n'existe pas lors de la création du daemon
     private void creerDatabase() {
         try (Connection connection = DriverManager.getConnection(urlDatabase)) {
@@ -47,8 +51,9 @@ public class Daemon {
              "id INT AUTO_INCREMENT PRIMARY KEY, " +
              "file_name VARCHAR(255), " +
              "file_path VARCHAR(255), " +
-             "file_size INT)"; // +
-            // "UNIQUE(file_name)";
+             "file_size INT, " +
+             "checksum VARCHAR(255), " +
+             "UNIQUE(checksum))";
             
             try (PreparedStatement createStmt = connection.prepareStatement(createTableSQL)) {
                 createStmt.executeUpdate();
@@ -98,6 +103,8 @@ public class Daemon {
         Long size;
         String insertSQL;
 
+        String checksumFichier;
+
         // Chemin du dossier partagé
         String pathPartages = emplacement + "Fichiers"; // Exemple de chemin d'accès aux fichiers partagés
 
@@ -116,13 +123,14 @@ public class Daemon {
                 System.out.println("Insertion de : " + fileName);
 
                 try (Connection connection = DriverManager.getConnection(urlDatabase)) {
-                    insertSQL = "INSERT INTO files (file_name, file_path, file_size) VALUES (?, ?, ?)";// + 
-                    // Permet d'éviter les doublons en mettant à jour la taille du fichier si le nom existe déjà
-                    //"ON DUPLICATE KEY UPDATE file_path = VALUES(file_path), file_size = VALUES(file_size);";
+                    checksumFichier = checksum(fileName, size);
+                    insertSQL = "INSERT OR IGNORE INTO files (file_name, file_path, file_size, checksum) VALUES (?, ?, ?, ?)";
+
                     try (PreparedStatement insertStmt = connection.prepareStatement(insertSQL)) {
                         insertStmt.setString(1, fileName);
                         insertStmt.setString(2, file.getAbsolutePath());
                         insertStmt.setLong(3, size);
+                        insertStmt.setString(4, checksumFichier);
                         insertStmt.executeUpdate();
                         System.out.println("File " + fileName + " added to the database.");
                     } catch (SQLException e) {
