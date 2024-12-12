@@ -6,17 +6,25 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
+import java.math.BigInteger;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.file.Files;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.google.common.hash.Hashing;
+import com.google.common.io.ByteSource;
+import com.google.common.hash.HashCode;
+
 public class Daemon {
     
-    private int port;// le port de communication
+    private final int port;// le port de communication
     private final String emplacement; // l'emplacement du daemon
     private File filePartage; // le fichier à telecharger
 
@@ -38,8 +46,23 @@ public class Daemon {
         this.filePartage = file;
     }
 
-    public String checksum(String fileName, long size) {
-        return fileName + String.valueOf(size);
+    public String calculerChecksum(File file) {
+        String checksum = "";
+/*
+        ByteSource byteSource = com.google.common.io.Files.asByteSource(file);
+        HashCode hc = byteSource.hash(Hashing.sha256());
+        checksum = hc.toString();
+*/
+        try {
+            byte[] data = Files.readAllBytes(file.toPath());
+            byte[] hash = MessageDigest.getInstance("SHA-256").digest(data);
+            checksum = new BigInteger(1, hash).toString(16);
+    } catch (NoSuchAlgorithmException e) {
+        System.err.println("Erreur lors de la création du checksum : " + e.getMessage());
+    } catch (IOException e) {   
+        System.err.println("Erreur lors de la lecture du fichier : " + e.getMessage());
+    }
+        return checksum;
     }
 
     // Créer la base de données si elle n'existe pas lors de la création du daemon
@@ -97,7 +120,7 @@ public class Daemon {
 
     /**
      * Met à jour la base de données avec les fichiers partagés
-     */
+        **/
     public void majDatabase() {
         String fileName;
         Long size;
@@ -123,7 +146,7 @@ public class Daemon {
                 System.out.println("Insertion de : " + fileName);
 
                 try (Connection connection = DriverManager.getConnection(urlDatabase)) {
-                    checksumFichier = checksum(fileName, size);
+                    checksumFichier = calculerChecksum(file);
                     insertSQL = "INSERT OR IGNORE INTO files (file_name, file_path, file_size, checksum) VALUES (?, ?, ?, ?)";
 
                     try (PreparedStatement insertStmt = connection.prepareStatement(insertSQL)) {
