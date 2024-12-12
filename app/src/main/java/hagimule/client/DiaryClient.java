@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.io.RandomAccessFile;
 import java.net.Socket;
 import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -49,7 +50,7 @@ public class DiaryClient {
             downloadFragments(fileName, daemonAddresses, fileSize, outputFilePath);
 
             System.out.println("Fichier reconstitué avec succès : " + outputFilePath);
-        } catch (Exception e) {
+        } catch (IOException | NotBoundException e) {
             e.printStackTrace();
         }
     }

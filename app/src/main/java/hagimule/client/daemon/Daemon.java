@@ -6,12 +6,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
-import java.math.BigInteger;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.nio.file.Files;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -47,22 +43,20 @@ public class Daemon {
     }
 
     public String calculerChecksum(File file) {
-        String checksum = "";
-/*
-        ByteSource byteSource = com.google.common.io.Files.asByteSource(file);
-        HashCode hc = byteSource.hash(Hashing.sha256());
-        checksum = hc.toString();
-*/
         try {
-            byte[] data = Files.readAllBytes(file.toPath());
-            byte[] hash = MessageDigest.getInstance("SHA-256").digest(data);
-            checksum = new BigInteger(1, hash).toString(16);
-    } catch (NoSuchAlgorithmException e) {
-        System.err.println("Erreur lors de la création du checksum : " + e.getMessage());
-    } catch (IOException e) {   
-        System.err.println("Erreur lors de la lecture du fichier : " + e.getMessage());
-    }
-        return checksum;
+            // Création d'une source de bytes à partir du fichier
+            ByteSource byteSource = com.google.common.io.Files.asByteSource(file);
+    
+            // Calcul du hash SHA-256
+            HashCode hashCode = byteSource.hash(Hashing.sha256());
+    
+            // Convertir le hash en chaîne de caractères
+            return hashCode.toString();
+        } catch (IOException e) {
+            System.err.println("Erreur lors de la création du checksum : " + e.getMessage());
+            e.printStackTrace();
+            return ""; // Retourne une chaîne vide en cas d'erreur
+        }
     }
 
     // Créer la base de données si elle n'existe pas lors de la création du daemon
