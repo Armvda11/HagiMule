@@ -25,8 +25,7 @@ public class ClientUser {
             System.out.println("Port du Daemon : " + daemonPort);
 
             // Connexion au Diary ( le diary 147.27.133.14   ( pixie ))
-            //Diary diary = (Diary) Naming.lookup("rmi://147.27.133.14/Diary");
-            Diary diary = (Diary) Naming.lookup("rmi://localhost/Diary");
+            Diary diary = (Diary) Naming.lookup("rmi://melofee.enseeiht.fr/Diary");
             
             // Démarre le Daemon sur le port défini
             Daemon daemon = new Daemon(daemonPort);
