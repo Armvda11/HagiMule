@@ -1,5 +1,6 @@
 package hagimule.diary;
-
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
 
@@ -10,6 +11,7 @@ import java.rmi.registry.LocateRegistry;
 public class DiaryServer {
     public static void main(String[] args) {
         try {
+            System.setProperty("java.rmi.server.hostname", "melofee.enseeiht.fr");
             // create the RMI registry
             LocateRegistry.createRegistry(1099);
 
@@ -17,12 +19,24 @@ public class DiaryServer {
              * ip de la machine local : InetAddress.getLocalHost().getHostAddress()
              *  Naming.rebind("rmi://" + Ip_machine_local + "/Diary", diary); 
              */
+
+             try {
+                InetAddress localMachine = InetAddress.getLocalHost();
+                String adresseIP = localMachine.getHostAddress();
+               
+                System.out.println("Adresse IP de la machine locale : " + adresseIP);
+            } catch (UnknownHostException e) {
+                System.err.println("Impossible de récupérer l'adresse IP.");
+                e.printStackTrace();
+            }
             
             // Create a new instance of the Diary service
             Diary diary = new DiaryImpl();
+           
 
             // Bind the Diary service to the registry
-            Naming.rebind("rmi://localhost/Diary", diary);
+            // le server pixie est sur l'adresse 147.127.133.14
+            Naming.rebind("rmi://melofee.enseeiht.fr:1099/Diary", diary);
 
             System.out.println("RMI Diary Server is running...");
         } catch (Exception e) {

@@ -33,7 +33,7 @@ public class Daemon {
      */
     public Daemon(int port) {
         this.port = port;
-        this.emplacement = System.getProperty("user.dir") + "\\src\\main\\java\\hagimule\\client\\daemon\\" ;
+        this.emplacement = System.getProperty("user.dir") + "/src/main/java/hagimule/client/daemon/" ;
         this.urlDatabase = "jdbc:sqlite:" +  emplacement + "fichiers.db";
         creerDatabase();
     }
@@ -248,6 +248,8 @@ public class Daemon {
             String command = parts[0];
             String fileName = parts[1];
             
+            setFile(fileName);
+
             // we chose to have only two commands : SIZE and GET
             // SIZE : to get the size of the file (the receiver will know how many fragments to expect)
             // GET : to get a fragment of the file

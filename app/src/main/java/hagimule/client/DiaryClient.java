@@ -1,33 +1,26 @@
 package hagimule.client;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.io.RandomAccessFile;
-import java.net.Socket;
+import java.io.*;
+import java.net.*;
 import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 import hagimule.diary.Diary;
 
 public class DiaryClient {
 
-    private static final long FRAGMENT_SIZE = 512 * 1024; // Taille d'un fragment (512 Ko)
+    private static final long MIN_FRAGMENT_SIZE = 512 * 1024; // Taille minimale d'un fragment (512 Ko)
 
 
     public static void main(String[] args) {
         try {
             // Se connecter au Diary via RMI
-            Diary diary = (Diary) Naming.lookup("rmi://localhost/Diary");
-
-            String fileName = "fichier1.txt"; 
+            //Diary diary = (Diary) Naming.lookup("rmi://localhost/Diary");
+            //Diary diary = (Diary) Naming.lookup("rmi://147.127.133.14/Diary");
+            Diary diary = (Diary) Naming.lookup("rmi://melofee.enseeiht.fr/Diary");
+            
+            String fileName = "hagi.txt"; 
             System.out.println("Demande de téléchargement du fichier : " + fileName);
 
             // Récupérer la liste des Daemons qui possèdent le fichier
@@ -36,6 +29,8 @@ public class DiaryClient {
                 System.out.println("Aucun Daemon ne possède ce fichier.");
                 return;
             }
+            System.out.println(daemonAddresses);
+
 
             // Obtenir la taille du fichier à partir d'un des Daemons
             long fileSize = getFileSize(daemonAddresses.get(0), fileName);
@@ -50,7 +45,7 @@ public class DiaryClient {
             downloadFragments(fileName, daemonAddresses, fileSize, outputFilePath);
 
             System.out.println("Fichier reconstitué avec succès : " + outputFilePath);
-        } catch (IOException | NotBoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -64,7 +59,7 @@ public class DiaryClient {
      * @param outputFilePath Chemin du fichier final reconstitué
      */
     private static void downloadFragments(String fileName, List<String> daemonAddresses, long fileSize, String outputFilePath) throws IOException {
-        int totalFragments = (int) Math.ceil((double) fileSize / FRAGMENT_SIZE);
+        int totalFragments = (int) Math.ceil((double) fileSize / MIN_FRAGMENT_SIZE);
         int nbThreads = Math.min(totalFragments, daemonAddresses.size() * 2);
         ExecutorService executor = Executors.newFixedThreadPool(nbThreads);
     
@@ -74,9 +69,8 @@ public class DiaryClient {
     
         for (int i = 0; i < totalFragments; i++) {
             int fragmentIndex = i;
-            long startByte = i * FRAGMENT_SIZE;
-            // Si le dernier fragment est plus petit que FRAGMENT_SIZE on réduit le fragment
-            long endByte = Math.min(startByte + FRAGMENT_SIZE, fileSize);
+            long startByte = i * MIN_FRAGMENT_SIZE;
+            long endByte = Math.min(startByte + MIN_FRAGMENT_SIZE, fileSize);
     
             executor.submit(() -> {
                 try {

@@ -1,15 +1,12 @@
 package hagimule.client;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.InetAddress;
+import hagimule.diary.Diary;
+import hagimule.client.daemon.Daemon;
+
+import java.io.*;
+
 import java.rmi.Naming;
 import java.util.UUID;
-
-import hagimule.client.daemon.Daemon;
-import hagimule.diary.Diary;
 
 /**
  * Classe Client universelle
@@ -30,32 +27,42 @@ public class ClientFileCreator {
             System.out.println("Taille du fichier : " + (fileSize / (1024 * 1024)) + " Mo");
             System.out.println("Port du Daemon : " + daemonPort);
 
-            // Connexion au Diary ( le diary 147.27.133.14   ( pixie ))
-            //Diary diary = (Diary) Naming.lookup("rmi://147.27.133.14/Diary");
-            Diary diary = (Diary) Naming.lookup("rmi://localhost/Diary");
+            // Connexion au Diary ( le diary 147.27.133.14 ( pixie ))
+            Diary diary = (Diary) Naming.lookup("rmi://melofee.enseeiht.fr/Diary");
+            // Diary diary = (Diary) Naming.lookup("rmi://147.27.133.14:8888/Diary");
+            // Diary diary = (Diary) Naming.lookup("rmi://localhost/Diary");
 
             // Chemin du dossier partagé
-            File sharedDirectory = new File("src/main/java/hagimule/shared");
+            // Chemin absolu basé sur le répertoire de travail
+            String projectRoot = System.getProperty("user.dir");
+            File sharedDirectory = new File(projectRoot, "app/src/main/java/hagimule/shared");
             if (!sharedDirectory.exists()) {
                 sharedDirectory.mkdirs(); // Crée le dossier s'il n'existe pas
             }
 
             // Crée un fichier unique de la taille demandée
             File file = createFile(sharedDirectory, fileName, fileSize);
-            
+
             // Démarre le Daemon sur le port défini
             Daemon daemon = new Daemon(daemonPort);
             daemon.addFile(file.getName(), file);
             new Thread(daemon::start).start();
 
             // Enregistre le fichier et le Daemon dans le Diary
-            String machineIP = InetAddress.getLocalHost().getHostAddress();
+
+            String machineIP = "";
+            if (clientName.equals("Client1")) {
+                machineIP = "pixie.enseeiht.fr";
+            } else {
+                machineIP = "pikachu.enseeiht.fr";
+            }
             String daemonAddress = machineIP + ":" + daemonPort;
             diary.registerFile(file.getName(), clientName, daemonAddress);
 
-            System.out.println("Fichier '" + fileName + "' de " + (fileSize / (1024 * 1024)) + " Mo créé et enregistré dans le Diary.");
+            System.out.println("Fichier '" + fileName + "' de " + (fileSize / (1024 * 1024))
+                    + " Mo créé et enregistré dans le Diary.");
             System.out.println("Daemon à l'écoute sur : " + daemonAddress);
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -65,14 +72,14 @@ public class ClientFileCreator {
      * Méthode utilitaire pour créer un fichier de taille spécifiée.
      * 
      * @param directory Le dossier où créer le fichier.
-     * @param fileName Le nom du fichier.
-     * @param size La taille du fichier à créer (en octets).
+     * @param fileName  Le nom du fichier.
+     * @param size      La taille du fichier à créer (en octets).
      * @return Le fichier créé.
      * @throws IOException En cas d'erreur de création du fichier.
      */
     private static File createFile(File directory, String fileName, long size) throws IOException {
         File file = new File(directory, fileName);
-        
+
         try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))) {
             StringBuilder content = new StringBuilder();
             content.append("Contenu du fichier simulé. ").append(System.currentTimeMillis()).append("\n");
