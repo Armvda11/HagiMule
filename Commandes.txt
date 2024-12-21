@@ -1,5 +1,15 @@
 ./gradlew run --args "server"
 ./gradlew run --args "client"
 
+./gradlew run --args "server vador"
+
+./gradlew run --args "server 192.168.1.118"
+
+./gradlew run --args "daemon 192.168.1.118 8081"
+
+
+
 
 ./gradlew run --args "commande"
+
+cd C:\Users\coren\Documents\Projets\HagiMule

@@ -22,8 +22,8 @@ public class ClientFileCreator {
             String clientName = (args.length > 0) ? args[0] : "Client_" + UUID.randomUUID();
             String fileName = (args.length > 1) ? args[1] : "file" + clientName + ".txt";
             String diaryAddress = (args.length > 2) ? args[2] : "localhost";
-            long fileSize = (args.length > 3) ? Long.parseLong(args[2]) : 2 * 1024 * 1024; // Par défaut 2 Mo
-            int daemonPort = (args.length > 4) ? Integer.parseInt(args[3]) : 8080;
+            int daemonPort = (args.length > 3) ? Integer.parseInt(args[3]) : 8080;
+            long fileSize = (args.length > 4) ? Long.parseLong(args[2]) : 2 * 1024 * 1024; // Par défaut 2 Mo
 
             System.out.println("Lancement de " + clientName);
             System.out.println("Fichier : " + fileName);

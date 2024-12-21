@@ -12,10 +12,11 @@ public class DiaryServer {
     public static void main(String[] args) {
         try {
             String diaryAddress = (args.length > 0) ? args[0] : "localhost";
+            int diaryPort = (args.length > 1) ? Integer.parseInt(args[1]) : 1099;
 
             System.setProperty("java.rmi.server.hostname", diaryAddress);
             // create the RMI registry
-            LocateRegistry.createRegistry(1099);
+            LocateRegistry.createRegistry(diaryPort);
 
              /* Suite :
              * ip de la machine local : InetAddress.getLocalHost().getHostAddress()
