@@ -1,0 +1,5 @@
+./gradlew run --args "server"
+./gradlew run --args "client"
+
+
+./gradlew run --args "commande"

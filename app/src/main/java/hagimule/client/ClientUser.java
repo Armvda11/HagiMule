@@ -20,14 +20,18 @@ public class ClientUser {
             // Lecture des paramètres d'exécution (nom du fichier, taille et port)
             String clientName = (args.length > 0) ? args[0] : "Client_" + UUID.randomUUID();
             int daemonPort = (args.length > 1) ? Integer.parseInt(args[1]) : 8080;
+            String diaryAddress = (args.length > 2) ? args[2] : "localhost";
 
             System.out.println("Lancement de " + clientName);
-            System.out.println("Port du Daemon : " + daemonPort);
+            System.out.println("Connexion au Diary : " + diaryAddress);
+
 
             // Connexion au Diary ( le diary 147.27.133.14   ( pixie ))
-            Diary diary = (Diary) Naming.lookup("rmi://melofee.enseeiht.fr/Diary");
+            Diary diary = (Diary) Naming.lookup("rmi://"+ diaryAddress +"/Diary");
             
             // Démarre le Daemon sur le port défini
+
+            System.out.println("Port du Daemon : " + daemonPort);
             Daemon daemon = new Daemon(daemonPort);
             
             new Thread(daemon::start).start();

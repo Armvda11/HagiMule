@@ -11,7 +11,9 @@ import java.rmi.registry.LocateRegistry;
 public class DiaryServer {
     public static void main(String[] args) {
         try {
-            System.setProperty("java.rmi.server.hostname", "melofee.enseeiht.fr");
+            String diaryAddress = (args.length > 0) ? args[0] : "localhost";
+
+            System.setProperty("java.rmi.server.hostname", diaryAddress);
             // create the RMI registry
             LocateRegistry.createRegistry(1099);
 
@@ -36,7 +38,7 @@ public class DiaryServer {
 
             // Bind the Diary service to the registry
             // le server pixie est sur l'adresse 147.127.133.14
-            Naming.rebind("rmi://melofee.enseeiht.fr:1099/Diary", diary);
+            Naming.rebind("rmi://"+ diaryAddress + ":1099/Diary", diary);
 
             System.out.println("RMI Diary Server is running...");
         } catch (Exception e) {

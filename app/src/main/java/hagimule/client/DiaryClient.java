@@ -1,10 +1,18 @@
 package hagimule.client;
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.RandomAccessFile;
+import java.net.Socket;
 import java.rmi.Naming;
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import hagimule.diary.Diary;
 
@@ -15,10 +23,13 @@ public class DiaryClient {
 
     public static void main(String[] args) {
         try {
+
+            String diaryAddress = (args.length > 0) ? args[0] : "localhost";
+
             // Se connecter au Diary via RMI
             //Diary diary = (Diary) Naming.lookup("rmi://localhost/Diary");
             //Diary diary = (Diary) Naming.lookup("rmi://147.127.133.14/Diary");
-            Diary diary = (Diary) Naming.lookup("rmi://melofee.enseeiht.fr/Diary");
+            Diary diary = (Diary) Naming.lookup("rmi://" + diaryAddress + "/Diary");
             
             String fileName = "hagi.txt"; 
             System.out.println("Demande de téléchargement du fichier : " + fileName);
