@@ -20,11 +20,11 @@ import com.google.common.hash.HashCode;
 
 public class Daemon {
     
-    private final int port;// le port de communication
-    private final String emplacement; // l'emplacement du daemon
-    private File filePartage; // le fichier à telecharger
+    private final int port; // communication port
+    private final String emplacement; // daemon location
+    private File filePartage; // file to download
 
-    // URL de connexion JDBC (adaptée à votre base de données)
+    // JDBC connection URL (adapted to your database)
     String urlDatabase;
 
     /**
@@ -35,35 +35,35 @@ public class Daemon {
         this.port = port;
         this.emplacement = System.getProperty("user.dir") + "/src/main/java/hagimule/client/daemon/" ;
         this.urlDatabase = "jdbc:sqlite:" +  emplacement + "fichiers.db";
-        creerDatabase();
+        createDatabase();
     }
 
     public void addFile(String fileName, File file) {
         this.filePartage = file;
     }
 
-    public String calculerChecksum(File file) {
+    public String calculateChecksum(File file) {
         try {
-            // Création d'une source de bytes à partir du fichier
+            // Create a byte source from the file
             ByteSource byteSource = com.google.common.io.Files.asByteSource(file);
     
-            // Calcul du hash SHA-256
+            // Calculate the SHA-256 hash
             HashCode hashCode = byteSource.hash(Hashing.sha256());
     
-            // Convertir le hash en chaîne de caractères
+            // Convert the hash to a string
             return hashCode.toString();
         } catch (IOException e) {
-            System.err.println("Erreur lors de la création du checksum : " + e.getMessage());
+            System.err.println("Error creating checksum: " + e.getMessage());
             e.printStackTrace();
-            return ""; // Retourne une chaîne vide en cas d'erreur
+            return ""; // Return an empty string in case of error
         }
     }
 
-    // Créer la base de données si elle n'existe pas lors de la création du daemon
-    private void creerDatabase() {
+    // Create the database if it does not exist when the daemon is created
+    private void createDatabase() {
         try (Connection connection = DriverManager.getConnection(urlDatabase)) {
-            System.out.println("Connexion réussie à SQLlite ! \n database créée ici : " + urlDatabase);
-             // Créer la table "files" si elle n'existe pas déjà
+            System.out.println("Successfully connected to SQLite! \n database created here: " + urlDatabase);
+             // Create the "files" table if it does not already exist
              String createTableSQL = "CREATE TABLE IF NOT EXISTS files (" +
              "id INT AUTO_INCREMENT PRIMARY KEY, " +
              "file_name VARCHAR(255), " +
@@ -74,24 +74,24 @@ public class Daemon {
             
             try (PreparedStatement createStmt = connection.prepareStatement(createTableSQL)) {
                 createStmt.executeUpdate();
-                System.out.println("Connexion réussie à SQLlite ! \n database créée ici : " + urlDatabase);
+                System.out.println("Successfully connected to SQLite! \n database created here: " + urlDatabase);
             } catch (SQLException e) {
-                System.err.println("Erreur SQL : " + e.getMessage());
+                System.err.println("SQL error: " + e.getMessage());
             }
         } catch (SQLException e) {
-            System.err.println("Erreur SQL : " + e.getMessage());
+            System.err.println("SQL error: " + e.getMessage());
         }
     }
 
     /**
-     * Récupère la liste des noms des fichiers partagés dans la base de données
-     * @return la liste des noms des fichiers partagés
+     * Retrieves the list of shared file names in the database
+     * @return the list of shared file names
      */    
     public List<String> getFilesNames() {
         List<String> filesNames = null;   
         
-        // Récupérer la liste des noms des fichiers partagés dans la base de données
-        // et les ajouter à la liste filesNames
+        // Retrieve the list of shared file names in the database
+        // and add them to the filesNames list
         try (Connection connection = DriverManager.getConnection(urlDatabase)) {
             String selectSQL = "SELECT file_name FROM files";
 
@@ -113,41 +113,42 @@ public class Daemon {
     }
 
     /**
-     * Met à jour la base de données avec les fichiers partagés
-        **/
-    public void majDatabase() {
+     * Updates the database with shared files
+     **/
+    public void updateDatabase() {
         String fileName;
         Long size;
         String insertSQL;
 
-        String checksumFichier;
+        String fileChecksum;
 
-        // Chemin du dossier partagé
-        String pathPartages = emplacement + "Fichiers"; // Exemple de chemin d'accès aux fichiers partagés
+        // Path to the shared folder
+        String sharedPath = emplacement + "Fichiers"; // Example path to shared files
 
-        File sharedDirectory = new File(pathPartages);
+        File sharedDirectory = new File(sharedPath);
         if (!sharedDirectory.exists()) {
-            sharedDirectory.mkdirs(); // Crée le dossier s'il n'existe pas
-            System.err.println("Aucun dossier partagé trouvé.");
+            sharedDirectory.mkdirs(); // Create the folder if it does not exist
+            System.err.println("No shared folder found.");
         }
 
-        System.out.println("Début de l'insertion des fichiers");
+        System.out.println("Starting file insertion");
         // Loop through all files in the shared directory and add them to the database
         for (File file : sharedDirectory.listFiles()) {
             if (file.isFile()) {
                 fileName = file.getName();
                 size = file.length();
-                System.out.println("Insertion de : " + fileName);
+                System.out.println("Inserting: " + fileName);
 
                 try (Connection connection = DriverManager.getConnection(urlDatabase)) {
-                    checksumFichier = calculerChecksum(file);
-                    insertSQL = "INSERT OR IGNORE INTO files (file_name, file_path, file_size, checksum) VALUES (?, ?, ?, ?)";
+                    fileChecksum = calculateChecksum(file);
+                    insertSQL = "INSERT INTO files (file_name, file_path, file_size, checksum) VALUES (?, ?, ?, ?) " +
+                                "ON CONFLICT(checksum) DO UPDATE SET file_name = excluded.file_name, file_path = excluded.file_path";
 
                     try (PreparedStatement insertStmt = connection.prepareStatement(insertSQL)) {
                         insertStmt.setString(1, fileName);
                         insertStmt.setString(2, file.getAbsolutePath());
                         insertStmt.setLong(3, size);
-                        insertStmt.setString(4, checksumFichier);
+                        insertStmt.setString(4, fileChecksum);
                         insertStmt.executeUpdate();
                         System.out.println("File " + fileName + " added to the database.");
                     } catch (SQLException e) {
@@ -161,7 +162,7 @@ public class Daemon {
     }
 
     /**
-     * Charge le fichier à transférer dans le daemon
+     * Load the file to be transferred into the daemon
      * @param fileName the name of the file
      */
     public long setFile(String fileName) {
@@ -198,15 +199,10 @@ public class Daemon {
      */
     public void start() {
         try (
-            /** Suite
-             * new ServerSocket(port, 50, InetAddress.getByName("0.0.0.0")); // to listen on all network interfaces
-             */
-
-
             // Create a server socket, and listen for incoming connections
             ServerSocket serverSocket = new ServerSocket(port)) {
            
-            System.out.println("Daemon à l'écoute sur le port " + port);
+            System.out.println("Daemon listening on port " + port);
             // Accept incoming connections and maintain them
             while (true) {
                 // Accept a new client connection
@@ -228,20 +224,20 @@ public class Daemon {
      */
     private void handleClientRequest(Socket clientSocket) throws IOException {
         try (
-            // Create the input and output streams , to read the client request and send the file fragment
+            // Create the input and output streams, to read the client request and send the file fragment
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())); // to read the client request
             OutputStream out = clientSocket.getOutputStream()) {
     
             // Read the client request
             String request = in.readLine(); // Read the client request
             if (request == null || request.isEmpty()) {
-                out.write("Request invalide\n".getBytes());
+                out.write("Invalid request\n".getBytes());
                 return;
             }
     
             String[] parts = request.split(" "); // Split the request into parts
             if (parts.length < 2) {  // Check if the request is valid
-                out.write("Request invalide\n".getBytes());
+                out.write("Invalid request\n".getBytes());
                 return;
             }
     
@@ -250,9 +246,9 @@ public class Daemon {
             
             setFile(fileName);
 
-            // we chose to have only two commands : SIZE and GET
-            // SIZE : to get the size of the file (the receiver will know how many fragments to expect)
-            // GET : to get a fragment of the file
+            // we chose to have only two commands: SIZE and GET
+            // SIZE: to get the size of the file (the receiver will know how many fragments to expect)
+            // GET: to get a fragment of the file
             switch (command) {
                 case "SIZE" -> {  
                     if (filePartage != null && filePartage.getName().equals(fileName)) {
@@ -278,7 +274,7 @@ public class Daemon {
     }
     
     /**
-     * Send a fragment of the file to the client (from startByte to endByte) ,
+     * Send a fragment of the file to the client (from startByte to endByte)
      * @param out the output stream to send the fragment
      * @param startByte the start byte of the fragment
      * @param endByte the end byte of the fragment
@@ -286,22 +282,19 @@ public class Daemon {
      */
     private void sendFileFragment(OutputStream out, long startByte, long endByte) throws IOException {
         try (
-            // it's the way that i found to position the cursor at the startByte
+            // it's the way that I found to position the cursor at the startByte
             RandomAccessFile partFileToSend = new RandomAccessFile(filePartage, "r")) {
             partFileToSend.seek(startByte);  // position the cursor at the startByte
             long remainingBytes = endByte - startByte; // calculate the remaining bytes to send
             byte[] buffer = new byte[8192];
             int bytesRead; 
 
-            
             while (remainingBytes > 0 && (bytesRead = partFileToSend.read(buffer, 0, (int) Math.min(buffer.length, remainingBytes))) != -1) {
                 out.write(buffer, 0, bytesRead);
                 remainingBytes -= bytesRead;
             }
             out.flush(); // to make sure that the fragment is sent
-            System.out.println("Fragment sent with success!");
+            System.out.println("Fragment sent successfully!");
         }
     }
-    
-
 }

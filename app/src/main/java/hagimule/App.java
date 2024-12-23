@@ -2,7 +2,10 @@ package hagimule;
 
 import hagimule.client.ClientFileCreator;
 import hagimule.client.ClientUser;
-import hagimule.client.DiaryClient;
+
+import java.util.UUID;
+
+import hagimule.client.ClientDownloader;
 import hagimule.diary.DiaryServer;
 
 /**
@@ -13,6 +16,7 @@ public class App {
     public static void main(String[] args) {
         String diaryAddress = "localhost";
         String port = null;
+        String fileToDownloaString = "hagi.txt";
 
         switch (args.length) {
             case 0 -> {
@@ -46,8 +50,13 @@ public class App {
                         System.out.println(port + " n'est pas un port valide (plage 0-65535).");
                     }
                 } else {
-                    System.out.println("Serveur exécuté sur un PC de l'ENSEEIHT...");
-                    diaryAddress = arg1 + ".enseeiht.fr";
+                    if (args[0].equals("client")) {
+                        fileToDownloaString = arg1;
+                    }
+                    else {
+                        System.out.println("Serveur exécuté sur un PC de l'ENSEEIHT...");
+                        diaryAddress = arg1 + ".enseeiht.fr";
+                    }
                 }
             }
             default -> {
@@ -72,7 +81,7 @@ public class App {
             case "server" -> startDiaryServer(diaryAddress, port); // Appelle la méthode startDiaryServer
             case "create-files" -> startFileCreator(diaryAddress, port); // Appelle ClientfileCreator
             case "daemon" -> startDaemon(diaryAddress, port); // Appelle ClientUser
-            case "client" -> startFileDownloader(diaryAddress); // appelle DiaryClient (qui va demander la téléchargement)
+            case "client" -> startFileDownloader(diaryAddress, fileToDownloaString); // appelle DiaryClient (qui va demander la téléchargement)
             case "client1" -> creerClient1(); // appelle ClientfileCreator avec les paramètres spécifiés
             case "client2" -> creerClient2(); // appelle ClientfileCreator avec les paramètres spécifiés
             default -> {
@@ -122,11 +131,12 @@ public class App {
      */
     private static void startDaemon(String diaryAdress, String port) {
         try {
+            String clientName = "Client_" + UUID.randomUUID();
             System.out.println("Démarrage du Daemon...");
             if (port != null) {
-                ClientUser.main(new String[]{"Client1", port, diaryAdress}); // Appelle le main du client
+                ClientUser.main(new String[]{clientName, port, diaryAdress}); // Appelle le main du client
             } else {
-                ClientUser.main(new String[]{"Client1", "8080", diaryAdress}); // Appelle le main du client
+                ClientUser.main(new String[]{clientName, "8080", diaryAdress}); // Appelle le main du client
             }
         } catch (Exception e) {
             System.out.println("Erreur lors du démarrage du Daemon :");
@@ -137,10 +147,10 @@ public class App {
     /**
      * Télécharge un fichier depuis les Daemons enregistrés dans le Diary.
      */
-    private static void startFileDownloader(String diaryAdress) {
+    private static void startFileDownloader(String diaryAdress, String fileToDownloaString) {
         try {
             System.out.println("Téléchargement d'un fichier...");
-            DiaryClient.main(new String[]{diaryAdress}); // Appelle le main du client
+            ClientDownloader.main(new String[]{diaryAdress, fileToDownloaString}); // Appelle le main du client
         } catch (Exception e) {
             System.out.println("Erreur lors du téléchargement du fichier :");
             e.printStackTrace();

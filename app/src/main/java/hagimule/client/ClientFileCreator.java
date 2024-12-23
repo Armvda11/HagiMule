@@ -1,9 +1,9 @@
 package hagimule.client;
-
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.rmi.Naming;
 import java.util.UUID;
 
@@ -30,11 +30,9 @@ public class ClientFileCreator {
             System.out.println("Taille du fichier : " + (fileSize / (1024 * 1024)) + " Mo");
             System.out.println("Port du Daemon : " + daemonPort);
 
-            // Connexion au Diary ( le diary 147.27.133.14 ( pixie ))
+            // Connexion au Diary
             Diary diary = (Diary) Naming.lookup("rmi://" + diaryAddress + "/Diary");
-            // Diary diary = (Diary) Naming.lookup("rmi://147.27.133.14:8888/Diary");
-            // Diary diary = (Diary) Naming.lookup("rmi://localhost/Diary");
-
+            
             // Chemin du dossier partagé
             // Chemin absolu basé sur le répertoire de travail
             String projectRoot = System.getProperty("user.dir");
@@ -52,13 +50,8 @@ public class ClientFileCreator {
             new Thread(daemon::start).start();
 
             // Enregistre le fichier et le Daemon dans le Diary
-
-            String machineIP = "";
-            if (clientName.equals("Client1")) {
-                machineIP = "pixie.enseeiht.fr";
-            } else {
-                machineIP = "pikachu.enseeiht.fr";
-            }
+            
+            String machineIP = InetAddress.getLocalHost().getHostAddress();
             String daemonAddress = machineIP + ":" + daemonPort;
             diary.registerFile(file.getName(), clientName, daemonAddress);
 

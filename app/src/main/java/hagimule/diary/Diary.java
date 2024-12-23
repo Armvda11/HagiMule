@@ -11,6 +11,16 @@ import java.util.List;
  */
 public interface Diary extends Remote {
 
+
+    /**
+     * Send the Client Information or register a new client
+     * @param clientName
+     * @param daemonAddress
+     * @return the client information
+     * @throws RemoteException
+     */
+    ClientInfo getClient(String clientName, String daemonAddress) throws RemoteException;
+
     /**
      * Register a file for a specific client.
      * @param fileName
@@ -24,10 +34,10 @@ public interface Diary extends Remote {
     /**
      * Method to find all clients daemons addresses who own a specific file
      * @param fileName
-     * @return
+     * @return a list of daemons addresses
      * @throws RemoteException  
      */
-    List<String> findDaemonAddressesByFile(String fileName) throws RemoteException;
+    List<String> findDaemonAddressesByFile(String fileName, int maxConcurrentDownloads) throws RemoteException;
 
     /**
      * Method to find all clients who own a specific file

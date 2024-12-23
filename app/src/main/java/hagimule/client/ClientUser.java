@@ -10,49 +10,48 @@ import hagimule.client.daemon.Daemon;
 import hagimule.diary.Diary;
 
 /**
- * Classe Client universelle
- * Chaque client crée un fichier et démarre un Daemon qui partage ce fichier
+ * Universal Client class
+ * Each client creates a file and starts a Daemon that shares this file
  */
 public class ClientUser {
     
     public static void main(String[] args) {
         try {
-            // Lecture des paramètres d'exécution (nom du fichier, taille et port)
+            // Reading execution parameters (file name, size, and port)
             String clientName = (args.length > 0) ? args[0] : "Client_" + UUID.randomUUID();
             int daemonPort = (args.length > 1) ? Integer.parseInt(args[1]) : 8080;
             String diaryAddress = (args.length > 2) ? args[2] : "localhost";
 
-            System.out.println("Lancement de " + clientName);
-            System.out.println("Connexion au Diary : " + diaryAddress);
+            System.out.println("Launching " + clientName);
+            System.out.println("Connecting to Diary: " + diaryAddress);
 
-
-            // Connexion au Diary ( le diary 147.27.133.14   ( pixie ))
+            // Connecting to the Diary (the diary 147.27.133.14 (pixie))
             Diary diary = (Diary) Naming.lookup("rmi://"+ diaryAddress +"/Diary");
             
-            // Démarre le Daemon sur le port défini
+            // Starts the Daemon on the defined port
 
-            System.out.println("Port du Daemon : " + daemonPort);
+            System.out.println("Daemon port: " + daemonPort);
             Daemon daemon = new Daemon(daemonPort);
             
             new Thread(daemon::start).start();
 
-            // Enregistre le fichier et le Daemon dans le Diary
+            // Registers the file and the Daemon in the Diary
             String machineIP = InetAddress.getLocalHost().getHostAddress();
             String daemonAddress = machineIP + ":" + daemonPort;
 
-            synchroniserDiary(diary, daemon, clientName, daemonAddress);
+            synchronizeDiary(diary, daemon, clientName, daemonAddress);
 
-            System.out.println("Daemon à l'écoute sur : " + daemonAddress);
+            System.out.println("Daemon listening on: " + daemonAddress);
             
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static void synchroniserDiary(Diary diary, Daemon daemon, String ownerName, String ownerAddress) {
+    private static void synchronizeDiary(Diary diary, Daemon daemon, String ownerName, String ownerAddress) {
         List<String> filesNames;
     
-        daemon.majDatabase();
+        daemon.updateDatabase();
 
         filesNames = daemon.getFilesNames();
         

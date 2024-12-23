@@ -1,4 +1,16 @@
 {
     "java.configuration.updateBuildConfiguration": "automatic",
-    "java.compile.nullAnalysis.mode": "automatic"
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.import.gradle.enabled": true,
+    "java.import.gradle.wrapper.enabled": true,
+    "java.import.gradle.version": "8.10.2",
+    "gradle.autoDetect": "on",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "build/libs/**/*.jar"
+    ],
+    "java.project.sourcePaths": [
+        "app/src/main/java",
+        "app/src/test/java"
+    ]
 }
