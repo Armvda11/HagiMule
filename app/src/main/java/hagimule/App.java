@@ -16,7 +16,7 @@ public class App {
     public static void main(String[] args) {
         String diaryAddress = "localhost";
         String port = null;
-        String fileToDownloaString = "hagi.txt";
+        String fileToDownloaString = "aioRick.mp4";
 
         switch (args.length) {
             case 0 -> {

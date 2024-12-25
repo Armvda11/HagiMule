@@ -32,7 +32,7 @@ public class DiaryImpl extends UnicastRemoteObject implements Diary {
      */
     @Override
     public ClientInfo getClient(String clientName, String daemonAddress) throws RemoteException {
-        // Si le fichier n'existe pas encore, crée une nouvelle liste de clients pour ce fichier
+        // if the client does not exist yet, create a new client and add it to the map 
         Clients.computeIfAbsent(clientName, k -> new ClientInfo(clientName, daemonAddress));
         System.out.println(Clients);
         return Clients.get(clientName);
@@ -68,6 +68,7 @@ public class DiaryImpl extends UnicastRemoteObject implements Diary {
      */
     @Override
     public List<String> findDaemonAddressesByFile(String fileName, int maxConcurrentDownloads) throws RemoteException {
+        // Get the set of clients who own the file 
         Set<ClientInfo> clients = fileToClients.getOrDefault(fileName, new LinkedHashSet<>());
         List<String> daemonAddresses = new ArrayList<>();
 

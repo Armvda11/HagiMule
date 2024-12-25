@@ -11,6 +11,7 @@ import java.rmi.registry.LocateRegistry;
 public class DiaryServer {
     public static void main(String[] args) {
         try {
+            // Reading execution parameters (diary address and port)
             String diaryAddress = (args.length > 0) ? args[0] : "localhost";
             int diaryPort = (args.length > 1) ? Integer.parseInt(args[1]) : 1099;
 
