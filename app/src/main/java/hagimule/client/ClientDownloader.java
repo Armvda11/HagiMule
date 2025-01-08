@@ -191,7 +191,7 @@ public class ClientDownloader {
                         // For testing purpose, we simulate a slow daemon
                         if (daemonAddressLent.equals(daemonAddress)) {
                             System.out.println("Debut sleep 50s : " + daemonAddress);
-                            Thread.sleep(50000);
+                            Thread.sleep(200);
                             System.out.println("Fin sleep 50s : " + daemonAddress);
                         } else
                             {System.out.println("C'est l'autre");}
