@@ -31,6 +31,7 @@ public class ClientDownloader {
     // Max number of concurrent sources to download from
     private static int maxConcurrentSources = 5;
 
+
     public static void main(String[] args) {
         try {
 
@@ -39,7 +40,7 @@ public class ClientDownloader {
 
             // Se connecter au Diary via RMI
             Diary diary = (Diary) Naming.lookup("rmi://" + diaryAddress + "/Diary");
-
+        
             System.out.println("Demande de téléchargement du fichier : " + fileName);
 
             // Récupérer la liste des Daemons qui possèdent le fichier
@@ -49,6 +50,7 @@ public class ClientDownloader {
                 return;
             }
             System.out.println(daemonAddresses);
+
 
             // Obtenir la taille du fichier à partir d'un des Daemons
             long fileSize = getFileSize(daemonAddresses.get(0), fileName);
@@ -69,179 +71,184 @@ public class ClientDownloader {
     }
 
     /**
-     * downloadFragments : download the fragments of a file from multiple Daemons and reassemble them.
-     * @param fileName      Name of the file
-     * @param daemonAddresses   List of Daemon addresses
-     * @param fileSize          Size of the file
-     * @param outputFilePath        Path of the output file
-     * @throws IOException
+     * Télécharge les fragments du fichier et les écrit directement dans le fichier final.
+     * 
+     * @param fileName      Nom du fichier
+     * @param daemonAddresses Adresses des Daemons
+     * @param fileSize      Taille du fichier
+     * @param outputFilePath Chemin du fichier final reconstitué
      */
-    private static void downloadFragments(String fileName, List<String> daemonAddresses, long fileSize,
-            String outputFilePath) throws IOException {
+    private static void downloadFragments(String fileName, List<String> daemonAddresses, long fileSize, String outputFilePath) throws IOException {
         // Calculate the total number of fragments
         int totalFragments = (int) Math.ceil((double) fileSize / MIN_FRAGMENT_SIZE);
-        System.out.println("Total number of fragments: " + totalFragments);
+        
+        // Number of daemon addresses available
+        int nbAdresses = daemonAddresses.size();
+        
+        // Determine the number of threads to use
+        int nbThreads = Math.min(totalFragments, nbAdresses * 2);
+        System.out.println("Nombre de Threads : " + nbThreads + " Nombre de fragments : " + totalFragments);
+
+        // Address of the daemon that is slow (for testing purpose)
+        String daemonAddressLent = daemonAddresses.get(0);
+
+        // Executor service to manage threads
+        ExecutorService executor = Executors.newCachedThreadPool();
+        
+        // Completion service to handle task completion
+        CompletionService<Void> completionService = new ExecutorCompletionService<>(executor);
+        
+        // Queue to hold fragment tasks
+        BlockingQueue<FragmentTask> fragmentQueue = new LinkedBlockingQueue<>();
+        
+        // Queue to hold daemon addresses
+        BlockingQueue<String> daemonQueue = new LinkedBlockingQueue<>(daemonAddresses);
+        
+        // Queue to hold currently processing fragment tasks
+        BlockingQueue<FragmentTask> currentlyProcessingQueue = new LinkedBlockingQueue<>();
+        
+        // Latch to wait for all fragments to be processed
+        // Once all fragments are processed, the latch count will be 0
+        // And the executor service will be shutdown
+        CountDownLatch latch = new CountDownLatch(totalFragments);
+        
+        // Queue to hold results of fragment downloads
+        ConcurrentLinkedQueue<FragmentResult> resultsQueue = new ConcurrentLinkedQueue<>();
+        
+        // Map to keep track of the usage count of each address
+        // distribute the load or avoid to use a slow source
+        Map<String, Integer> addressUsageCount = new HashMap<>();
+        
+        // Initialize the address usage count
+        for (String address : daemonAddresses) {
+            addressUsageCount.put(address, 0);
+        }
 
         // Create the output file with the correct size
-        createOutputFile(outputFilePath, fileSize);
-        System.out.println("Output file created at: " + outputFilePath);
+        try (RandomAccessFile raf = new RandomAccessFile(outputFilePath, "rw")) {
+            raf.setLength(fileSize);
+        }
 
-        // Initialize queues
-        BlockingQueue<FragmentTask> fragmentQueue = initializeFragmentQueue(totalFragments, fileSize); // Queue of fragments to download
-        BlockingQueue<String> daemonQueue = new LinkedBlockingQueue<>(daemonAddresses); // Queue of daemon addresses
-        Map<String, Integer> addressUsageCount = initializeAddressUsageCount(daemonAddresses); // Map of address to usage count
+        // Create the fragment tasks and add them to the queue
+        for (int i = 0; i < totalFragments; i++) {
+            long startByte = i * MIN_FRAGMENT_SIZE;
+            long endByte = Math.min(startByte + MIN_FRAGMENT_SIZE, fileSize);
+            fragmentQueue.add(new FragmentTask(i, startByte, endByte));
+        }
+        
+        // Count the actual number of threads running
+        int nbRunningThreads = 0;
+        // Maximum number of threads that can run at the same time
+        int nbRunningThreadsMax = nbThreads;
+        // Maximum number of uses of an address
+        int nbMaxUsesAdress = nbRunningThreadsMax / nbAdresses;
+        while ((latch.getCount() > 0) && nbRunningThreads < nbRunningThreadsMax) {
+            nbRunningThreads++;
+            completionService.submit(() -> {
+                while (latch.getCount() != 0) {
+                    System.out.println(addressUsageCount);
+                    System.out.println("Thread en cours : " + Thread.currentThread().getName());
 
-        // Executor service and latch for task completion
-        ExecutorService executor = Executors.newCachedThreadPool(); // Executor service
-        CountDownLatch latch = new CountDownLatch(totalFragments); // Latch to wait for all fragments to be processed
-        ConcurrentLinkedQueue<FragmentResult> resultsQueue = new ConcurrentLinkedQueue<>(); // Queue to store fragment results
+                    // Get the next fragment task to process
+                    FragmentTask task = fragmentQueue.poll();
+                    if (task == null) {
+                        // If there are no more fragments to process, check if
+                        // there are any currently processing fragments to steal
+                        task = currentlyProcessingQueue.poll();
+                        if (task == null) {
+                            break;
+                        }
+                        System.out.println("\n Fragment " + task.fragmentIndex + "  Volé !!! \n");
+                    }
+                    
+                    // Add the task to the currently processing queue
+                    currentlyProcessingQueue.add(task);
+                    System.out.println("Fragment " + task.fragmentIndex + " en cours de traitement...");
+                    
+                    int nbTries = 0;
 
-        // Submit download tasks
-        submitDownloadTasks(executor, fragmentQueue, daemonQueue, addressUsageCount, fileName, latch, resultsQueue);
+                    // Get the next daemon address to use
+                    String daemonAddress = daemonQueue.poll();
+                    daemonQueue.add(daemonAddress);
+                    // Check if the address has been used too many times
+                    // If every address is overused, we chose the first one
+                    while (addressUsageCount.get(daemonAddress) >= nbMaxUsesAdress && nbTries < nbAdresses) {
+                        nbTries++;
+                        daemonAddress = daemonQueue.poll();
+                        daemonQueue.add(daemonAddress);
+                    }
+                    if (daemonAddress == null) {
+                        System.out.println("Pas de Daemon disponible pour le fragment " + task.fragmentIndex);
+                        break;
+                    }
+                    // Increment the usage count of the address
+                    addressUsageCount.put(daemonAddress, addressUsageCount.get(daemonAddress) + 1);
+
+                    // Process the fragment
+                    try {
+                        System.out.println("Fragment " + task.fragmentIndex + " début du téléchargement depuis :" + daemonAddress);
+
+                        // For testing purpose, we simulate a slow daemon
+                        if (daemonAddressLent.equals(daemonAddress)) {
+                            System.out.println("Debut sleep 50s : " + daemonAddress);
+                            Thread.sleep(50000);
+                            System.out.println("Fin sleep 50s : " + daemonAddress);
+                        } else
+                            {System.out.println("C'est l'autre");}
+
+                        // Download the fragment
+                        byte[] data = downloadFragment(daemonAddress, fileName, task.startByte, task.endByte);
+                        
+                        addressUsageCount.put(daemonAddress, addressUsageCount.get(daemonAddress) - 1);
+                        
+                        System.out.println("Fragment " + task.fragmentIndex + " téléchargé et écrit de " + task.startByte + " à " + (task.startByte + data.length) + " octets." + " téléchargé depuis :" + daemonAddress);
+
+                        // Add the fragment result to the results queue
+                        resultsQueue.add(new FragmentResult(task.startByte, data));
+
+                        // We remove the task from the currently processing queue as it is done
+                        currentlyProcessingQueue.remove(task);
+                        latch.countDown(); // Decrement the latch count
+                        System.out.println(latch.getCount());
+
+                        // If all fragments are processed, shutdown the executor
+                        if (latch.getCount() == 0) {
+                            executor.shutdownNow();
+                        }
+                        
+                    } catch (IOException e) {
+                        daemonQueue.remove(daemonAddress);
+                        addressUsageCount.put(daemonAddress, addressUsageCount.get(daemonAddress) - 1);
+                        //e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        addressUsageCount.put(daemonAddress, addressUsageCount.get(daemonAddress) - 1);
+                        System.out.println("Thread interrompu : " + Thread.currentThread().getName());
+                        break;
+                    }
+                }
+                System.out.println("Thread termine : " + Thread.currentThread().getName());
+                return null;
+            });
+        }
 
         // Wait for all fragments to be processed
         try {
             latch.await();
+            // We wait for everything to be written to the file
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
 
         // Write the fragments to the output file
-        writeFragmentsToFile(outputFilePath, resultsQueue);
-    }
-
-    /**
-     * Create an output file with the specified size.
-     * @param outputFilePath Path of the output file
-     * @param fileSize      Size of the file
-     * @throws IOException
-     */
-    private static void createOutputFile(String outputFilePath, long fileSize) throws IOException {
-        try (RandomAccessFile raf = new RandomAccessFile(outputFilePath, "rw")) {
-            raf.setLength(fileSize);
-        }
-    }
-
-    /**
-     * Initialize the fragment queue with the start and end bytes of each fragment.
-     * @param totalFragments    Total number of fragments
-     * @param fileSize          Size of the file
-     * @return Queue of fragment tasks
-     */
-    private static BlockingQueue<FragmentTask> initializeFragmentQueue(int totalFragments, long fileSize) {
-        BlockingQueue<FragmentTask> fragmentQueue = new LinkedBlockingQueue<>();
-        for (int i = 0; i < totalFragments; i++) {
-            long startByte = i * MIN_FRAGMENT_SIZE;
-            long endByte = Math.min(startByte + MIN_FRAGMENT_SIZE, fileSize);
-            fragmentQueue.add(new FragmentTask(i, startByte, endByte));
-            System.out.println("Fragment " + i + " initialized: StartByte=" + startByte + ", EndByte=" + endByte);
-        }
-        return fragmentQueue;
-    }
-
-    /**
-     * Initialize the address usage count map with the daemon addresses.
-     * @param daemonAddresses   List of daemon addresses
-     * @return Map of address to usage count
-     */
-    private static Map<String, Integer> initializeAddressUsageCount(List<String> daemonAddresses) {
-        // Initialize the address usage count map
-        Map<String, Integer> addressUsageCount = new HashMap<>();
-        // Initialize the usage count for each Daemon address
-        for (String address : daemonAddresses) {
-            addressUsageCount.put(address, 0);
-            System.out.println("Daemon address initialized: " + address);
-        }
-        return addressUsageCount;
-    }
-
-    /**
-     * Submit download tasks to the executor service.
-     * @param executor          Executor service
-     * @param fragmentQueue     Queue of fragment tasks
-     * @param daemonQueue       Queue of daemon addresses
-     * @param addressUsageCount Map of address to usage count
-     * @param fileName          Name of the file
-     * @param latch             CountDownLatch for task completion
-     * @param resultsQueue      Queue to store fragment results
-     */
-    private static void submitDownloadTasks(ExecutorService executor, BlockingQueue<FragmentTask> fragmentQueue,
-            BlockingQueue<String> daemonQueue,
-            Map<String, Integer> addressUsageCount, String fileName, CountDownLatch latch,
-            ConcurrentLinkedQueue<FragmentResult> resultsQueue) {
-        // Submit download tasks to the executor service
-        for (int i = 0; i < Math.min(fragmentQueue.size(), 5); i++) {
-            executor.submit(() -> {
-                // Process tasks until the latch is zero
-                while (latch.getCount() > 0) {
-                    // Get the next fragment task
-                    FragmentTask task = fragmentQueue.poll();
-                    if (task == null) {
-                        break;
-                    }
-
-                    // Select a Daemon to download the fragment from
-                    String daemonAddress = selectDaemonForTask(daemonQueue, addressUsageCount);
-                    if (daemonAddress == null) {
-                        break;
-                    }
-                    
-                    System.out.println("Downloading fragment " + task.fragmentIndex + " from Daemon: " + daemonAddress);
-
-                    // Download the fragment from the Daemon
-                    try {
-                        byte[] data = downloadFragment(daemonAddress, fileName, task.startByte, task.endByte);
-                        resultsQueue.add(new FragmentResult(task.startByte, data));
-                        latch.countDown();
-                    } catch (IOException e) {
-                        // Handle download failure (optional logging or retry logic)
-                        e.printStackTrace();
-                    }
-                }
-            });
-        }
-    }
-
-    /**
-     * Write the fragments to the output file.
-     * @param outputFilePath    Path of the output file
-     * @param resultsQueue      Queue of fragment results
-     * @throws IOException
-     */
-    private static void writeFragmentsToFile(String outputFilePath, ConcurrentLinkedQueue<FragmentResult> resultsQueue)
-            throws IOException {
         for (FragmentResult result : resultsQueue) {
             try (RandomAccessFile raf = new RandomAccessFile(outputFilePath, "rw")) {
                 raf.seek(result.getStartByte());
                 raf.write(result.getData());
-                System.out.println("Fragment written to file: StartByte=" + result.getStartByte());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
-    }
-
-    /**
-     * Select a Daemon to download a fragment from.
-     * 
-     * @param daemonQueue       Queue of Daemon addresses
-     * @param addressUsageCount Map of address to usage count
-     * @return Daemon address or null if no Daemon is available
-     */
-    private static String selectDaemonForTask(BlockingQueue<String> daemonQueue,
-            Map<String, Integer> addressUsageCount) {
-        
-        // Get the next Daemon address from the queue
-        String daemonAddress = daemonQueue.poll();
-        // If the Daemon is overused or unavailable, return null
-        // if (daemonAddress == null || addressUsageCount.get(daemonAddress) >= 3) {
-        if (daemonAddress == null) {
-            System.out.println("Daemon overused or unavailable: " + daemonAddress);
-            return null; // This daemon is overused or unavailable
-        }
-        // Add the Daemon back to the queue and increment the usage count
-        daemonQueue.add(daemonAddress);
-        addressUsageCount.put(daemonAddress, addressUsageCount.get(daemonAddress) + 1);
-        System.out.println("Selected Daemon for fragment: " + daemonAddress);
-        return daemonAddress;
     }
 
     // Intern classes to handle fragment tasks and results
@@ -283,20 +290,19 @@ public class ClientDownloader {
      * @param fileName      Nom du fichier
      * @param startByte     Byte de début
      * @param endByte       Byte de fin
-     * @return Les octets du fragment
+     * @return              Les octets du fragment
      */
-    private static byte[] downloadFragment(String daemonAddress, String fileName, long startByte, long endByte)
-            throws IOException {
+    private static byte[] downloadFragment(String daemonAddress, String fileName, long startByte, long endByte) throws IOException {
         String[] parts = daemonAddress.split(":");
         String host = parts[0];
         int port = Integer.parseInt(parts[1]);
 
         try (Socket socket = new Socket(host, port);
-                PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-                InputStream in = socket.getInputStream()) {
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+             InputStream in = socket.getInputStream()) {
 
             out.println("GET " + fileName + " " + startByte + " " + endByte);
-
+            
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             byte[] buffer = new byte[8192];
             int bytesRead;
@@ -312,7 +318,7 @@ public class ClientDownloader {
      * 
      * @param daemonAddress Adresse du Daemon
      * @param fileName      Nom du fichier
-     * @return Taille du fichier
+     * @return              Taille du fichier
      */
     private static long getFileSize(String daemonAddress, String fileName) {
         String[] parts = daemonAddress.split(":");
@@ -320,8 +326,8 @@ public class ClientDownloader {
         int port = Integer.parseInt(parts[1]);
 
         try (Socket socket = new Socket(host, port);
-                PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 
             out.println("SIZE " + fileName);
             String response = in.readLine();
