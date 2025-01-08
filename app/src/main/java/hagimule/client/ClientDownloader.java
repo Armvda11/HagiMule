@@ -2,13 +2,15 @@ package hagimule.client;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.RandomAccessFile;
-import java.net.ConnectException;
 import java.net.Socket;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.rmi.Naming;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
@@ -19,7 +21,6 @@ import java.util.concurrent.ExecutorCompletionService;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,7 +38,8 @@ public class ClientDownloader {
 
             String diaryAddress = (args.length > 0) ? args[0] : "localhost";
             String fileName = (args.length > 1) ? args[1] : "hagi.txt";
-
+            String receivedFolderPath = (args.length > 2) ? args[2] : "src\\main\\java\\hagimule\\received\\";
+            String sharedFolderPath = "src\\main\\java\\hagimule\\shared\\";
             // Se connecter au Diary via RMI
             Diary diary = (Diary) Naming.lookup("rmi://" + diaryAddress + "/Diary");
         
@@ -49,6 +51,12 @@ public class ClientDownloader {
                 System.out.println("Aucun Daemon ne possède ce fichier.");
                 return;
             }
+
+            File directory = new File(receivedFolderPath);
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+
             System.out.println(daemonAddresses);
 
 
@@ -59,12 +67,18 @@ public class ClientDownloader {
                 return;
             }
 
-            String outputFilePath = "received_" + fileName;
+            // Remplacez par FileCompressorLZMA si nécessaire
+            FileCompressor compressor = new FileCompressorZstd(22);
 
+            Path SharedFilePath = Paths.get(sharedFolderPath + fileName + compressor.getExtension());
             // Télécharger les fragments et reconstituer le fichier
-            downloadFragments(fileName, daemonAddresses, fileSize, outputFilePath);
+            downloadFragments(fileName, daemonAddresses, fileSize, SharedFilePath.toString());
 
-            System.out.println("Fichier reconstitué avec succès : " + outputFilePath);
+            Path reveivedFilePath = Paths.get(receivedFolderPath + fileName);
+
+            Path decompressedFile = compressor.decompressFile(SharedFilePath, reveivedFilePath);
+            System.out.println("Fichier décompressé : " + decompressedFile);
+            System.out.println("Fichier reconstitué avec succès : " + fileName);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -298,8 +312,8 @@ public class ClientDownloader {
         int port = Integer.parseInt(parts[1]);
 
         try (Socket socket = new Socket(host, port);
-             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-             InputStream in = socket.getInputStream()) {
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            InputStream in = socket.getInputStream()) {
 
             out.println("GET " + fileName + " " + startByte + " " + endByte);
             
@@ -326,10 +340,11 @@ public class ClientDownloader {
         int port = Integer.parseInt(parts[1]);
 
         try (Socket socket = new Socket(host, port);
-             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 
             out.println("SIZE " + fileName);
+            System.out.println("Demande de taille du fichier " + fileName + " à " + daemonAddress);
             String response = in.readLine();
             return Long.parseUnsignedLong(response.trim());
         } catch (IOException | NumberFormatException e) {

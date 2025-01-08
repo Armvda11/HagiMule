@@ -51,6 +51,7 @@ public class ClientUser {
     private static void synchronizeDiary(Diary diary, Daemon daemon, String ownerName, String ownerAddress) {
         List<String> filesNames;
     
+        daemon.compressSharedFiles();
         daemon.updateDatabase();
 
         filesNames = daemon.getFilesNames();

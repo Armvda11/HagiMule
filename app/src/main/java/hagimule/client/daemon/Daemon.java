@@ -8,6 +8,8 @@ import java.io.OutputStream;
 import java.io.RandomAccessFile;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,6 +18,10 @@ import java.util.List;
 
 import com.google.common.hash.Hashing;
 import com.google.common.io.ByteSource;
+
+import hagimule.client.FileCompressor;
+import hagimule.client.FileCompressorZstd;
+
 import com.google.common.hash.HashCode;
 
 public class Daemon {
@@ -23,6 +29,11 @@ public class Daemon {
     private final int port; // communication port
     private final String emplacement; // daemon location
     private File filePartage; // file to download
+
+    // Remplacez par FileCompressorLZMA si nécessaire
+    private final FileCompressor compressor = new FileCompressorZstd(22);
+    // Path to the shared folder
+    String sharedFolder = "Shared"; // Example path to shared files
 
     // JDBC connection URL (adapted to your database)
     String urlDatabase;
@@ -33,12 +44,12 @@ public class Daemon {
      */
     public Daemon(int port) {
         this.port = port;
-        this.emplacement = System.getProperty("user.dir") + "/src/main/java/hagimule/client/daemon/" ;
+        this.emplacement = System.getProperty("user.dir") + "/src/main/java/hagimule/client/daemon/";
         this.urlDatabase = "jdbc:sqlite:" +  emplacement + "fichiers.db";
         createDatabase();
     }
 
-    public void addFile(String fileName, File file) {
+    public void addFile(File file) {
         this.filePartage = file;
     }
 
@@ -62,19 +73,19 @@ public class Daemon {
     // Create the database if it does not exist when the daemon is created
     private void createDatabase() {
         try (Connection connection = DriverManager.getConnection(urlDatabase)) {
-            System.out.println("Successfully connected to SQLite! \n database created here: " + urlDatabase);
-             // Create the "files" table if it does not already exist
-             String createTableSQL = "CREATE TABLE IF NOT EXISTS files (" +
-             "id INT AUTO_INCREMENT PRIMARY KEY, " +
-             "file_name VARCHAR(255), " +
-             "file_path VARCHAR(255), " +
-             "file_size INT, " +
-             "checksum VARCHAR(255), " +
-             "UNIQUE(checksum))";
+            System.out.println("Successfully connected to SQLite!");
+            // Create the "files" table if it does not already exist
+            String createTableSQL = "CREATE TABLE IF NOT EXISTS files (" +
+            "id INT AUTO_INCREMENT PRIMARY KEY, " +
+            "file_name VARCHAR(255), " +
+            "file_path VARCHAR(255), " +
+            "file_size INT, " +
+            "checksum VARCHAR(255), " +
+            "UNIQUE(checksum))";
             
             try (PreparedStatement createStmt = connection.prepareStatement(createTableSQL)) {
                 createStmt.executeUpdate();
-                System.out.println("Successfully connected to SQLite! \n database created here: " + urlDatabase);
+                System.out.println("database created here: " + urlDatabase);
             } catch (SQLException e) {
                 System.err.println("SQL error: " + e.getMessage());
             }
@@ -86,9 +97,9 @@ public class Daemon {
     /**
      * Retrieves the list of shared file names in the database
      * @return the list of shared file names
-     */    
+     */
     public List<String> getFilesNames() {
-        List<String> filesNames = null;   
+        List<String> filesNames = null;
         
         // Retrieve the list of shared file names in the database
         // and add them to the filesNames list
@@ -119,13 +130,9 @@ public class Daemon {
         String fileName;
         Long size;
         String insertSQL;
-
         String fileChecksum;
 
-        // Path to the shared folder
-        String sharedPath = emplacement + "Fichiers"; // Example path to shared files
-
-        File sharedDirectory = new File(sharedPath);
+        File sharedDirectory = new File(emplacement + sharedFolder);
         if (!sharedDirectory.exists()) {
             sharedDirectory.mkdirs(); // Create the folder if it does not exist
             System.err.println("No shared folder found.");
@@ -135,12 +142,17 @@ public class Daemon {
         // Loop through all files in the shared directory and add them to the database
         for (File file : sharedDirectory.listFiles()) {
             if (file.isFile()) {
-                fileName = file.getName();
+                String name = file.getName();
+                int dotIndex = name.lastIndexOf('.');
+                if (dotIndex > 0) {
+                    name = name.substring(0, dotIndex);
+                }
+                fileName = name;
                 size = file.length();
+                fileChecksum = calculateChecksum(file);
                 System.out.println("Inserting: " + fileName);
 
                 try (Connection connection = DriverManager.getConnection(urlDatabase)) {
-                    fileChecksum = calculateChecksum(file);
                     insertSQL = "INSERT INTO files (file_name, file_path, file_size, checksum) VALUES (?, ?, ?, ?) " +
                                 "ON CONFLICT(checksum) DO UPDATE SET file_name = excluded.file_name, file_path = excluded.file_path";
 
@@ -152,11 +164,59 @@ public class Daemon {
                         insertStmt.executeUpdate();
                         System.out.println("File " + fileName + " added to the database.");
                     } catch (SQLException e) {
-                    System.err.println("SQL error: " + e.getMessage());
+                        System.err.println("SQL error: " + e.getMessage());
                     }
                 } catch (SQLException e) {
                     System.err.println("SQL error: " + e.getMessage());
                 }
+            }
+        }
+
+        // Remove files from the database that are no longer in the shared directory
+        try (Connection connection = DriverManager.getConnection(urlDatabase)) {
+            String selectSQL = "SELECT file_name, file_path FROM files";
+            try (PreparedStatement selectStmt = connection.prepareStatement(selectSQL);
+                java.sql.ResultSet resultSet = selectStmt.executeQuery()) {
+
+                while (resultSet.next()) {
+                    fileName = resultSet.getString("file_name");
+                    String filePath = resultSet.getString("file_path");
+                    File file = new File(filePath);
+                    if (!file.exists()) {
+                        String deleteSQL = "DELETE FROM files WHERE file_name = ?";
+                        try (PreparedStatement deleteStmt = connection.prepareStatement(deleteSQL)) {
+                            deleteStmt.setString(1, fileName);
+                            deleteStmt.executeUpdate();
+                            System.out.println("File " + fileName + " removed from the database.");
+                        } catch (SQLException e) {
+                            System.err.println("SQL error: " + e.getMessage());
+                        }
+                    }
+                }
+            } catch (SQLException e) {
+                System.err.println("SQL error: " + e.getMessage());
+            }
+        } catch (SQLException e) {
+            System.err.println("SQL error: " + e.getMessage());
+        }
+    }
+
+    public void compressSharedFiles() {
+
+        String sharedFolderPath = emplacement + sharedFolder;
+        File sharedDirectory = new File(sharedFolderPath);
+        for (File file : sharedDirectory.listFiles()) {
+            // S'il est déjà compressé, passez au fichier suivant
+            if (file.getName().endsWith(this.compressor.getExtension())) {
+                continue;
+            }
+            Path inputFile = Paths.get(file.getAbsolutePath());
+            try {
+                Path compressedFile = this.compressor.compressFile(inputFile);
+                System.out.println("Fichier compressé : " + compressedFile);
+            } catch (IOException e) {
+                System.err.println("Error compressing file: " + e.getMessage());
+                e.printStackTrace();
             }
         }
     }
@@ -201,7 +261,7 @@ public class Daemon {
         try (
             // Create a server socket, and listen for incoming connections
             ServerSocket serverSocket = new ServerSocket(port)) {
-           
+
             System.out.println("Daemon listening on port " + port);
             // Accept incoming connections and maintain them
             while (true) {
@@ -250,8 +310,9 @@ public class Daemon {
             // SIZE: to get the size of the file (the receiver will know how many fragments to expect)
             // GET: to get a fragment of the file
             switch (command) {
-                case "SIZE" -> {  
-                    if (filePartage != null && filePartage.getName().equals(fileName)) {
+                case "SIZE" -> {
+                    String name = fileName + this.compressor.getExtension();
+                    if (filePartage != null && filePartage.getName().equals(name)) {
                         out.write((filePartage.length() + "\n").getBytes());
                     } else {
                         out.write("File not found\n".getBytes());
@@ -287,7 +348,7 @@ public class Daemon {
             partFileToSend.seek(startByte);  // position the cursor at the startByte
             long remainingBytes = endByte - startByte; // calculate the remaining bytes to send
             byte[] buffer = new byte[8192];
-            int bytesRead; 
+            int bytesRead;
 
             while (remainingBytes > 0 && (bytesRead = partFileToSend.read(buffer, 0, (int) Math.min(buffer.length, remainingBytes))) != -1) {
                 out.write(buffer, 0, bytesRead);

@@ -46,7 +46,7 @@ public class ClientFileCreator {
 
             // Démarre le Daemon sur le port défini
             Daemon daemon = new Daemon(daemonPort);
-            daemon.addFile(file.getName(), file);
+            daemon.addFile(file);
             new Thread(daemon::start).start();
 
             // Enregistre le fichier et le Daemon dans le Diary

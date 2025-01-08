@@ -1,11 +1,10 @@
 package hagimule;
 
-import hagimule.client.ClientFileCreator;
-import hagimule.client.ClientUser;
-
 import java.util.UUID;
 
 import hagimule.client.ClientDownloader;
+import hagimule.client.ClientFileCreator;
+import hagimule.client.ClientUser;
 import hagimule.diary.DiaryServer;
 
 /**
@@ -17,6 +16,7 @@ public class App {
         String diaryAddress = "localhost";
         String port = null;
         String fileToDownloaString = "aioRick.mp4";
+        String receivedFolderPath = "src\\main\\java\\hagimule\\receivedFiles\\";
 
         switch (args.length) {
             case 0 -> {
@@ -59,6 +59,13 @@ public class App {
                     }
                 }
             }
+
+            case 3 -> {
+                if (args[1].equals("client")) {
+                    fileToDownloaString = args[1];
+                    receivedFolderPath = args[2];
+                }
+            }
             default -> {
                 String arg1 = args[1];
                 // Expression régulière pour valider une adresse IPv4
@@ -81,7 +88,7 @@ public class App {
             case "server" -> startDiaryServer(diaryAddress, port); // Appelle la méthode startDiaryServer
             case "create-files" -> startFileCreator(diaryAddress, port); // Appelle ClientfileCreator
             case "daemon" -> startDaemon(diaryAddress, port); // Appelle ClientUser
-            case "client" -> startFileDownloader(diaryAddress, fileToDownloaString); // appelle DiaryClient (qui va demander la téléchargement)
+            case "client" -> startFileDownloader(diaryAddress, fileToDownloaString, receivedFolderPath); // appelle DiaryClient (qui va demander la téléchargement)
             case "client1" -> creerClient1(); // appelle ClientfileCreator avec les paramètres spécifiés
             case "client2" -> creerClient2(); // appelle ClientfileCreator avec les paramètres spécifiés
             default -> {
@@ -147,10 +154,10 @@ public class App {
     /**
      * Télécharge un fichier depuis les Daemons enregistrés dans le Diary.
      */
-    private static void startFileDownloader(String diaryAdress, String fileToDownloaString) {
+    private static void startFileDownloader(String diaryAdress, String fileToDownloaString, String receivedFolderPath) {
         try {
-            System.out.println("Téléchargement d'un fichier...");
-            ClientDownloader.main(new String[]{diaryAdress, fileToDownloaString}); // Appelle le main du client
+            System.out.println("Téléchargement du fichier : " + fileToDownloaString);
+            ClientDownloader.main(new String[]{diaryAdress, fileToDownloaString, receivedFolderPath}); // Appelle le main du client
         } catch (Exception e) {
             System.out.println("Erreur lors du téléchargement du fichier :");
             e.printStackTrace();

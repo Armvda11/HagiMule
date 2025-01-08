@@ -17,6 +17,9 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:1.4.11")
     implementation("com.google.guava:guava:33.3.1-jre")
     implementation("org.xerial:sqlite-jdbc:3.41.2.1")
+    implementation("com.github.luben:zstd-jni:1.5.5-1")
+    implementation ("org.tukaani:xz:1.9")
+    implementation("org.lz4:lz4-java:1.7.1")
 }
 
 application {

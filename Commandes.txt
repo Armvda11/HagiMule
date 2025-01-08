@@ -4,10 +4,14 @@
 ./gradlew run --args "server vador" (machine N7)
 
 
-./gradlew run --args "server" (local par défaut)
-./gradlew run --args "daemon" (port 8080 par défaut)
+#(local par défaut)
+./gradlew run --args "server"
+#(port 8080 par défaut)
+./gradlew run --args "daemon"
 ./gradlew run --args "daemon 8081"
-
+./gradlew run --args "client test.txt"
+# Précise le dossier de téléchargement
+./gradlew run --args "client test.txt receivedFiles" 
 
 ./gradlew run --args "server 192.168.1.118"
 
