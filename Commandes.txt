@@ -1,13 +1,18 @@
 ./gradlew run --args "server"
 ./gradlew run --args "client"
 
-./gradlew run --args "server vador"
+./gradlew run --args "server vador" (machine N7)
+
+
+./gradlew run --args "server" (local par défaut)
+./gradlew run --args "daemon" (port 8080 par défaut)
+./gradlew run --args "daemon 8081"
+
 
 ./gradlew run --args "server 192.168.1.118"
 
-./gradlew run --args "daemon 192.168.1.118 8081"
-
-
+./gradlew run --args "daemon 192.168.1.118"
+./gradlew run --args "client"
 
 
 ./gradlew run --args "commande"
