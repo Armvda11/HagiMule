@@ -21,7 +21,7 @@ public class Machine {
             // Reading execution parameters (file name, size, and port)
             String diaryAddress = (args.length > 0) ? args[0] : "localhost";
             int daemonPort = (args.length > 1) ? Integer.parseInt(args[1]) : 8080;
-            String sharedFolder = (args.length > 2) ? args[2] : System.getProperty("user.dir") + "\\shared\\";
+            String sharedFolder = (args.length > 2) ? args[2] : System.getProperty("user.dir") + "/shared/";
 
             String clientName ="Machine_" + UUID.randomUUID();
             System.out.println("Launching " + clientName);
@@ -45,8 +45,8 @@ public class Machine {
             new Thread(() -> {
                 while (true) {
                     try {
-                        Thread.sleep(5000);
                         synchronizeDiary(diary, daemon, clientName, daemonAddress);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         Thread.currentThread().interrupt();
                     }
@@ -67,9 +67,9 @@ public class Machine {
                 String folder = sc.nextLine();
                 String folderPath = "";
                 if (folder.isEmpty()) {
-                    folderPath = System.getProperty("user.dir") + "\\received\\";
+                    folderPath = System.getProperty("user.dir") + "/received/";
                 } else {
-                    folderPath = System.getProperty("user.dir") + "\\" + folder + "\\";
+                    folderPath = System.getProperty("user.dir") + "/" + folder + "/";
                 }
                 System.out.println("Downloading file: " + fileName + " to " + folderPath);
                 ClientDownloader.main(new String[]{diaryAddress, fileName, folderPath});

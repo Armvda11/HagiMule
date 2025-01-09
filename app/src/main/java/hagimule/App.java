@@ -85,6 +85,9 @@ public class App {
         }
 
         if (args.length > 3) {
+            if (args[0].equals("machine")) {
+                diaryAddress = args[1];
+            }
             sharedFolder = System.getProperty("user.dir") + "/" + args[3];
         }
 
