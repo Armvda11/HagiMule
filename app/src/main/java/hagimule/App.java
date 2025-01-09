@@ -17,8 +17,8 @@ public class App {
         String diaryAddress = "localhost";
         String port = null;
         String fileToDownloaString = "aioRick.mp4";
-        String receivedFolderPath = System.getProperty("user.dir") + "\\receivedFiles\\";
-        String sharedFolder = System.getProperty("user.dir") + "\\shared\\";
+        String receivedFolderPath = System.getProperty("user.dir") + "/receivedFiles/";
+        String sharedFolder = System.getProperty("user.dir") + "/shared/";
 
         switch (args.length) {
             case 0 -> {
@@ -36,7 +36,7 @@ public class App {
             case 2 -> {
                 String arg1 = args[1];
                 // Expression régulière pour valider une adresse IPv4
-                String regexIP = "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$";
+                String regexIP = "^((25[0-5]|(2[0-4]|1/d|[1-9]|)/d)/.?/b){4}$";
                 // Expression régulière pour valider un port
                 String regexPort = "^([0-9]{1,5})$";
                 if (arg1.matches(regexIP)) {
@@ -71,7 +71,7 @@ public class App {
             default -> {
                 String arg1 = args[1];
                 // Expression régulière pour valider une adresse IPv4
-                String regexIP = "^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
+                String regexIP = "^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
 
                 if (arg1.length() >= 3 && arg1.substring(0, 3).matches(regexIP)) {
                     System.out.println("Serveur exécuté sur l'hôte dont l'adresse est : " + arg1);
@@ -85,7 +85,7 @@ public class App {
         }
 
         if (args.length > 3) {
-            sharedFolder = System.getProperty("user.dir") + "\\" + args[3];
+            sharedFolder = System.getProperty("user.dir") + "/" + args[3];
         }
 
         // Exécuter le programme correspondant à l'argument

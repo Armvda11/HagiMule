@@ -24,6 +24,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.HashMap;
 import java.util.Map;
 
+import hagimule.client.Compressor.FileCompressor;
+import hagimule.client.Compressor.FileCompressorZstd;
 import hagimule.diary.Diary;
 
 public class ClientDownloader {
@@ -38,8 +40,8 @@ public class ClientDownloader {
 
             String diaryAddress = (args.length > 0) ? args[0] : "localhost";
             String fileName = (args.length > 1) ? args[1] : "hagi.txt";
-            String receivedFolderPath = (args.length > 2) ? args[2] : System.getProperty("user.dir") + "\\received\\";
-            String sharedFolderPath = System.getProperty("user.dir") + "\\shared\\";
+            String receivedFolderPath = (args.length > 2) ? args[2] : System.getProperty("user.dir") + "/received/";
+            String sharedFolderPath = System.getProperty("user.dir") + "/shared/";
             // Se connecter au Diary via RMI
             Diary diary = (Diary) Naming.lookup("rmi://" + diaryAddress + "/Diary");
         

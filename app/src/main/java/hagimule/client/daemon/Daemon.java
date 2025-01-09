@@ -21,8 +21,8 @@ import java.util.List;
 import com.google.common.hash.Hashing;
 import com.google.common.io.ByteSource;
 
-import hagimule.client.FileCompressor;
-import hagimule.client.FileCompressorZstd;
+import hagimule.client.Compressor.FileCompressor;
+import hagimule.client.Compressor.FileCompressorZstd;
 
 import com.google.common.hash.HashCode;
 
@@ -34,8 +34,8 @@ public class Daemon {
     // Remplacez par FileCompressorLZMA si nécessaire
     private final FileCompressor compressor = new FileCompressorZstd(22);
     // Path to the shared folder
-    private String sharedFolder = System.getProperty("user.dir") + "\\" + "Shared\\"; // Example path to shared files
-    private String emplacement = System.getProperty("user.dir") + "\\";
+    private String sharedFolder = System.getProperty("user.dir") + "/" + "Shared/"; // Example path to shared files
+    private String emplacement = System.getProperty("user.dir") + "/";
     // JDBC connection URL (adapted to your database)
     String urlDatabase;
 
@@ -58,8 +58,8 @@ public class Daemon {
     public Daemon(int port, String sharedFolder) {
         this.sharedFolder = sharedFolder;
         setupLogging();
-        int lastIndex = sharedFolder.lastIndexOf("\\");
-        int secondLastIndex = sharedFolder.lastIndexOf("\\", lastIndex - 1);
+        int lastIndex = sharedFolder.lastIndexOf("/");
+        int secondLastIndex = sharedFolder.lastIndexOf("/", lastIndex - 1);
         this.emplacement = secondLastIndex > 0 ? sharedFolder.substring(0, secondLastIndex + 1) : "";
         this.port = port;
         this.urlDatabase = "jdbc:sqlite:" +  emplacement + "fichiers.db";
@@ -72,7 +72,7 @@ public class Daemon {
 
     private void setupLogging() {
         try {
-            String logFilePath = System.getProperty("user.dir") + "\\logs_daemon_" + this.port + ".txt";
+            String logFilePath = System.getProperty("user.dir") + "/logs_daemon_" + this.port + ".txt";
             logStream = new PrintStream(new FileOutputStream(logFilePath, true), true);
         } catch (IOException e) {
             e.printStackTrace();
