@@ -2,9 +2,11 @@ package hagimule.client.daemon;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.PrintStream;
 import java.io.RandomAccessFile;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -27,16 +29,17 @@ import com.google.common.hash.HashCode;
 public class Daemon {
     
     private final int port; // communication port
-    private final String emplacement; // daemon location
     private File filePartage; // file to download
 
     // Remplacez par FileCompressorLZMA si nécessaire
     private final FileCompressor compressor = new FileCompressorZstd(22);
     // Path to the shared folder
-    String sharedFolder = "Shared"; // Example path to shared files
-
+    private String sharedFolder = System.getProperty("user.dir") + "\\" + "Shared\\"; // Example path to shared files
+    private String emplacement = System.getProperty("user.dir") + "\\";
     // JDBC connection URL (adapted to your database)
     String urlDatabase;
+
+    private PrintStream logStream;
 
     /**
      * Daemon constructor
@@ -44,9 +47,45 @@ public class Daemon {
      */
     public Daemon(int port) {
         this.port = port;
-        this.emplacement = System.getProperty("user.dir") + "/src/main/java/hagimule/client/daemon/";
-        this.urlDatabase = "jdbc:sqlite:" +  emplacement + "fichiers.db";
+        setupLogging();
+        this.urlDatabase = "jdbc:sqlite:" + emplacement + "fichiers.db";
+        File folder = new File(this.sharedFolder);
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
         createDatabase();
+    }
+    public Daemon(int port, String sharedFolder) {
+        this.sharedFolder = sharedFolder;
+        setupLogging();
+        int lastIndex = sharedFolder.lastIndexOf("\\");
+        int secondLastIndex = sharedFolder.lastIndexOf("\\", lastIndex - 1);
+        this.emplacement = secondLastIndex > 0 ? sharedFolder.substring(0, secondLastIndex + 1) : "";
+        this.port = port;
+        this.urlDatabase = "jdbc:sqlite:" +  emplacement + "fichiers.db";
+        File folder = new File(this.sharedFolder);
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+        createDatabase();
+    }
+
+    private void setupLogging() {
+        try {
+            String logFilePath = System.getProperty("user.dir") + "\\logs_daemon_" + this.port + ".txt";
+            logStream = new PrintStream(new FileOutputStream(logFilePath, true), true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void log(String message) {
+        logStream.println(message);
+    }
+
+    private void logError(String message, Throwable t) {
+        logStream.println(message);
+        t.printStackTrace(logStream);
     }
 
     public void addFile(File file) {
@@ -64,8 +103,7 @@ public class Daemon {
             // Convert the hash to a string
             return hashCode.toString();
         } catch (IOException e) {
-            System.err.println("Error creating checksum: " + e.getMessage());
-            e.printStackTrace();
+            logError("Error creating checksum: " + e.getMessage(), e);
             return ""; // Return an empty string in case of error
         }
     }
@@ -73,7 +111,7 @@ public class Daemon {
     // Create the database if it does not exist when the daemon is created
     private void createDatabase() {
         try (Connection connection = DriverManager.getConnection(urlDatabase)) {
-            System.out.println("Successfully connected to SQLite!");
+            log("Successfully connected to SQLite!");
             // Create the "files" table if it does not already exist
             String createTableSQL = "CREATE TABLE IF NOT EXISTS files (" +
             "id INT AUTO_INCREMENT PRIMARY KEY, " +
@@ -85,12 +123,12 @@ public class Daemon {
             
             try (PreparedStatement createStmt = connection.prepareStatement(createTableSQL)) {
                 createStmt.executeUpdate();
-                System.out.println("database created here: " + urlDatabase);
+                log("database created here: " + urlDatabase);
             } catch (SQLException e) {
-                System.err.println("SQL error: " + e.getMessage());
+                logError("SQL error: " + e.getMessage(), e);
             }
         } catch (SQLException e) {
-            System.err.println("SQL error: " + e.getMessage());
+            logError("SQL error: " + e.getMessage(), e);
         }
     }
 
@@ -115,10 +153,10 @@ public class Daemon {
                 }
 
             } catch (SQLException e) {
-            System.err.println("SQL error: " + e.getMessage());
+                logError("SQL error: " + e.getMessage(), e);
             }
         } catch (SQLException e) {
-            System.err.println("SQL error: " + e.getMessage());
+            logError("SQL error: " + e.getMessage(), e);
         }
         return filesNames;
     }
@@ -132,13 +170,13 @@ public class Daemon {
         String insertSQL;
         String fileChecksum;
 
-        File sharedDirectory = new File(emplacement + sharedFolder);
+        File sharedDirectory = new File(this.sharedFolder);
         if (!sharedDirectory.exists()) {
             sharedDirectory.mkdirs(); // Create the folder if it does not exist
-            System.err.println("No shared folder found.");
+            log("No shared folder found.");
         }
 
-        System.out.println("Starting file insertion");
+        log("Starting file insertion");
         // Loop through all files in the shared directory and add them to the database
         for (File file : sharedDirectory.listFiles()) {
             if (file.isFile()) {
@@ -150,7 +188,7 @@ public class Daemon {
                 fileName = name;
                 size = file.length();
                 fileChecksum = calculateChecksum(file);
-                System.out.println("Inserting: " + fileName);
+                log("Inserting: " + fileName);
 
                 try (Connection connection = DriverManager.getConnection(urlDatabase)) {
                     insertSQL = "INSERT INTO files (file_name, file_path, file_size, checksum) VALUES (?, ?, ?, ?) " +
@@ -162,12 +200,12 @@ public class Daemon {
                         insertStmt.setLong(3, size);
                         insertStmt.setString(4, fileChecksum);
                         insertStmt.executeUpdate();
-                        System.out.println("File " + fileName + " added to the database.");
+                        log("File " + fileName + " added to the database.");
                     } catch (SQLException e) {
-                        System.err.println("SQL error: " + e.getMessage());
+                        logError("SQL error: " + e.getMessage(), e);
                     }
                 } catch (SQLException e) {
-                    System.err.println("SQL error: " + e.getMessage());
+                    logError("SQL error: " + e.getMessage(), e);
                 }
             }
         }
@@ -187,24 +225,23 @@ public class Daemon {
                         try (PreparedStatement deleteStmt = connection.prepareStatement(deleteSQL)) {
                             deleteStmt.setString(1, fileName);
                             deleteStmt.executeUpdate();
-                            System.out.println("File " + fileName + " removed from the database.");
+                            log("File " + fileName + " removed from the database.");
                         } catch (SQLException e) {
-                            System.err.println("SQL error: " + e.getMessage());
+                            logError("SQL error: " + e.getMessage(), e);
                         }
                     }
                 }
             } catch (SQLException e) {
-                System.err.println("SQL error: " + e.getMessage());
+                logError("SQL error: " + e.getMessage(), e);
             }
         } catch (SQLException e) {
-            System.err.println("SQL error: " + e.getMessage());
+            logError("SQL error: " + e.getMessage(), e);
         }
     }
 
     public void compressSharedFiles() {
 
-        String sharedFolderPath = emplacement + sharedFolder;
-        File sharedDirectory = new File(sharedFolderPath);
+        File sharedDirectory = new File(this.sharedFolder);
         for (File file : sharedDirectory.listFiles()) {
             // S'il est déjà compressé, passez au fichier suivant
             if (file.getName().endsWith(this.compressor.getExtension())) {
@@ -213,10 +250,9 @@ public class Daemon {
             Path inputFile = Paths.get(file.getAbsolutePath());
             try {
                 Path compressedFile = this.compressor.compressFile(inputFile);
-                System.out.println("Fichier compressé : " + compressedFile);
+                log("Fichier compressé : " + compressedFile);
             } catch (IOException e) {
-                System.err.println("Error compressing file: " + e.getMessage());
-                e.printStackTrace();
+                logError("Error compressing file: " + e.getMessage(), e);
             }
         }
     }
@@ -240,16 +276,16 @@ public class Daemon {
                         filePath = resultSet.getString("file_path");
                         fileSize = resultSet.getLong("file_size");
                         this.filePartage = new File(filePath);
-                        System.out.println("File " + fileName + " loaded into the daemon.");
+                        log("File " + fileName + " loaded into the daemon.");
                     } else {
-                        System.err.println("File not found in the database.");
+                        log("File not found in the database.");
                     }
                 }
             } catch (SQLException e) {
-                System.err.println("SQL error: " + e.getMessage());
+                logError("SQL error: " + e.getMessage(), e);
             }
         } catch (SQLException e) {
-            System.err.println("SQL error: " + e.getMessage());
+            logError("SQL error: " + e.getMessage(), e);
         }
         return fileSize;
     }
@@ -262,7 +298,7 @@ public class Daemon {
             // Create a server socket, and listen for incoming connections
             ServerSocket serverSocket = new ServerSocket(port)) {
 
-            System.out.println("Daemon listening on port " + port);
+            log("Daemon listening on port " + port);
             // Accept incoming connections and maintain them
             while (true) {
                 // Accept a new client connection
@@ -273,7 +309,7 @@ public class Daemon {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logError("IOException: " + e.getMessage(), e);
         }
     }
 
@@ -355,7 +391,7 @@ public class Daemon {
                 remainingBytes -= bytesRead;
             }
             out.flush(); // to make sure that the fragment is sent
-            System.out.println("Fragment sent successfully!");
+            log("Fragment sent successfully!");
         }
     }
 }

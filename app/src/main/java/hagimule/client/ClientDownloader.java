@@ -38,8 +38,8 @@ public class ClientDownloader {
 
             String diaryAddress = (args.length > 0) ? args[0] : "localhost";
             String fileName = (args.length > 1) ? args[1] : "hagi.txt";
-            String receivedFolderPath = (args.length > 2) ? args[2] : "src\\main\\java\\hagimule\\received\\";
-            String sharedFolderPath = "src\\main\\java\\hagimule\\shared\\";
+            String receivedFolderPath = (args.length > 2) ? args[2] : System.getProperty("user.dir") + "\\received\\";
+            String sharedFolderPath = System.getProperty("user.dir") + "\\shared\\";
             // Se connecter au Diary via RMI
             Diary diary = (Diary) Naming.lookup("rmi://" + diaryAddress + "/Diary");
         

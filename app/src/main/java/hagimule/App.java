@@ -1,11 +1,11 @@
 package hagimule;
-
 import java.util.UUID;
 
 import hagimule.client.ClientDownloader;
 import hagimule.client.ClientFileCreator;
 import hagimule.client.ClientUser;
 import hagimule.diary.DiaryServer;
+import hagimule.client.Machine;
 
 /**
  * Classe principale pour exécuter différents fichiers en fonction des arguments passés.
@@ -13,10 +13,12 @@ import hagimule.diary.DiaryServer;
 public class App {
 
     public static void main(String[] args) {
+
         String diaryAddress = "localhost";
         String port = null;
         String fileToDownloaString = "aioRick.mp4";
-        String receivedFolderPath = "src\\main\\java\\hagimule\\receivedFiles\\";
+        String receivedFolderPath = System.getProperty("user.dir") + "\\receivedFiles\\";
+        String sharedFolder = System.getProperty("user.dir") + "\\shared\\";
 
         switch (args.length) {
             case 0 -> {
@@ -61,7 +63,7 @@ public class App {
             }
 
             case 3 -> {
-                if (args[1].equals("client")) {
+                if (args[0].equals("client")) {
                     fileToDownloaString = args[1];
                     receivedFolderPath = args[2];
                 }
@@ -82,9 +84,14 @@ public class App {
             }
         }
 
+        if (args.length > 3) {
+            sharedFolder = System.getProperty("user.dir") + "\\" + args[3];
+        }
+
         // Exécuter le programme correspondant à l'argument
-        // le choix le application à lancer 
+        // le choix le application à lancer
         switch (args[0].toLowerCase()) {
+            case "machine" -> startMachine(diaryAddress, port, sharedFolder); // Appelle la méthode startMachine
             case "server" -> startDiaryServer(diaryAddress, port); // Appelle la méthode startDiaryServer
             case "create-files" -> startFileCreator(diaryAddress, port); // Appelle ClientfileCreator
             case "daemon" -> startDaemon(diaryAddress, port); // Appelle ClientUser
@@ -112,6 +119,20 @@ public class App {
             }
         } catch (Exception e) {
             System.out.println("Erreur lors du démarrage du serveur Diary :");
+            e.printStackTrace();
+        }
+    }
+
+    public static void startMachine(String diaryAddress, String port, String sharedFolder) {
+        try {
+            System.out.println("Démarrage de la machine...");
+            if (port != null) {
+                Machine.main(new String[]{diaryAddress, port, sharedFolder}); // Appelle le main du client
+            } else {
+                Machine.main(new String[]{diaryAddress, "8080",sharedFolder}); // Appelle le main du client
+            }
+        } catch (Exception e) {
+            System.out.println("Erreur lors du démarrage de la machine :");
             e.printStackTrace();
         }
     }
