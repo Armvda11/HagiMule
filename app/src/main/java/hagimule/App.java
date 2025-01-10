@@ -1,5 +1,4 @@
 package hagimule;
-import java.util.UUID;
 
 import hagimule.client.ClientDownloader;
 import hagimule.client.ClientFileCreator;
@@ -18,7 +17,14 @@ public class App {
         String port = null;
         String fileToDownloaString = "aioRick.mp4";
         String receivedFolderPath = System.getProperty("user.dir") + "/receivedFiles/";
-        String sharedFolder = System.getProperty("user.dir") + "/shared/";
+
+        String argAdresseDiary = "localhost"; // Adresse du serveur Diary
+        String argPort = null; // Port d'écoute du démon
+        String argPathShared = null; // Chemin du dossier partagé
+        String argPathDefaultReceived = null; // Chemin du dossier de réception par défaut
+        String argCompressor = null; // Compresseur à utiliser
+        String argLatence = null; // Latence à simuler
+        String NbSourcesMax = null; // Nombre de sources maximum
 
         switch (args.length) {
             case 0 -> {
@@ -83,18 +89,57 @@ public class App {
                 port = args[2];
             }
         }
+        if (args[0].equals("machine")) {
+            try {
+                argAdresseDiary = args[1]; // Adresse du serveur Diary
+                argPort = args[2]; // Port d'écoute du démon
+                argPathShared = args[3]; // Chemin du dossier partagé
+                argPathDefaultReceived = args[4]; // Chemin du dossier de réception par défaut
+                argCompressor = args[5]; // Compresseur à utiliser
+                argLatence = args[6]; // Latence à simuler
+                NbSourcesMax = args[7]; // Nombre de sources maximum
+                
+                // Expression régulière pour valider une adresse IPv4
+                String regexIP = "^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
+                // Expression régulière pour valider un port
+                String regexPort = "^([0-9]{1,5})$";
 
-        if (args.length > 3) {
-            if (args[0].equals("machine")) {
-                diaryAddress = args[1];
+                if (argAdresseDiary.matches(regexIP)) {
+                    System.out.println("Recherche du Diary : " + args[1]);
+                    diaryAddress = args[1];
+                } else {
+                    System.out.println("Serveur exécuté sur un PC de l'ENSEEIHT...");
+                    diaryAddress = argAdresseDiary + ".enseeiht.fr";
+                }
+                if (argPort.matches(regexPort)) {
+                    int portNumber = Integer.parseInt(argPort);
+                    // Vérifier si le port est dans la plage valide (0-65535)
+                    if (portNumber >= 0 && portNumber <= 65535) {
+                    System.out.println("Exécution sur le port : " + argPort);
+                    port = argPort;
+                    } else {
+                    System.out.println(port + " n'est pas un port valide (plage 0-65535).");
+                    }
+                } else {
+                    System.out.println("Erreur lors de la lecture du port");
+                }
+            } catch (Exception e) {
+            System.out.println("Erreur lors de la lecture des arguments :");
+            System.out.println("Veuillez fournir les arguments suivants : ");
+            System.out.println("1. Adresse du serveur Diary (ex: 192.168.1.1)");
+            System.out.println("2. Port d'écoute du démon (ex: 8080)");
+            System.out.println("3. Chemin du dossier partagé (ex: /path/to/shared)");
+            System.out.println("4. Chemin du dossier de réception par défaut (ex: /path/to/received)");
+            System.out.println("5. Algorithme de compression à utiliser (ex: vide, lz4, lzma ou zst )");
+            System.out.println("6. Latence à simuler (ex: 100ms)");
+            System.out.println("7. Nombre de sources maximum (ex: 5)");
+            e.printStackTrace();
             }
-            sharedFolder = System.getProperty("user.dir") + "/" + args[3];
         }
-
         // Exécuter le programme correspondant à l'argument
         // le choix le application à lancer
         switch (args[0].toLowerCase()) {
-            case "machine" -> startMachine(diaryAddress, port, sharedFolder); // Appelle la méthode startMachine
+            case "machine" -> startMachine(argAdresseDiary, argPort, argPathShared, argPathDefaultReceived, argCompressor, argLatence, NbSourcesMax); // Appelle la méthode startMachine
             case "server" -> startDiaryServer(diaryAddress, port); // Appelle la méthode startDiaryServer
             case "create-files" -> startFileCreator(diaryAddress, port); // Appelle ClientfileCreator
             case "daemon" -> startDaemon(diaryAddress, port); // Appelle ClientUser
@@ -126,14 +171,10 @@ public class App {
         }
     }
 
-    public static void startMachine(String diaryAddress, String port, String sharedFolder) {
+    public static void startMachine(String argAdresseDiary, String argPort, String argPathShared, String argPathDefaultReceived, String argCompressor, String argLatence, String NbSourcesMax) {
         try {
             System.out.println("Démarrage de la machine...");
-            if (port != null) {
-                Machine.main(new String[]{diaryAddress, port, sharedFolder}); // Appelle le main du client
-            } else {
-                Machine.main(new String[]{diaryAddress, "8080",sharedFolder}); // Appelle le main du client
-            }
+            Machine.main(new String[]{argAdresseDiary, argPort, argPathShared, argPathDefaultReceived, argCompressor, argLatence, NbSourcesMax}); // Appelle le main du client
         } catch (Exception e) {
             System.out.println("Erreur lors du démarrage de la machine :");
             e.printStackTrace();
@@ -162,7 +203,7 @@ public class App {
      */
     private static void startDaemon(String diaryAdress, String port) {
         try {
-            String clientName = "Client_" + UUID.randomUUID();
+            String clientName = "Client_" + java.net.InetAddress.getLocalHost().getHostName() + "_" + port;
             System.out.println("Démarrage du Daemon...");
             if (port != null) {
                 ClientUser.main(new String[]{clientName, port, diaryAdress}); // Appelle le main du client

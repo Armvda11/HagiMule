@@ -75,7 +75,7 @@ public class DiaryImpl extends UnicastRemoteObject implements Diary {
         int i = 0;
         for (ClientInfo client : clients) {
             if (i >= maxConcurrentDownloads) break;
-            System.out.println("Ajout du daemon : " + client.getDaemonAdresse() + "sur la taille : " + clients.size());
+            System.out.println("Ajout du daemon : " + client.getDaemonAdresse() + "à la position : " + clients.size());
             daemonAddresses.add(client.getDaemonAdresse());
             i++;
         }

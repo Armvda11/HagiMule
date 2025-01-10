@@ -30,13 +30,12 @@ public class Daemon {
     
     private final int port; // communication port
     private File filePartage; // file to download
-
-    // Remplacez par FileCompressorLZMA si nécessaire
-    private final FileCompressor compressor = new FileCompressorZstd(22);
+    private final FileCompressor compressor;
     // Path to the shared folder
     private String sharedFolder = System.getProperty("user.dir") + "/" + "Shared/"; // Example path to shared files
     private String emplacement = System.getProperty("user.dir") + "/";
     // JDBC connection URL (adapted to your database)
+    private int latency = 0;
     String urlDatabase;
 
     private PrintStream logStream;
@@ -46,22 +45,21 @@ public class Daemon {
      * @param port communication port
      */
     public Daemon(int port) {
-        this.port = port;
-        setupLogging();
-        this.urlDatabase = "jdbc:sqlite:" + emplacement + "fichiers.db";
-        File folder = new File(this.sharedFolder);
-        if (!folder.exists()) {
-            folder.mkdirs();
-        }
-        createDatabase();
+        this(port, System.getProperty("user.dir") + "/shared/", "zstd", 0);
     }
+
     public Daemon(int port, String sharedFolder) {
+        this(port, sharedFolder, "zstd", 0);
+    }
+
+    public Daemon(int port, String sharedFolder, String compressorType, int latency) {
+        this.port = port;
         this.sharedFolder = sharedFolder;
+        this.compressor = createCompressor(compressorType);
         setupLogging();
         int lastIndex = sharedFolder.lastIndexOf("/");
         int secondLastIndex = sharedFolder.lastIndexOf("/", lastIndex - 1);
         this.emplacement = secondLastIndex > 0 ? sharedFolder.substring(0, secondLastIndex + 1) : "";
-        this.port = port;
         this.urlDatabase = "jdbc:sqlite:" +  emplacement + "fichiers.db";
         File folder = new File(this.sharedFolder);
         if (!folder.exists()) {
@@ -70,9 +68,19 @@ public class Daemon {
         createDatabase();
     }
 
+    private FileCompressor createCompressor(String compressorType) {
+        switch (compressorType.toLowerCase()) {
+            case "zstd":
+                return new FileCompressorZstd(22);
+            // Add other compressor types here if needed
+            default:
+                return new FileCompressorZstd(22); // Default compressor
+        }
+    }
+
     private void setupLogging() {
         try {
-            String logFilePath = System.getProperty("user.dir") + "/logs_daemon_" + this.port + ".txt";
+            String logFilePath = System.getProperty("user.dir") + "/logs/logs_daemon_" + this.port + ".txt";
             logStream = new PrintStream(new FileOutputStream(logFilePath, true), true);
         } catch (IOException e) {
             e.printStackTrace();
@@ -240,8 +248,16 @@ public class Daemon {
     }
 
     public void compressSharedFiles() {
-
+        if (this.sharedFolder == null) {
+            logError("Shared folder is not set.", new Throwable());
+            return;
+        }
+        
         File sharedDirectory = new File(this.sharedFolder);
+        if (!sharedDirectory.exists() || !sharedDirectory.isDirectory()) {
+            logError("Shared folder does not exist or is not a directory: " + this.sharedFolder, new Throwable());
+            return;
+        }
         for (File file : sharedDirectory.listFiles()) {
             // S'il est déjà compressé, passez au fichier suivant
             if (file.getName().endsWith(this.compressor.getExtension())) {
@@ -385,7 +401,12 @@ public class Daemon {
             long remainingBytes = endByte - startByte; // calculate the remaining bytes to send
             byte[] buffer = new byte[8192];
             int bytesRead;
-
+            
+            try {
+                Thread.sleep(this.latency);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
             while (remainingBytes > 0 && (bytesRead = partFileToSend.read(buffer, 0, (int) Math.min(buffer.length, remainingBytes))) != -1) {
                 out.write(buffer, 0, bytesRead);
                 remainingBytes -= bytesRead;

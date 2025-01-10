@@ -41,7 +41,10 @@ public class ClientDownloader {
             String diaryAddress = (args.length > 0) ? args[0] : "localhost";
             String fileName = (args.length > 1) ? args[1] : "hagi.txt";
             String receivedFolderPath = (args.length > 2) ? args[2] : System.getProperty("user.dir") + "/received/";
-            String sharedFolderPath = System.getProperty("user.dir") + "/shared/";
+            if (args.length > 3) {
+                maxConcurrentSources = Integer.parseInt(args[3]);
+            }
+            String sharedFolderPath = (args.length > 4) ? args[4] : System.getProperty("user.dir") + "/shared/";
             // Se connecter au Diary via RMI
             Diary diary = (Diary) Naming.lookup("rmi://" + diaryAddress + "/Diary");
         
@@ -206,9 +209,9 @@ public class ClientDownloader {
 
                         // For testing purpose, we simulate a slow daemon
                         if (daemonAddressLent.equals(daemonAddress)) {
-                            System.out.println("Debut sleep 50s : " + daemonAddress);
+                            System.out.println("Debut sleep : " + daemonAddress);
                             Thread.sleep(200);
-                            System.out.println("Fin sleep 50s : " + daemonAddress);
+                            System.out.println("Fin sleep : " + daemonAddress);
                         } else
                             {System.out.println("C'est l'autre");}
 
