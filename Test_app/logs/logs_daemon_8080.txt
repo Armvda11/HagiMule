@@ -1995,3 +1995,333 @@ org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (no suc
 	at hagimule.client.daemon.Daemon.handleClientRequest(Daemon.java:359)
 	at hagimule.client.daemon.Daemon.start(Daemon.java:324)
 	at java.base/java.lang.Thread.run(Thread.java:1575)
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data/data0/fichiers.db
+Daemon listening on port 8080
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\0-reseauTelecoms-23-24.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-Fiche_Archi_Evolution_Des_Processeurs.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-fiche_Intergiciels.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-td_tp_intergiciels.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\Cours_condense-rdt.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\Exam Partir_Archi_2022-2023.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\RT2020corrige.pdf.zst
+Starting file insertion
+Inserting: 0-reseauTelecoms-23-24
+File 0-reseauTelecoms-23-24 added to the database.
+Inserting: 0-reseauTelecoms-23-24.pdf
+File 0-reseauTelecoms-23-24.pdf added to the database.
+Inserting: 1-Fiche_Archi_Evolution_Des_Processeurs
+File 1-Fiche_Archi_Evolution_Des_Processeurs added to the database.
+Inserting: 1-Fiche_Archi_Evolution_Des_Processeurs.pdf
+File 1-Fiche_Archi_Evolution_Des_Processeurs.pdf added to the database.
+Inserting: 1-fiche_Intergiciels
+File 1-fiche_Intergiciels added to the database.
+Inserting: 1-fiche_Intergiciels.pdf
+File 1-fiche_Intergiciels.pdf added to the database.
+Inserting: 1-td_tp_intergiciels
+File 1-td_tp_intergiciels added to the database.
+Inserting: 1-td_tp_intergiciels.pdf
+File 1-td_tp_intergiciels.pdf added to the database.
+Inserting: Cours_condense-rdt
+File Cours_condense-rdt added to the database.
+Inserting: Cours_condense-rdt.pdf
+File Cours_condense-rdt.pdf added to the database.
+Inserting: Exam Partir_Archi_2022-2023
+File Exam Partir_Archi_2022-2023 added to the database.
+Inserting: Exam Partir_Archi_2022-2023.pdf
+File Exam Partir_Archi_2022-2023.pdf added to the database.
+Inserting: RT2020corrige
+File RT2020corrige added to the database.
+Inserting: RT2020corrige.pdf
+File RT2020corrige.pdf added to the database.
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\0-reseauTelecoms-23-24.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-Fiche_Archi_Evolution_Des_Processeurs.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-fiche_Intergiciels.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-td_tp_intergiciels.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\Cours_condense-rdt.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\Exam Partir_Archi_2022-2023.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\RT2020corrige.pdf.zst
+Starting file insertion
+Inserting: 0-reseauTelecoms-23-24
+File 0-reseauTelecoms-23-24 added to the database.
+Inserting: 0-reseauTelecoms-23-24.pdf
+File 0-reseauTelecoms-23-24.pdf added to the database.
+Inserting: 1-Fiche_Archi_Evolution_Des_Processeurs
+File 1-Fiche_Archi_Evolution_Des_Processeurs added to the database.
+Inserting: 1-Fiche_Archi_Evolution_Des_Processeurs.pdf
+File 1-Fiche_Archi_Evolution_Des_Processeurs.pdf added to the database.
+Inserting: 1-fiche_Intergiciels
+File 1-fiche_Intergiciels added to the database.
+Inserting: 1-fiche_Intergiciels.pdf
+File 1-fiche_Intergiciels.pdf added to the database.
+Inserting: 1-td_tp_intergiciels
+File 1-td_tp_intergiciels added to the database.
+Inserting: 1-td_tp_intergiciels.pdf
+File 1-td_tp_intergiciels.pdf added to the database.
+Inserting: Cours_condense-rdt
+File Cours_condense-rdt added to the database.
+Inserting: Cours_condense-rdt.pdf
+File Cours_condense-rdt.pdf added to the database.
+Inserting: Exam Partir_Archi_2022-2023
+File Exam Partir_Archi_2022-2023 added to the database.
+Inserting: Exam Partir_Archi_2022-2023.pdf
+File Exam Partir_Archi_2022-2023.pdf added to the database.
+Inserting: RT2020corrige
+File RT2020corrige added to the database.
+Inserting: RT2020corrige.pdf
+File RT2020corrige.pdf added to the database.
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\0-reseauTelecoms-23-24.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-Fiche_Archi_Evolution_Des_Processeurs.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-fiche_Intergiciels.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-td_tp_intergiciels.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\Cours_condense-rdt.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\Exam Partir_Archi_2022-2023.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\RT2020corrige.pdf.zst
+Starting file insertion
+Inserting: 0-reseauTelecoms-23-24
+File 0-reseauTelecoms-23-24 added to the database.
+Inserting: 0-reseauTelecoms-23-24.pdf
+File 0-reseauTelecoms-23-24.pdf added to the database.
+Inserting: 1-Fiche_Archi_Evolution_Des_Processeurs
+File 1-Fiche_Archi_Evolution_Des_Processeurs added to the database.
+Inserting: 1-Fiche_Archi_Evolution_Des_Processeurs.pdf
+File 1-Fiche_Archi_Evolution_Des_Processeurs.pdf added to the database.
+Inserting: 1-fiche_Intergiciels
+File 1-fiche_Intergiciels added to the database.
+Inserting: 1-fiche_Intergiciels.pdf
+File 1-fiche_Intergiciels.pdf added to the database.
+Inserting: 1-td_tp_intergiciels
+File 1-td_tp_intergiciels added to the database.
+Inserting: 1-td_tp_intergiciels.pdf
+File 1-td_tp_intergiciels.pdf added to the database.
+Inserting: Cours_condense-rdt
+File Cours_condense-rdt added to the database.
+Inserting: Cours_condense-rdt.pdf
+File Cours_condense-rdt.pdf added to the database.
+Inserting: Exam Partir_Archi_2022-2023
+File Exam Partir_Archi_2022-2023 added to the database.
+Inserting: Exam Partir_Archi_2022-2023.pdf
+File Exam Partir_Archi_2022-2023.pdf added to the database.
+Inserting: RT2020corrige
+File RT2020corrige added to the database.
+Inserting: RT2020corrige.pdf
+File RT2020corrige.pdf added to the database.
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\0-reseauTelecoms-23-24.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-Fiche_Archi_Evolution_Des_Processeurs.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-fiche_Intergiciels.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-td_tp_intergiciels.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\Cours_condense-rdt.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\Exam Partir_Archi_2022-2023.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\RT2020corrige.pdf.zst
+Starting file insertion
+Inserting: 0-reseauTelecoms-23-24
+File 0-reseauTelecoms-23-24 added to the database.
+Inserting: 0-reseauTelecoms-23-24.pdf
+File 0-reseauTelecoms-23-24.pdf added to the database.
+Inserting: 1-Fiche_Archi_Evolution_Des_Processeurs
+File 1-Fiche_Archi_Evolution_Des_Processeurs added to the database.
+Inserting: 1-Fiche_Archi_Evolution_Des_Processeurs.pdf
+File 1-Fiche_Archi_Evolution_Des_Processeurs.pdf added to the database.
+Inserting: 1-fiche_Intergiciels
+File 1-fiche_Intergiciels added to the database.
+Inserting: 1-fiche_Intergiciels.pdf
+File 1-fiche_Intergiciels.pdf added to the database.
+Inserting: 1-td_tp_intergiciels
+File 1-td_tp_intergiciels added to the database.
+Inserting: 1-td_tp_intergiciels.pdf
+File 1-td_tp_intergiciels.pdf added to the database.
+Inserting: Cours_condense-rdt
+File Cours_condense-rdt added to the database.
+Inserting: Cours_condense-rdt.pdf
+File Cours_condense-rdt.pdf added to the database.
+Inserting: Exam Partir_Archi_2022-2023
+File Exam Partir_Archi_2022-2023 added to the database.
+Inserting: Exam Partir_Archi_2022-2023.pdf
+File Exam Partir_Archi_2022-2023.pdf added to the database.
+Inserting: RT2020corrige
+File RT2020corrige added to the database.
+Inserting: RT2020corrige.pdf
+File RT2020corrige.pdf added to the database.
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\0-reseauTelecoms-23-24.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-Fiche_Archi_Evolution_Des_Processeurs.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-fiche_Intergiciels.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-td_tp_intergiciels.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\Cours_condense-rdt.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\Exam Partir_Archi_2022-2023.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\RT2020corrige.pdf.zst
+Starting file insertion
+Inserting: 0-reseauTelecoms-23-24
+File 0-reseauTelecoms-23-24 added to the database.
+Inserting: 0-reseauTelecoms-23-24.pdf
+File 0-reseauTelecoms-23-24.pdf added to the database.
+Inserting: 1-Fiche_Archi_Evolution_Des_Processeurs
+File 1-Fiche_Archi_Evolution_Des_Processeurs added to the database.
+Inserting: 1-Fiche_Archi_Evolution_Des_Processeurs.pdf
+File 1-Fiche_Archi_Evolution_Des_Processeurs.pdf added to the database.
+Inserting: 1-fiche_Intergiciels
+File 1-fiche_Intergiciels added to the database.
+Inserting: 1-fiche_Intergiciels.pdf
+File 1-fiche_Intergiciels.pdf added to the database.
+Inserting: 1-td_tp_intergiciels
+File 1-td_tp_intergiciels added to the database.
+Inserting: 1-td_tp_intergiciels.pdf
+File 1-td_tp_intergiciels.pdf added to the database.
+Inserting: Cours_condense-rdt
+File Cours_condense-rdt added to the database.
+Inserting: Cours_condense-rdt.pdf
+File Cours_condense-rdt.pdf added to the database.
+Inserting: Exam Partir_Archi_2022-2023
+File Exam Partir_Archi_2022-2023 added to the database.
+Inserting: Exam Partir_Archi_2022-2023.pdf
+File Exam Partir_Archi_2022-2023.pdf added to the database.
+Inserting: RT2020corrige
+File RT2020corrige added to the database.
+Inserting: RT2020corrige.pdf
+File RT2020corrige.pdf added to the database.
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\0-reseauTelecoms-23-24.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-Fiche_Archi_Evolution_Des_Processeurs.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-fiche_Intergiciels.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-td_tp_intergiciels.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\Cours_condense-rdt.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\Exam Partir_Archi_2022-2023.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\RT2020corrige.pdf.zst
+Starting file insertion
+Inserting: 0-reseauTelecoms-23-24
+File 0-reseauTelecoms-23-24 added to the database.
+Inserting: 0-reseauTelecoms-23-24.pdf
+File 0-reseauTelecoms-23-24.pdf added to the database.
+Inserting: 1-Fiche_Archi_Evolution_Des_Processeurs
+File 1-Fiche_Archi_Evolution_Des_Processeurs added to the database.
+Inserting: 1-Fiche_Archi_Evolution_Des_Processeurs.pdf
+File 1-Fiche_Archi_Evolution_Des_Processeurs.pdf added to the database.
+Inserting: 1-fiche_Intergiciels
+File 1-fiche_Intergiciels added to the database.
+Inserting: 1-fiche_Intergiciels.pdf
+File 1-fiche_Intergiciels.pdf added to the database.
+Inserting: 1-td_tp_intergiciels
+File 1-td_tp_intergiciels added to the database.
+Inserting: 1-td_tp_intergiciels.pdf
+File 1-td_tp_intergiciels.pdf added to the database.
+Inserting: Cours_condense-rdt
+File Cours_condense-rdt added to the database.
+Inserting: Cours_condense-rdt.pdf
+File Cours_condense-rdt.pdf added to the database.
+Inserting: Exam Partir_Archi_2022-2023
+File Exam Partir_Archi_2022-2023 added to the database.
+Inserting: Exam Partir_Archi_2022-2023.pdf
+File Exam Partir_Archi_2022-2023.pdf added to the database.
+Inserting: RT2020corrige
+File RT2020corrige added to the database.
+Inserting: RT2020corrige.pdf
+File RT2020corrige.pdf added to the database.
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\0-reseauTelecoms-23-24.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-Fiche_Archi_Evolution_Des_Processeurs.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-fiche_Intergiciels.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-td_tp_intergiciels.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\Cours_condense-rdt.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\Exam Partir_Archi_2022-2023.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\RT2020corrige.pdf.zst
+Starting file insertion
+Inserting: 0-reseauTelecoms-23-24
+File 0-reseauTelecoms-23-24 added to the database.
+Inserting: 0-reseauTelecoms-23-24.pdf
+File 0-reseauTelecoms-23-24.pdf added to the database.
+Inserting: 1-Fiche_Archi_Evolution_Des_Processeurs
+File 1-Fiche_Archi_Evolution_Des_Processeurs added to the database.
+Inserting: 1-Fiche_Archi_Evolution_Des_Processeurs.pdf
+File 1-Fiche_Archi_Evolution_Des_Processeurs.pdf added to the database.
+Inserting: 1-fiche_Intergiciels
+File 1-fiche_Intergiciels added to the database.
+Inserting: 1-fiche_Intergiciels.pdf
+File 1-fiche_Intergiciels.pdf added to the database.
+Inserting: 1-td_tp_intergiciels
+File 1-td_tp_intergiciels added to the database.
+Inserting: 1-td_tp_intergiciels.pdf
+File 1-td_tp_intergiciels.pdf added to the database.
+Inserting: Cours_condense-rdt
+File Cours_condense-rdt added to the database.
+Inserting: Cours_condense-rdt.pdf
+File Cours_condense-rdt.pdf added to the database.
+Inserting: Exam Partir_Archi_2022-2023
+File Exam Partir_Archi_2022-2023 added to the database.
+Inserting: Exam Partir_Archi_2022-2023.pdf
+File Exam Partir_Archi_2022-2023.pdf added to the database.
+Inserting: RT2020corrige
+File RT2020corrige added to the database.
+Inserting: RT2020corrige.pdf
+File RT2020corrige.pdf added to the database.
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\0-reseauTelecoms-23-24.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-Fiche_Archi_Evolution_Des_Processeurs.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-fiche_Intergiciels.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-td_tp_intergiciels.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\Cours_condense-rdt.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\Exam Partir_Archi_2022-2023.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\RT2020corrige.pdf.zst
+Starting file insertion
+Inserting: 0-reseauTelecoms-23-24
+File 0-reseauTelecoms-23-24 added to the database.
+Inserting: 0-reseauTelecoms-23-24.pdf
+File 0-reseauTelecoms-23-24.pdf added to the database.
+Inserting: 1-Fiche_Archi_Evolution_Des_Processeurs
+File 1-Fiche_Archi_Evolution_Des_Processeurs added to the database.
+Inserting: 1-Fiche_Archi_Evolution_Des_Processeurs.pdf
+File 1-Fiche_Archi_Evolution_Des_Processeurs.pdf added to the database.
+Inserting: 1-fiche_Intergiciels
+File 1-fiche_Intergiciels added to the database.
+Inserting: 1-fiche_Intergiciels.pdf
+File 1-fiche_Intergiciels.pdf added to the database.
+Inserting: 1-td_tp_intergiciels
+File 1-td_tp_intergiciels added to the database.
+Inserting: 1-td_tp_intergiciels.pdf
+File 1-td_tp_intergiciels.pdf added to the database.
+Inserting: Cours_condense-rdt
+File Cours_condense-rdt added to the database.
+Inserting: Cours_condense-rdt.pdf
+File Cours_condense-rdt.pdf added to the database.
+Inserting: Exam Partir_Archi_2022-2023
+File Exam Partir_Archi_2022-2023 added to the database.
+Inserting: Exam Partir_Archi_2022-2023.pdf
+File Exam Partir_Archi_2022-2023.pdf added to the database.
+Inserting: RT2020corrige
+File RT2020corrige added to the database.
+Inserting: RT2020corrige.pdf
+File RT2020corrige.pdf added to the database.
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\0-reseauTelecoms-23-24.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-Fiche_Archi_Evolution_Des_Processeurs.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-fiche_Intergiciels.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-td_tp_intergiciels.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\Cours_condense-rdt.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\Exam Partir_Archi_2022-2023.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\RT2020corrige.pdf.zst
+Starting file insertion
+Inserting: 0-reseauTelecoms-23-24
+File 0-reseauTelecoms-23-24 added to the database.
+Inserting: 0-reseauTelecoms-23-24.pdf
+File 0-reseauTelecoms-23-24.pdf added to the database.
+Inserting: 1-Fiche_Archi_Evolution_Des_Processeurs
+File 1-Fiche_Archi_Evolution_Des_Processeurs added to the database.
+Inserting: 1-Fiche_Archi_Evolution_Des_Processeurs.pdf
+File 1-Fiche_Archi_Evolution_Des_Processeurs.pdf added to the database.
+Inserting: 1-fiche_Intergiciels
+File 1-fiche_Intergiciels added to the database.
+Inserting: 1-fiche_Intergiciels.pdf
+File 1-fiche_Intergiciels.pdf added to the database.
+Inserting: 1-td_tp_intergiciels
+File 1-td_tp_intergiciels added to the database.
+Inserting: 1-td_tp_intergiciels.pdf
+File 1-td_tp_intergiciels.pdf added to the database.
+Inserting: Cours_condense-rdt
+File Cours_condense-rdt added to the database.
+Inserting: Cours_condense-rdt.pdf
+File Cours_condense-rdt.pdf added to the database.
+Inserting: Exam Partir_Archi_2022-2023
+File Exam Partir_Archi_2022-2023 added to the database.
+Inserting: Exam Partir_Archi_2022-2023.pdf
+File Exam Partir_Archi_2022-2023.pdf added to the database.
+Inserting: RT2020corrige
+File RT2020corrige added to the database.
+Inserting: RT2020corrige.pdf
+File RT2020corrige.pdf added to the database.
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\0-reseauTelecoms-23-24.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-Fiche_Archi_Evolution_Des_Processeurs.pdf.zst
+Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-fiche_Intergiciels.pdf.zst

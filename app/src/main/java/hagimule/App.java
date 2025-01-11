@@ -26,69 +26,76 @@ public class App {
         String argLatence = null; // Latence à simuler
         String NbSourcesMax = null; // Nombre de sources maximum
 
-        switch (args.length) {
-            case 0 -> {
-                System.out.println("Veuillez fournir un argument pour spécifier le programme à exécuter.");
-                System.out.println("Options disponibles :");
-                System.out.println("  server       : Démarrer le serveur Diary");
-                System.out.println("  daemon       : Démarrer le daemon");
-                System.out.println("  create-files : Créer des fichiers pour différents clients");
-                System.out.println("  client       : Télécharger un fichier en tant que client");
-                System.exit(1);
-            }
-            case 1 -> {
-                System.out.println("Exécution du programme en localhost...");
-            }
-            case 2 -> {
-                String arg1 = args[1];
-                // Expression régulière pour valider une adresse IPv4
-                String regexIP = "^((25[0-5]|(2[0-4]|1/d|[1-9]|)/d)/.?/b){4}$";
-                // Expression régulière pour valider un port
-                String regexPort = "^([0-9]{1,5})$";
-                if (arg1.matches(regexIP)) {
-                    System.out.println("Serveur exécuté sur l'hôte dont l'adresse est : " + args[1]);
-                    diaryAddress = args[1];
-                } else if (arg1.matches(regexPort)) {
-                    int portNumber = Integer.parseInt(arg1);
-                    // Vérifier si le port est dans la plage valide (0-65535)
-                    if (portNumber >= 0 && portNumber <= 65535) {
-                        System.out.println("Exécution sur le port : " + arg1);
-                        port = arg1;
-                    } else {
-                        System.out.println(port + " n'est pas un port valide (plage 0-65535).");
-                    }
-                } else {
-                    if (args[0].equals("client")) {
-                        fileToDownloaString = arg1;
-                    }
-                    else {
-                        System.out.println("Serveur exécuté sur un PC de l'ENSEEIHT...");
-                        diaryAddress = arg1 + ".enseeiht.fr";
-                    }
-                }
-            }
+        // switch (args.length) {
+        //     case 0 -> {
+        //         System.out.println("Veuillez fournir un argument pour spécifier le programme à exécuter.");
+        //         System.out.println("Options disponibles :");
+        //         System.out.println("  server       : Démarrer le serveur Diary");
+        //         System.out.println("  daemon       : Démarrer le daemon");
+        //         System.out.println("  create-files : Créer des fichiers pour différents clients");
+        //         System.out.println("  client       : Télécharger un fichier en tant que client");
+        //         System.exit(1);
+        //     }
+        //     case 1 -> {
+        //         System.out.println("Exécution du programme en localhost...");
+        //     }
+        //     case 2 -> {
+        //         String arg1 = args[1];
+        //         // Expression régulière pour valider une adresse IPv4
+        //         String regexIP = "^((25[0-5]|(2[0-4]|1/d|[1-9]|)/d)/.?/b){4}$";
+        //         // Expression régulière pour valider un port
+        //         String regexPort = "^([0-9]{1,5})$";
+        //         if (arg1.matches(regexIP)) {
+        //             System.out.println("Serveur exécuté sur l'hôte dont l'adresse est : " + args[1]);
+        //             diaryAddress = args[1];
+        //         } else if (arg1.matches(regexPort)) {
+        //             int portNumber = Integer.parseInt(arg1);
+        //             // Vérifier si le port est dans la plage valide (0-65535)
+        //             if (portNumber >= 0 && portNumber <= 65535) {
+        //                 System.out.println("Exécution sur le port : " + arg1);
+        //                 port = arg1;
+        //             } else {
+        //                 System.out.println(port + " n'est pas un port valide (plage 0-65535).");
+        //             }
+        //         } else {
+        //             if (args[0].equals("client")) {
+        //                 fileToDownloaString = arg1;
+        //             }
+        //             else {
+        //                 System.out.println("Serveur exécuté sur un PC de l'ENSEEIHT...");
+        //                 diaryAddress = arg1 + ".enseeiht.fr";
+        //             }
+        //         }
+        //     }
 
-            case 3 -> {
-                if (args[0].equals("client")) {
-                    fileToDownloaString = args[1];
-                    receivedFolderPath = args[2];
-                }
-            }
-            default -> {
-                String arg1 = args[1];
-                // Expression régulière pour valider une adresse IPv4
-                String regexIP = "^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
+        //     case 3 -> {
+        //         if (args[0].equals("client")) {
+        //             fileToDownloaString = args[1];
+        //             receivedFolderPath = args[2];
+        //         }
+        //     }
+        //     default -> {
+        //         String arg1 = args[1];
+        //         // Expression régulière pour valider une adresse IPv4
+        //         String regexIP = "^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
 
-                if (arg1.length() >= 3 && arg1.substring(0, 3).matches(regexIP)) {
-                    System.out.println("Serveur exécuté sur l'hôte dont l'adresse est : " + arg1);
-                    diaryAddress = arg1;
-                } else {
-                    System.out.println("Serveur exécuté sur un PC de l'ENSEEIHT...");
-                    diaryAddress = arg1 + ".enseeiht.fr";
-                }
-                port = args[2];
-            }
-        }
+        //         if (arg1.length() >= 3 && arg1.substring(0, 3).matches(regexIP)) {
+        //             System.out.println("Serveur exécuté sur l'hôte dont l'adresse est : " + arg1);
+        //             diaryAddress = arg1;
+        //         } else {
+        //             System.out.println("Serveur exécuté sur un PC de l'ENSEEIHT...");
+        //             diaryAddress = arg1 + ".enseeiht.fr";
+        //         }
+        //         port = args[2];
+        //     }
+        // }
+
+
+        // Expression régulière pour valider une adresse IPv4
+        String regexIP = "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$";
+        // Expression régulière pour valider un port
+        String regexPort = "^([0-9]{1,5})$";
+
         if (args[0].equals("machine")) {
             try {
                 argAdresseDiary = args[1]; // Adresse du serveur Diary
@@ -98,11 +105,6 @@ public class App {
                 argCompressor = args[5]; // Compresseur à utiliser
                 argLatence = args[6]; // Latence à simuler
                 NbSourcesMax = args[7]; // Nombre de sources maximum
-                
-                // Expression régulière pour valider une adresse IPv4
-                String regexIP = "^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
-                // Expression régulière pour valider un port
-                String regexPort = "^([0-9]{1,5})$";
 
                 if (argAdresseDiary.matches(regexIP)) {
                     System.out.println("Recherche du Diary : " + args[1]);
@@ -134,6 +136,16 @@ public class App {
             System.out.println("6. Latence à simuler (ex: 100ms)");
             System.out.println("7. Nombre de sources maximum (ex: 5)");
             e.printStackTrace();
+            }
+        }
+        if (args[0].equals("server")) {
+            argAdresseDiary = args[1]; // Adresse du serveur Diary
+            if (argAdresseDiary.matches(regexIP)) {
+                System.out.println("Recherche du Diary : " + args[1]);
+                diaryAddress = args[1];
+            } else {
+                System.out.println("Serveur exécuté sur un PC de l'ENSEEIHT...");
+                diaryAddress = argAdresseDiary + ".enseeiht.fr";
             }
         }
         // Exécuter le programme correspondant à l'argument

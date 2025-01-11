@@ -30,6 +30,10 @@ cp app/build/libs/app-1.0-SNAPSHOT.jar Test_app/app.jar
 cd Test_app
 java -jar app.jar server
 
+
+172.22.224.2
+java -jar app.jar machine 172.22.224.2 8080 data/data0/shared/ data/data0/received/ vide 150 8
+
 java -jar app.jar machine 172.22.220.171 8080 data/data0/shared/ data/data0/received/ vide 150 8
 
 java -jar app.jar machine 172.22.220.171 8081 data/data1/shared/ data/data1/received/ vide 75 8
