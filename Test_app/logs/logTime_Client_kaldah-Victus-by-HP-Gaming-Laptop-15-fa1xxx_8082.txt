@@ -12,3 +12,6 @@ Downloaded file: aioRick.mp4 in 13207 ms
 Downloaded file: aioRick.mp4 in 787 ms
 Downloaded file: ce in 7 ms
 Downloaded file: hagi.txt in 10 ms
+Downloaded file:  in 27 ms
+Downloaded file: hagi.txt in 311 ms
+Downloaded file:  in 22 ms

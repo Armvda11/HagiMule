@@ -1,0 +1,7 @@
+Downloaded file: hagi.txt in 21 ms
+Downloaded file: hagi.txt in 16 ms
+Downloaded file: hagi.txt in 22 ms
+Downloaded file: hagi.txt in 384 ms
+Downloaded file: hagi.txt in 14 ms
+Downloaded file: hagi.txt in 355 ms
+Downloaded file: aioRick.mp4 in 13660 ms

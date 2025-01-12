@@ -109,9 +109,11 @@ public class App {
                 if (argAdresseDiary.matches(regexIP)) {
                     System.out.println("Recherche du Diary : " + args[1]);
                     diaryAddress = args[1];
+                } else if (argAdresseDiary.equals("localhost")) {
+                    System.out.println("Machine exécuté en localhost : " + diaryAddress);
                 } else {
-                    System.out.println("Serveur exécuté sur un PC de l'ENSEEIHT...");
                     diaryAddress = argAdresseDiary + ".enseeiht.fr";
+                    System.out.println("Machine exécuté sur un PC de l'ENSEEIHT : " + diaryAddress);
                 }
                 if (argPort.matches(regexPort)) {
                     int portNumber = Integer.parseInt(argPort);
@@ -139,19 +141,33 @@ public class App {
             }
         }
         if (args[0].equals("server")) {
-            argAdresseDiary = args[1]; // Adresse du serveur Diary
-            if (argAdresseDiary.matches(regexIP)) {
-                System.out.println("Recherche du Diary : " + args[1]);
-                diaryAddress = args[1];
-            } else {
-                System.out.println("Serveur exécuté sur un PC de l'ENSEEIHT...");
-                diaryAddress = argAdresseDiary + ".enseeiht.fr";
+            if (args.length == 1) {
+                try {
+                    argAdresseDiary = java.net.InetAddress.getLocalHost().getHostAddress(); // Adresse du serveur Diary
+                    System.out.println("Serveur exécuté sur l'hôte dont l'adresse est : " + argAdresseDiary);
+                } catch (java.net.UnknownHostException e) {
+                    System.out.println("Erreur lors de la récupération de l'adresse locale :");
+                    e.printStackTrace();
+                    System.exit(1);
+                }
+            }
+            else {
+                argAdresseDiary = args[1]; // Adresse du serveur Diary
+                if (argAdresseDiary.matches(regexIP)) {
+                    System.out.println("Recherche du Diary : " + args[1]);
+                    diaryAddress = args[1];
+                } else if (argAdresseDiary.equals("localhost")) {
+                    System.out.println("Machine exécuté en localhost : " + diaryAddress);
+                } else {
+                    System.out.println("Serveur exécuté sur un PC de l'ENSEEIHT...");
+                    diaryAddress = argAdresseDiary + ".enseeiht.fr";
+                }
             }
         }
         // Exécuter le programme correspondant à l'argument
         // le choix le application à lancer
         switch (args[0].toLowerCase()) {
-            case "machine" -> startMachine(argAdresseDiary, argPort, argPathShared, argPathDefaultReceived, argCompressor, argLatence, NbSourcesMax); // Appelle la méthode startMachine
+            case "machine" -> startMachine(diaryAddress, argPort, argPathShared, argPathDefaultReceived, argCompressor, argLatence, NbSourcesMax); // Appelle la méthode startMachine
             case "server" -> startDiaryServer(diaryAddress, port); // Appelle la méthode startDiaryServer
             case "create-files" -> startFileCreator(diaryAddress, port); // Appelle ClientfileCreator
             case "daemon" -> startDaemon(diaryAddress, port); // Appelle ClientUser

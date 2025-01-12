@@ -50,6 +50,21 @@ public class DiaryImpl extends UnicastRemoteObject implements Diary {
     }
 
     /**
+     * Remove a file for a specific client.
+     */
+    @Override
+    public void removeFile(String fileName, String clientName) throws RemoteException {
+        Set<ClientInfo> clients = fileToClients.get(fileName);
+        if (clients != null) {
+            clients.removeIf(client -> client.getClientName().equals(clientName));
+            if (clients.isEmpty()) {
+                fileToClients.remove(fileName);
+            }
+        }
+        System.out.println("File " + fileName + " removed for client " + clientName);
+    }
+
+    /**
      * Find all clients who own a specific file.
      */
     @Override

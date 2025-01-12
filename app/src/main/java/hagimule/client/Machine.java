@@ -110,7 +110,28 @@ public class Machine {
                 e.printStackTrace();
             }
         }
+
+        List<String> removedFiles = daemon.getRemovedFiles();
+        if (!removedFiles.isEmpty()) {
+            for (String fileName : removedFiles) {
+                try {
+                    diary.removeFile(fileName, ownerName);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
+
+    public static List<String> getUpdatedDaemonAddresses(Diary diary, String fileName, int maxConcurrentSources) {
+        try {
+            return diary.findDaemonAddressesByFile(fileName, maxConcurrentSources);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return List.of();
+        }
+    }
+
     private static void setupLogging() {
         try {
             String logFilePath = System.getProperty("user.dir") + "/logs/logTime_" + clientName + ".txt";

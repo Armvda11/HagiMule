@@ -2325,3 +2325,3927 @@ File RT2020corrige.pdf added to the database.
 Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\0-reseauTelecoms-23-24.pdf.zst
 Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-Fiche_Archi_Evolution_Des_Processeurs.pdf.zst
 Fichier compressé : C:\Users\coren\Documents\Projets\HagiMule\Test_app\data\data0\shared\1-fiche_Intergiciels.pdf.zst
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File hagi.txt loaded into the daemon.
+File hagi.txt loaded into the daemon.
+File hagi.txt loaded into the daemon.
+Fragment sent successfully with checksum!305a0540c8922a868491e322c715f45af1b711a302c60c864a7bf901484e47bb
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File hagi.txt loaded into the daemon.
+File hagi.txt loaded into the daemon.
+File hagi.txt loaded into the daemon.
+Fragment sent successfully with checksum!305a0540c8922a868491e322c715f45af1b711a302c60c864a7bf901484e47bb
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+File hagi.txt removed from the database.
+File aioRick.mp4 removed from the database.
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt loaded into the daemon.
+File hagi.txt loaded into the daemon.
+File hagi.txt loaded into the daemon.
+Fragment sent successfully with checksum!332392bde448a5168eef7598f0df91e2945113bc4e5aa5aeaaf8106f85ab4c74
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+File hagi.txt removed from the database.
+Starting file insertion
+File not found in the database.
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+File hagi.txt removed from the database.
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Fichier compressé : /home/kaldah/Documents/Projets/HagiMule/Test_app/data1/shared/hagi.txt.zst
+Starting file insertion
+Inserting: hagi
+File hagi added to the database.
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Fichier compressé : /home/kaldah/Documents/Projets/HagiMule/Test_app/data1/shared/hagi.txt.zst
+Starting file insertion
+Inserting: hagi
+File hagi added to the database.
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+File hagi.txt removed from the database.
+File hagi removed from the database.
+Starting file insertion
+File not found in the database.
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Fichier compressé : /home/kaldah/Documents/Projets/HagiMule/Test_app/data1/shared/hagi.txt.zst
+Starting file insertion
+Inserting: hagi
+File hagi added to the database.
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Fichier compressé : /home/kaldah/Documents/Projets/HagiMule/Test_app/data1/shared/hagi.txt.zst
+Starting file insertion
+Inserting: hagi
+File hagi added to the database.
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi removed from the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File hagi.txt loaded into the daemon.
+File hagi.txt loaded into the daemon.
+File hagi.txt loaded into the daemon.
+Fragment sent successfully!
+File hagi.txt loaded into the daemon.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File hagi.txt loaded into the daemon.
+File hagi.txt loaded into the daemon.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File hagi.txt loaded into the daemon.
+Fragment sent successfully!
+File hagi.txt loaded into the daemon.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4 loaded into the daemon.
+File aioRick.mp4 loaded into the daemon.
+File aioRick.mp4 loaded into the daemon.
+Fragment sent successfully!
+File aioRick.mp4 loaded into the daemon.
+Fragment sent successfully!
+File aioRick.mp4 loaded into the daemon.
+File aioRick.mp4 loaded into the daemon.
+File aioRick.mp4 loaded into the daemon.
+Fragment sent successfully!
+File aioRick.mp4 loaded into the daemon.
+Fragment sent successfully!
+File aioRick.mp4 loaded into the daemon.
+File aioRick.mp4 loaded into the daemon.
+File aioRick.mp4 loaded into the daemon.
+Fragment sent successfully!
+File aioRick.mp4 loaded into the daemon.
+File aioRick.mp4 loaded into the daemon.
+Fragment sent successfully!
+File aioRick.mp4 loaded into the daemon.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4 loaded into the daemon.
+File aioRick.mp4 loaded into the daemon.
+File aioRick.mp4 loaded into the daemon.
+Fragment sent successfully!
+File aioRick.mp4 loaded into the daemon.
+Fragment sent successfully!
+File aioRick.mp4 loaded into the daemon.
+File aioRick.mp4 loaded into the daemon.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+Starting file insertion
+File hagi.txt removed from the database.
+File aioRick.mp4 removed from the database.
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+SQL error: [SQLITE_ERROR] SQL error or missing database (no such column: compressor_type)
+org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (no such column: compressor_type)
+	at org.sqlite.core.DB.newSQLException(DB.java:1179)
+	at org.sqlite.core.DB.newSQLException(DB.java:1190)
+	at org.sqlite.core.DB.throwex(DB.java:1150)
+	at org.sqlite.core.NativeDB.prepare_utf8(Native Method)
+	at org.sqlite.core.NativeDB.prepare(NativeDB.java:126)
+	at org.sqlite.core.DB.prepare(DB.java:264)
+	at org.sqlite.core.CorePreparedStatement.<init>(CorePreparedStatement.java:46)
+	at org.sqlite.jdbc3.JDBC3PreparedStatement.<init>(JDBC3PreparedStatement.java:31)
+	at org.sqlite.jdbc4.JDBC4PreparedStatement.<init>(JDBC4PreparedStatement.java:25)
+	at org.sqlite.jdbc4.JDBC4Connection.prepareStatement(JDBC4Connection.java:34)
+	at org.sqlite.jdbc3.JDBC3Connection.prepareStatement(JDBC3Connection.java:226)
+	at org.sqlite.jdbc3.JDBC3Connection.prepareStatement(JDBC3Connection.java:206)
+	at hagimule.client.daemon.Daemon.updateDatabaseWithCompressorType(Daemon.java:153)
+	at hagimule.client.daemon.Daemon.<init>(Daemon.java:75)
+	at hagimule.client.Machine.main(Machine.java:43)
+	at hagimule.App.startMachine(App.java:205)
+	at hagimule.App.main(App.java:170)
+Starting file insertion
+Daemon listening on port 8080
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+SQL error: [SQLITE_ERROR] SQL error or missing database (no such table: files)
+org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (no such table: files)
+	at org.sqlite.core.DB.newSQLException(DB.java:1179)
+	at org.sqlite.core.DB.newSQLException(DB.java:1190)
+	at org.sqlite.core.DB.throwex(DB.java:1150)
+	at org.sqlite.core.NativeDB.prepare_utf8(Native Method)
+	at org.sqlite.core.NativeDB.prepare(NativeDB.java:126)
+	at org.sqlite.core.DB.prepare(DB.java:264)
+	at org.sqlite.core.CorePreparedStatement.<init>(CorePreparedStatement.java:46)
+	at org.sqlite.jdbc3.JDBC3PreparedStatement.<init>(JDBC3PreparedStatement.java:31)
+	at org.sqlite.jdbc4.JDBC4PreparedStatement.<init>(JDBC4PreparedStatement.java:25)
+	at org.sqlite.jdbc4.JDBC4Connection.prepareStatement(JDBC4Connection.java:34)
+	at org.sqlite.jdbc3.JDBC3Connection.prepareStatement(JDBC3Connection.java:226)
+	at org.sqlite.jdbc3.JDBC3Connection.prepareStatement(JDBC3Connection.java:206)
+	at hagimule.client.daemon.Daemon.updateDatabase(Daemon.java:245)
+	at hagimule.client.Machine.synchronizeDiary(Machine.java:102)
+	at hagimule.client.Machine.lambda$main$0(Machine.java:55)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+SQL error: [SQLITE_ERROR] SQL error or missing database (no such table: files)
+org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (no such table: files)
+	at org.sqlite.core.DB.newSQLException(DB.java:1179)
+	at org.sqlite.core.DB.newSQLException(DB.java:1190)
+	at org.sqlite.core.DB.throwex(DB.java:1150)
+	at org.sqlite.core.NativeDB.prepare_utf8(Native Method)
+	at org.sqlite.core.NativeDB.prepare(NativeDB.java:126)
+	at org.sqlite.core.DB.prepare(DB.java:264)
+	at org.sqlite.core.CorePreparedStatement.<init>(CorePreparedStatement.java:46)
+	at org.sqlite.jdbc3.JDBC3PreparedStatement.<init>(JDBC3PreparedStatement.java:31)
+	at org.sqlite.jdbc4.JDBC4PreparedStatement.<init>(JDBC4PreparedStatement.java:25)
+	at org.sqlite.jdbc4.JDBC4Connection.prepareStatement(JDBC4Connection.java:34)
+	at org.sqlite.jdbc3.JDBC3Connection.prepareStatement(JDBC3Connection.java:226)
+	at org.sqlite.jdbc3.JDBC3Connection.prepareStatement(JDBC3Connection.java:206)
+	at hagimule.client.daemon.Daemon.getFilesNames(Daemon.java:176)
+	at hagimule.client.Machine.synchronizeDiary(Machine.java:104)
+	at hagimule.client.Machine.lambda$main$0(Machine.java:55)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Starting file insertion
+Daemon listening on port 8080
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Fichier compressé : /home/kaldah/Documents/Projets/HagiMule/Test_app/data1/shared/hagi.txt.zst
+Original file deleted: /home/kaldah/Documents/Projets/HagiMule/Test_app/data1/shared/hagi.txt
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Daemon listening on port 8080
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data1/fichiers.db
+Daemon listening on port 8080
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt loaded into the daemon.
+File hagi.txt loaded into the daemon.
+File hagi.txt loaded into the daemon.
+File hagi.txt loaded into the daemon.
+Fragment sent successfully!
+File hagi.txt loaded into the daemon.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+File hagi.txt.zst added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.

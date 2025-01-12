@@ -30,6 +30,13 @@ public interface Diary extends Remote {
      */
     void registerFile(String fileName, String clientName, String daemonAddress) throws RemoteException;
 
+    /**
+     * Remove a file for a specific client.
+     * @param fileName
+     * @param clientName
+     * @throws RemoteException
+     */
+    void removeFile(String fileName, String clientName) throws RemoteException;
 
     /**
      * Method to find all clients daemons addresses who own a specific file

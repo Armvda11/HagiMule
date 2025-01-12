@@ -17,12 +17,16 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.ArrayList;
 
 import com.google.common.hash.Hashing;
 import com.google.common.io.ByteSource;
 
 import hagimule.client.Compressor.FileCompressor;
 import hagimule.client.Compressor.FileCompressorZstd;
+import hagimule.client.Compressor.FileCompressorLZ4;
+import hagimule.client.Compressor.FileCompressorLZMA;
+import hagimule.client.Compressor.FileCompressorVide;
 
 import com.google.common.hash.HashCode;
 
@@ -39,6 +43,7 @@ public class Daemon {
     String urlDatabase;
 
     private PrintStream logStream;
+    private List<String> removedFiles = new ArrayList<>();
 
     /**
      * Daemon constructor
@@ -65,14 +70,19 @@ public class Daemon {
         if (!folder.exists()) {
             folder.mkdirs();
         }
+        compressSharedFiles();
         createDatabase();
     }
 
     private FileCompressor createCompressor(String compressorType) {
         switch (compressorType.toLowerCase()) {
+            case "lz4":
+                return new FileCompressorLZ4();
+            case "lzma":
+                return new FileCompressorLZMA();
+            case "vide":
+                return new FileCompressorVide();
             case "zstd":
-                return new FileCompressorZstd(22);
-            // Add other compressor types here if needed
             default:
                 return new FileCompressorZstd(22); // Default compressor
         }
@@ -100,19 +110,14 @@ public class Daemon {
         this.filePartage = file;
     }
 
-    public String calculateChecksum(File file) {
+    public static String calculateChecksum(File file) {
         try {
-            // Create a byte source from the file
             ByteSource byteSource = com.google.common.io.Files.asByteSource(file);
-    
-            // Calculate the SHA-256 hash
             HashCode hashCode = byteSource.hash(Hashing.sha256());
-    
-            // Convert the hash to a string
             return hashCode.toString();
         } catch (IOException e) {
-            logError("Error creating checksum: " + e.getMessage(), e);
-            return ""; // Return an empty string in case of error
+            e.printStackTrace();
+            return "";
         }
     }
 
@@ -126,7 +131,7 @@ public class Daemon {
             "file_name VARCHAR(255), " +
             "file_path VARCHAR(255), " +
             "file_size INT, " +
-            "checksum VARCHAR(255), " +
+            "checksum VARCHAR(255), " + // Only one checksum field
             "UNIQUE(checksum))";
             
             try (PreparedStatement createStmt = connection.prepareStatement(createTableSQL)) {
@@ -195,18 +200,19 @@ public class Daemon {
                 }
                 fileName = name;
                 size = file.length();
-                fileChecksum = calculateChecksum(file);
+                fileChecksum = calculateChecksum(file); // Calculate decompressed checksum
                 log("Inserting: " + fileName);
 
                 try (Connection connection = DriverManager.getConnection(urlDatabase)) {
-                    insertSQL = "INSERT INTO files (file_name, file_path, file_size, checksum) VALUES (?, ?, ?, ?) " +
+                    insertSQL = "INSERT INTO files (file_name, file_path, file_size, checksum, compressor_type) VALUES (?, ?, ?, ?, ?) " +
                                 "ON CONFLICT(checksum) DO UPDATE SET file_name = excluded.file_name, file_path = excluded.file_path";
 
                     try (PreparedStatement insertStmt = connection.prepareStatement(insertSQL)) {
                         insertStmt.setString(1, fileName);
                         insertStmt.setString(2, file.getAbsolutePath());
                         insertStmt.setLong(3, size);
-                        insertStmt.setString(4, fileChecksum);
+                        insertStmt.setString(4, fileChecksum); // Set decompressed checksum
+                        insertStmt.setString(5, this.compressor.getExtension().substring(1)); // Set compressor type without the dot
                         insertStmt.executeUpdate();
                         log("File " + fileName + " added to the database.");
                     } catch (SQLException e) {
@@ -229,6 +235,7 @@ public class Daemon {
                     String filePath = resultSet.getString("file_path");
                     File file = new File(filePath);
                     if (!file.exists()) {
+                        this.removedFiles.add(fileName);
                         String deleteSQL = "DELETE FROM files WHERE file_name = ?";
                         try (PreparedStatement deleteStmt = connection.prepareStatement(deleteSQL)) {
                             deleteStmt.setString(1, fileName);
@@ -247,6 +254,12 @@ public class Daemon {
         }
     }
 
+    public List<String> getRemovedFiles() {
+        List<String> filesToRemove = new ArrayList<>(this.removedFiles);
+        this.removedFiles.clear();
+        return filesToRemove;
+    }
+
     public void compressSharedFiles() {
         if (this.sharedFolder == null) {
             logError("Shared folder is not set.", new Throwable());
@@ -259,18 +272,91 @@ public class Daemon {
             return;
         }
         for (File file : sharedDirectory.listFiles()) {
-            // S'il est déjà compressé, passez au fichier suivant
-            if (file.getName().endsWith(this.compressor.getExtension())) {
+            // Skip if the file is already compressed in the database
+            if (isFileCompressedInDatabase(file)) {
+                continue;
+            }
+            String filename = file.getName();
+            // Check if the file ends with any known compression extension
+            if (filename.endsWith(".lz4") || filename.endsWith(".lzma") || filename.endsWith(".vide") || filename.endsWith(".zst")) {
+                addFileToDatabase(file);
+                continue;
+            }
+            // Skip if the file is already compressed based on the current compressor's extension
+            if (filename.endsWith(this.compressor.getExtension())) {
                 continue;
             }
             Path inputFile = Paths.get(file.getAbsolutePath());
             try {
                 Path compressedFile = this.compressor.compressFile(inputFile);
                 log("Fichier compressé : " + compressedFile);
+                // Remove the original file after compression
+                if (file.delete()) {
+                    log("Original file deleted: " + file.getAbsolutePath());
+                } else {
+                    logError("Failed to delete original file: " + file.getAbsolutePath(), new Throwable());
+                }
             } catch (IOException e) {
                 logError("Error compressing file: " + e.getMessage(), e);
             }
         }
+    }
+
+    private void addFileToDatabase(File file) {
+        String fileName = file.getName();
+        Long size = file.length();
+        String fileChecksum = calculateChecksum(file); // Calculate decompressed checksum
+        String compressorType = getCompressorTypeFromExtension(fileName);
+
+        try (Connection connection = DriverManager.getConnection(urlDatabase)) {
+            String insertSQL = "INSERT INTO files (file_name, file_path, file_size, checksum, compressor_type) VALUES (?, ?, ?, ?, ?) " +
+                               "ON CONFLICT(checksum) DO UPDATE SET file_name = excluded.file_name, file_path = excluded.file_path";
+
+            try (PreparedStatement insertStmt = connection.prepareStatement(insertSQL)) {
+                insertStmt.setString(1, fileName);
+                insertStmt.setString(2, file.getAbsolutePath());
+                insertStmt.setLong(3, size);
+                insertStmt.setString(4, fileChecksum); // Set decompressed checksum
+                insertStmt.setString(5, compressorType); // Set compressor type
+                insertStmt.executeUpdate();
+                log("File " + fileName + " added to the database.");
+            } catch (SQLException e) {
+                logError("SQL error: " + e.getMessage(), e);
+            }
+        } catch (SQLException e) {
+            logError("SQL error: " + e.getMessage(), e);
+        }
+    }
+
+    private String getCompressorTypeFromExtension(String fileName) {
+        if (fileName.endsWith(".lz4")) {
+            return "lz4";
+        } else if (fileName.endsWith(".lzma")) {
+            return "lzma";
+        } else if (fileName.endsWith(".vide")) {
+            return "vide";
+        } else if (fileName.endsWith(".zstd")) {
+            return "zstd";
+        } else {
+            return "";
+        }
+    }
+
+    private boolean isFileCompressedInDatabase(File file) {
+        String selectSQL = "SELECT compressor_type FROM files WHERE file_name = ?";
+        try (Connection connection = DriverManager.getConnection(urlDatabase);
+             PreparedStatement selectStmt = connection.prepareStatement(selectSQL)) {
+            selectStmt.setString(1, file.getName());
+            try (java.sql.ResultSet resultSet = selectStmt.executeQuery()) {
+                if (resultSet.next()) {
+                    String compressorType = resultSet.getString("compressor_type");
+                    return compressorType != null && !compressorType.isEmpty();
+                }
+            }
+        } catch (SQLException e) {
+            logError("SQL error: " + e.getMessage(), e);
+        }
+        return false;
     }
 
     /**
@@ -370,6 +456,20 @@ public class Daemon {
                         out.write("File not found\n".getBytes());
                     }
                 }
+                case "CHECKSUM" -> {
+                    String checksum = getChecksumFromDatabase(fileName);
+                    out.write((checksum + "\n").getBytes());
+                }
+                case "FRAGMENT_CHECKSUM" -> {
+                    if (parts.length != 4) {
+                        out.write("FRAGMENT_CHECKSUM request invalid\n".getBytes());
+                        return;
+                    }
+                    long startByte = Long.parseLong(parts[2]);
+                    long endByte = Long.parseLong(parts[3]);
+                    String fragmentChecksum = calculateFragmentChecksum(startByte, endByte);
+                    out.write((fragmentChecksum + "\n").getBytes());
+                }
     
                 case "GET" -> {
                     if (parts.length != 4) {
@@ -384,6 +484,23 @@ public class Daemon {
                 default -> out.write("Unknown Command\n".getBytes());
             }
         }
+    }
+
+    private String getChecksumFromDatabase(String fileName) {
+        String checksum = "";
+        String selectSQL = "SELECT checksum FROM files WHERE file_name = ?";
+        try (Connection connection = DriverManager.getConnection(urlDatabase);
+             PreparedStatement selectStmt = connection.prepareStatement(selectSQL)) {
+            selectStmt.setString(1, fileName);
+            try (java.sql.ResultSet resultSet = selectStmt.executeQuery()) {
+                if (resultSet.next()) {
+                    checksum = resultSet.getString("checksum");
+                }
+            }
+        } catch (SQLException e) {
+            logError("SQL error: " + e.getMessage(), e);
+        }
+        return checksum;
     }
     
     /**
@@ -413,6 +530,21 @@ public class Daemon {
             }
             out.flush(); // to make sure that the fragment is sent
             log("Fragment sent successfully!");
+        }
+    }
+
+    private String calculateFragmentChecksum(long startByte, long endByte) {
+        try (
+            RandomAccessFile partFileToSend = new RandomAccessFile(filePartage, "r")) {
+            partFileToSend.seek(startByte);
+            long remainingBytes = endByte - startByte;
+            byte[] buffer = new byte[(int) remainingBytes];
+            partFileToSend.readFully(buffer);
+            HashCode hashCode = Hashing.sha256().hashBytes(buffer);
+            return hashCode.toString();
+        } catch (IOException e) {
+            logError("Error calculating fragment checksum: " + e.getMessage(), e);
+            return "";
         }
     }
 }
