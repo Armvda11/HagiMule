@@ -16,6 +16,7 @@ Test 1:
 Une seule source disponible
 
 java -jar app.jar machine localhost 8080 data/data0/shared/ data/data0/received/ vide 150 8
+cp -r sharedBak/* data/data0/shared/
 
 
 java -jar app.jar machine localhost 8081 data/data1/shared/ data/data0/received/ vide 75 8
