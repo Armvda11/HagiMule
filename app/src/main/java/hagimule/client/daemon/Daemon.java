@@ -131,7 +131,8 @@ public class Daemon {
             "file_name VARCHAR(255), " +
             "file_path VARCHAR(255), " +
             "file_size INT, " +
-            "checksum VARCHAR(255), " + // Only one checksum field
+            "checksum VARCHAR(255), " +
+            "compressor_type VARCHAR(50), " + // Add compressor type field
             "UNIQUE(checksum))";
             
             try (PreparedStatement createStmt = connection.prepareStatement(createTableSQL)) {
