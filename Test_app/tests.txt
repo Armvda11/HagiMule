@@ -9,17 +9,15 @@ Met à jour le fichier jar en le recompilant et lance le serveur
 ./startDiary.sh
 
 Command to copy the content of Test_app/sharedBak into /data0/shared:
+
 cp -r sharedBak/* data/data0/shared/
 
 Test 1: 
 
-Une seule source disponible
+Une seule source disponible sans compression
 
 java -jar app.jar machine localhost 8080 data/data0/shared/ data/data0/received/ vide 150 8
 cp -r sharedBak/* data/data0/shared/
 
-
-java -jar app.jar machine localhost 8081 data/data1/shared/ data/data0/received/ vide 75 8
-
-java -jar app.jar machine localhost 8082 data/data2/shared data/data0/received/ vide 75 8
+java -jar app.jar machine localhost 8081 data/data1/shared/ data/data1/received/ vide 75 8
 

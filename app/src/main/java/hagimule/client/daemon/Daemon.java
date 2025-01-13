@@ -67,11 +67,16 @@ public class Daemon {
         this.emplacement = secondLastIndex > 0 ? sharedFolder.substring(0, secondLastIndex + 1) : "";
         this.urlDatabase = "jdbc:sqlite:" +  emplacement + "fichiers.db";
         File folder = new File(this.sharedFolder);
+
+        System.out.println("Shared folder: " + this.sharedFolder);
+        System.out.println("Database URL: " + this.urlDatabase);
+        
         if (!folder.exists()) {
             folder.mkdirs();
         }
         compressSharedFiles();
         createDatabase();
+        updateDatabase();
     }
 
     private FileCompressor createCompressor(String compressorType) {
@@ -471,6 +476,10 @@ public class Daemon {
                     String fragmentChecksum = calculateFragmentChecksum(startByte, endByte);
                     out.write((fragmentChecksum + "\n").getBytes());
                 }
+                case "COMPRESSOR_TYPE" -> {
+                    String compressorType = getCompressorTypeFromDatabase(fileName);
+                    out.write((compressorType + "\n").getBytes());
+                }
     
                 case "GET" -> {
                     if (parts.length != 4) {
@@ -504,6 +513,23 @@ public class Daemon {
         return checksum;
     }
     
+    private String getCompressorTypeFromDatabase(String fileName) {
+        String compressorType = "";
+        String selectSQL = "SELECT compressor_type FROM files WHERE file_name = ?";
+        try (Connection connection = DriverManager.getConnection(urlDatabase);
+             PreparedStatement selectStmt = connection.prepareStatement(selectSQL)) {
+            selectStmt.setString(1, fileName);
+            try (java.sql.ResultSet resultSet = selectStmt.executeQuery()) {
+                if (resultSet.next()) {
+                    compressorType = resultSet.getString("compressor_type");
+                }
+            }
+        } catch (SQLException e) {
+            logError("SQL error: " + e.getMessage(), e);
+        }
+        return compressorType;
+    }
+
     /**
      * Send a fragment of the file to the client (from startByte to endByte)
      * @param out the output stream to send the fragment

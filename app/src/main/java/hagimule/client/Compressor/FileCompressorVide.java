@@ -53,13 +53,13 @@ public class FileCompressorVide implements FileCompressor {
             throw new IllegalArgumentException("Le fichier spécifié n'existe pas : " + compressedFile);
         }
 
-        Path decompressedFile = destinationFolderPath.resolve(removeSuffix(compressedFile.getFileName(), COMPRESSED_EXTENSION).toString());
+        Path decompressedFile = destinationFolderPath.resolveSibling(removeSuffix(compressedFile.getFileName(), COMPRESSED_EXTENSION).toString());
         return copyFile(compressedFile, decompressedFile);
     }
-    
+
     private Path addSuffix(Path filePath, String suffix) {
         String fileName = filePath.getFileName().toString();
-        return filePath.getParent().resolve(fileName + suffix);
+        return filePath.getParent() != null ? filePath.getParent().resolve(fileName + suffix) : Path.of(fileName + suffix);
     }
 
     private Path removeSuffix(Path filePath, String suffix) {
@@ -67,10 +67,11 @@ public class FileCompressorVide implements FileCompressor {
         if (fileName.endsWith(suffix)) {
             fileName = fileName.substring(0, fileName.length() - suffix.length());
         }
-        return filePath.getParent().resolve(fileName);
+        return filePath.getParent() != null ? filePath.getParent().resolve(fileName) : Path.of(fileName);
     }
 
     private Path copyFile(Path source, Path destination) throws IOException {
+        Files.createDirectories(destination.getParent());
         Files.copy(source, destination);
         return destination;
     }

@@ -101,7 +101,7 @@ public class ClientDownloader {
             }
             System.out.println("Type de compresseur : " + compressorType);
 
-            FileCompressor compressor = createCompressor(compressorType);
+            compressor = createCompressor(compressorType);
 
             Path SharedFilePath = Paths.get(sharedFolderPath + fileName + compressor.getExtension());
             // Télécharger les fragments et reconstituer le fichier
@@ -142,6 +142,7 @@ public class ClientDownloader {
                 return new FileCompressorVide();
             case "zstd":
             default:
+                System.out.println("Compresseur par défaut : Zstd");
                 return new FileCompressorZstd(22); // Default compressor
         }
     }
