@@ -113,7 +113,7 @@ public class App {
                     System.out.println("Machine exécuté en localhost : " + diaryAddress);
                 } else {
                     diaryAddress = argAdresseDiary + ".enseeiht.fr";
-                    System.out.println("Machine exécuté sur un PC de l'ENSEEIHT : " + diaryAddress);
+                    System.out.println("Machine cherce Diary sur PC ENSEEIHT : " + diaryAddress);
                 }
                 if (argPort.matches(regexPort)) {
                     int portNumber = Integer.parseInt(argPort);

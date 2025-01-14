@@ -1,9 +1,9 @@
 package hagimule.diary;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.rmi.Naming;
+// import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
-
+import java.rmi.registry.Registry;
 /**
  * Main class to start the server
  * Here we create the RMI registry, on the default port 1099, and bind the Diary service to the registry
