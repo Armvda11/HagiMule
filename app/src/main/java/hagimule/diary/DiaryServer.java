@@ -12,8 +12,10 @@ public class DiaryServer {
     public static void main(String[] args) {
         try {
             // Reading execution parameters (diary address and port)
-            String diaryAddress = (args.length > 0) ? args[0] : "localhost";
+            String diaryAddress = (args.length > 0) ? args[0] : "hjklm";
             int diaryPort = (args.length > 1) ? Integer.parseInt(args[1]) : 1099;
+
+            System.out.println("Diary address: " + diaryAddress);
 
             System.setProperty("java.rmi.server.hostname", diaryAddress);
             // create the RMI registry

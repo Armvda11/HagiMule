@@ -143,8 +143,8 @@ public class App {
         if (args[0].equals("server")) {
             if (args.length == 1) {
                 try {
-                    argAdresseDiary = java.net.InetAddress.getLocalHost().getHostAddress(); // Adresse du serveur Diary
-                    System.out.println("Serveur exécuté sur l'hôte dont l'adresse est : " + argAdresseDiary);
+                    diaryAddress = java.net.InetAddress.getLocalHost().getHostAddress(); // Adresse du serveur Diary
+                    System.out.println("Serveur exécuté sur l'hôte dont l'adresse est : " + diaryAddress);
                 } catch (java.net.UnknownHostException e) {
                     System.out.println("Erreur lors de la récupération de l'adresse locale :");
                     e.printStackTrace();

@@ -4,8 +4,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.InetAddress;
-import java.rmi.Naming;
+// import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.util.List;
 import java.util.Scanner;
 
@@ -35,7 +37,9 @@ public class Machine {
             System.out.println("Connecting to Diary: " + diaryAddress);
             setupLogging();
             // Connecting to the Diary
-            Diary diary = (Diary) Naming.lookup("rmi://"+ diaryAddress +"/Diary");
+            // Diary diary = (Diary) Naming.lookup("rmi://"+ diaryAddress +"/Diary");
+            Registry registry= LocateRegistry.getRegistry(diaryAddress, 1099);
+            Diary diary = (Diary) registry.lookup("Diary");
             
             // Starts the Daemon on the defined port
 
