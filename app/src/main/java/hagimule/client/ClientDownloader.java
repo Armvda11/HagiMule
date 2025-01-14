@@ -12,6 +12,7 @@ import java.net.Socket;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.rmi.Naming;
+import java.rmi.Registry;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.CompletionService;
@@ -36,6 +37,7 @@ import hagimule.client.Compressor.FileCompressorLZ4;
 import hagimule.client.Compressor.FileCompressorLZMA;
 import hagimule.client.Compressor.FileCompressorVide;
 import hagimule.client.daemon.Daemon;
+import java.rmi.registry.LocateRegistry;
 
 public class ClientDownloader {
 
@@ -58,7 +60,9 @@ public class ClientDownloader {
             }
             String sharedFolderPath = (args.length > 4) ? args[4] : System.getProperty("user.dir") + "/shared/";
             // Se connecter au Diary via RMI
-            Diary diary = (Diary) Naming.lookup("rmi://" + diaryAddress + "/Diary");
+            // Diary diary = (Diary) Naming.lookup("rmi://" + diaryAddress + "/Diary");
+            Registry registry= LocateRegistry.getRegistry(diaryAddress, diaryPort);
+            Diary diary = (Diary) registry.lookup("Diary");
         
             System.out.println("Demande de téléchargement du fichier : " + fileName);
 
