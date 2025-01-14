@@ -108,6 +108,7 @@ public class ClientDownloader {
             downloadFragments(fileName, daemonQueue, fileSize, SharedFilePath.toString());
 
             // Timer to update daemonQueue every 5 seconds
+            // The downloader always gets the least used Daemons from the Diary to avoid overloading a single Daemon
             Timer timer = new Timer(true);
             timer.scheduleAtFixedRate(new TimerTask() {
                 @Override
@@ -180,7 +181,9 @@ public class ClientDownloader {
         int nbAdresses = daemonQueue.size();
         
         // Determine the number of threads to use
-        int nbThreads = Math.min(totalFragments, nbAdresses * 2);
+        // int nbThreads = Math.min(totalFragments, nbAdresses * 2);
+        // One thread per source, even if there are less fragments, we can steal fragments from other sources so we can use all sources
+        int nbThreads = maxConcurrentSources;
         System.out.println("Nombre de Threads : " + nbThreads + " Nombre de fragments : " + totalFragments);
 
         // Address of the daemon that is slow (for testing purpose)
@@ -232,6 +235,7 @@ public class ClientDownloader {
         // Maximum number of threads that can run at the same time
         int nbRunningThreadsMax = nbThreads;
         // Maximum number of uses of an address
+        // To avoid overusing a source
         int nbMaxUsesAdress = nbRunningThreadsMax / nbAdresses;
         while ((latch.getCount() > 0) && nbRunningThreads < nbRunningThreadsMax) {
             nbRunningThreads++;
