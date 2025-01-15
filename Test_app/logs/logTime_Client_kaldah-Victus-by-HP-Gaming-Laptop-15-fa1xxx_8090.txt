@@ -1,0 +1,4 @@
+Downloaded file: hagi.txt in 19 ms
+Downloaded file: ls in 28 ms
+Downloaded file: hagi.txt in 5 ms
+Downloaded file: hagi.txt in 83 ms

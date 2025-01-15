@@ -131,7 +131,7 @@ public class ClientDownloader {
                         e.printStackTrace();
                     }
                 }
-            }, 0, 5000);
+            }, 0, 10000);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -192,8 +192,8 @@ public class ClientDownloader {
         System.out.println("Nombre de Threads : " + nbThreads + " Nombre de fragments : " + totalFragments);
 
         // Address of the daemon that is slow (for testing purpose)
-        String daemonAddressLent = daemonQueue.peek();
-
+        // String daemonAddressLent = daemonQueue.peek();
+        String daemonAddressLent = "";
         // Executor service to manage threads
         ExecutorService executor = Executors.newCachedThreadPool();
         

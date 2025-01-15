@@ -1,0 +1,77 @@
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data/data2/fichiers.db
+Starting file insertion
+Starting file insertion
+Daemon listening on port 8092
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data/data2/fichiers.db
+Starting file insertion
+Starting file insertion
+Daemon listening on port 8092
+Starting file insertion
+Starting file insertion
+File hagi.txt.vide added to the database.
+Starting file insertion
+Inserting: hagi.txt
+File hagi.txt added to the database.
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data/data2/fichiers.db
+Starting file insertion
+Starting file insertion
+Daemon listening on port 8092
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data/data2/fichiers.db
+Starting file insertion
+Starting file insertion
+Daemon listening on port 8092
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data/data2/fichiers.db
+Starting file insertion
+Starting file insertion
+Daemon listening on port 8092
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data/data2/fichiers.db
+Starting file insertion
+Starting file insertion
+Daemon listening on port 8092
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data/data2/fichiers.db
+Starting file insertion
+Starting file insertion
+Daemon listening on port 8092
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data/data2/fichiers.db
+Starting file insertion
+Starting file insertion
+Daemon listening on port 8092
+Starting file insertion
+Starting file insertion
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data/data2/fichiers.db
+Starting file insertion
+Starting file insertion
+Daemon listening on port 8092
+Starting file insertion
+Successfully connected to SQLite!
+database created here: jdbc:sqlite:data/data2/fichiers.db
+Starting file insertion
+Starting file insertion
+Daemon listening on port 8092
+Starting file insertion

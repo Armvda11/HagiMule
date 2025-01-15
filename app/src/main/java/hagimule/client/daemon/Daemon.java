@@ -459,6 +459,7 @@ public class Daemon {
                     if (filePartage != null && filePartage.getName().equals(name)) {
                         out.write((filePartage.length() + "\n").getBytes());
                     } else {
+                        System.out.println("File not found");
                         out.write("File not found\n".getBytes());
                     }
                 }

@@ -57,7 +57,7 @@ public class Machine {
                 while (true) {
                     try {
                         synchronizeDiary(diary, daemon, clientName, daemonAddress);
-                        Thread.sleep(5000);
+                        Thread.sleep(10000);
                     } catch (InterruptedException e) {
                         Thread.currentThread().interrupt();
                     }
