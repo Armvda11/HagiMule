@@ -22,6 +22,7 @@ HOST10="c201-11"
 MAJGIT="cd Documents/S7/Projet_Hagimule/HagiMule ; git pull"
 CD="cd Documents/S7/Projet_Hagimule/HagiMule/Test_app"
 
+
 # Delete all files in the data folder recursively
 CLEAN="cd Documents/S7/Projet_Hagimule/HagiMule/Test_app; rm -rf data/data*; rm -rf logs/*"
 
@@ -42,9 +43,8 @@ clean_hosts() {
 
 
 # Clean at the start
-clean_hosts
-
 clean_diary
+clean_hosts
 
 sleep 3
 
@@ -52,23 +52,25 @@ COMMAND_SERVER="$CD; java -jar app.jar server; $END"
 gnome-terminal -- bash -c "sshpass -p \"$PASSWORD\" ssh -o StrictHostKeyChecking=no \"$USER@$DIARY\" \"$COMMAND_SERVER\""
 
 
+# sleep 3
+# COMMAND="$CD; java -jar app.jar machine $DIARY 8089 data/data0/shared/ data/data0/received/ zst 25 5"
+# gnome-terminal -- bash -c "sshpass -p \"$PASSWORD\" ssh -o StrictHostKeyChecking=no \"$USER@$HOST0\" \"$COMMAND\""
+
+# sleep 2
+# COPIE="$CD; cp -r sharedBak/* data/data0/shared/"
+# sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no "$USER@$HOST0" "$COPIE"
+
+# On attend que le diary se lance
 sleep 3
-COMMAND="$CD; java -jar app.jar machine $DIARY 8089 data/data0/shared/ data/data0/received/ zst 25 5"
-gnome-terminal -- bash -c "sshpass -p \"$PASSWORD\" ssh -o StrictHostKeyChecking=no \"$USER@$HOST0\" \"$COMMAND\""
-
-sleep 2
-COPIE="$CD; cp -r sharedBak/* data/data0/shared/"
-sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no "$USER@$HOST0" "$COPIE"
-
 
 for HOST in "$HOST0" "$HOST1" "$HOST2" "$HOST3" "$HOST4" "$HOST5" "$HOST6" "$HOST7" "$HOST8" "$HOST9" "$HOST10"; do
-    COMMAND="$CD; java -jar app.jar machine $DIARY 8089 data/$HOST/shared/ data/$HOST/received/ zst 25 5"
-    gnome-terminal -- bash -c "sshpass -p \"$PASSWORD\" ssh -o StrictHostKeyChecking=no \"$USER@$HOST\" \"$COMMAND\""    
+    COMMAND="$CD; java -jar app.jar machine $DIARY 8085 data/${HOST}/shared/ data/${HOST}/received/ zst 25 5"
+    gnome-terminal -- bash -c "sshpass -p \"$PASSWORD\" ssh -o StrictHostKeyChecking=no \"$USER@${HOST}\" \"$COMMAND\""    
 done
 
-sleep 3
+sleep 5
 
 for HOST in "$HOST0" "$HOST1" "$HOST2" "$HOST3"; do
-    COPIE="$CD; cp -r sharedBak/* data/HOST/shared/"
-    sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no "$USER@$HOST" "$COPIE"
+    COPIE="$CD; cp -r sharedBak/* data/${HOST}/shared/"
+    sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no "$USER@${HOST}" "$COPIE"
 done
