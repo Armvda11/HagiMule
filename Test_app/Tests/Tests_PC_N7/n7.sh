@@ -24,8 +24,12 @@ CD="cd Documents/S7/Projet_Hagimule/HagiMule/Test_app"
 
 # Delete all files in the data folder recursively
 CLEAN="cd Documents/S7/Projet_Hagimule/HagiMule/Test_app; rm -rf data/data*; rm -rf logs/*"
+
+# Command to kill every instance of the app
 END="rm -rf data/data*; rm -rf logs/*; pkill -f 'java -jar app.jar'"
-# Function to clean every DIARY and HOST
+
+# Functions to clean DIARY and every HOST
+
 clean_diary() {
     sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no "$USER@$DIARY" "$CLEAN"
 }
@@ -55,3 +59,16 @@ gnome-terminal -- bash -c "sshpass -p \"$PASSWORD\" ssh -o StrictHostKeyChecking
 sleep 2
 COPIE="$CD; cp -r sharedBak/* data/data0/shared/"
 sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no "$USER@$HOST0" "$COPIE"
+
+
+for HOST in "$HOST0" "$HOST1" "$HOST2" "$HOST3" "$HOST4" "$HOST5" "$HOST6" "$HOST7" "$HOST8" "$HOST9" "$HOST10"; do
+    COMMAND="$CD; java -jar app.jar machine $DIARY 8089 data/$HOST/shared/ data/$HOST/received/ zst 25 5"
+    gnome-terminal -- bash -c "sshpass -p \"$PASSWORD\" ssh -o StrictHostKeyChecking=no \"$USER@$HOST\" \"$COMMAND\""    
+done
+
+sleep 3
+
+for HOST in "$HOST0" "$HOST1" "$HOST2" "$HOST3"; do
+    COPIE="$CD; cp -r sharedBak/* data/HOST/shared/"
+    sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no "$USER@$HOST" "$COPIE"
+done
