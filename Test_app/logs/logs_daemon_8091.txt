@@ -1,89 +1,136 @@
 Successfully connected to SQLite!
 database created here: jdbc:sqlite:data/data1/fichiers.db
 Starting file insertion
-Starting file insertion
+Inserting: aioRick
+File aioRick added to the database.
 Daemon listening on port 8091
+Fichier compressé : /home/kaldah/Documents/Projets/HagiMule/Test_app/data/data1/shared/aioRick.mp4.lzma
+Original file deleted: /home/kaldah/Documents/Projets/HagiMule/Test_app/data/data1/shared/aioRick.mp4
 Starting file insertion
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick removed from the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-File hagi.txt.vide added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Inserting: hagi.txt
-File hagi.txt added to the database.
-File hagi.txt.vide added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Inserting: hagi.txt
-File hagi.txt added to the database.
-File hagi.txt.vide added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Inserting: hagi.txt
-File hagi.txt added to the database.
-File hagi.txt.vide added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Inserting: hagi.txt
-File hagi.txt added to the database.
-File hagi.txt.vide added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Inserting: hagi.txt
-File hagi.txt added to the database.
-File hagi.txt.vide added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Inserting: hagi.txt
-File hagi.txt added to the database.
-File hagi.txt.vide added to the database.
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Inserting: hagi.txt
-File hagi.txt added to the database.
-Successfully connected to SQLite!
-database created here: jdbc:sqlite:data/data1/fichiers.db
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Daemon listening on port 8091
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Successfully connected to SQLite!
-database created here: jdbc:sqlite:data/data1/fichiers.db
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Daemon listening on port 8091
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Successfully connected to SQLite!
-database created here: jdbc:sqlite:data/data1/fichiers.db
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Daemon listening on port 8091
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Successfully connected to SQLite!
-database created here: jdbc:sqlite:data/data1/fichiers.db
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Daemon listening on port 8091
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Successfully connected to SQLite!
-database created here: jdbc:sqlite:data/data1/fichiers.db
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Daemon listening on port 8091
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Successfully connected to SQLite!
-database created here: jdbc:sqlite:data/data1/fichiers.db
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Daemon listening on port 8091
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Successfully connected to SQLite!
-database created here: jdbc:sqlite:data/data1/fichiers.db
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.
+File aioRick.mp4.lzma added to the database.
 Starting file insertion
-Starting file insertion
-Daemon listening on port 8091
-Starting file insertion
-Starting file insertion
-Starting file insertion
-Successfully connected to SQLite!
-database created here: jdbc:sqlite:data/data1/fichiers.db
-Starting file insertion
-Starting file insertion
-Daemon listening on port 8091
-Starting file insertion
+Inserting: aioRick.mp4
+File aioRick.mp4 added to the database.

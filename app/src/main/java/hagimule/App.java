@@ -141,7 +141,6 @@ public class App {
             }
         }
         if (args[0].equals("server")) {
-            if (args.length == 1) {
                 try {
                     diaryAddress = java.net.InetAddress.getLocalHost().getHostAddress(); // Adresse du serveur Diary
                     System.out.println("Serveur exécuté sur l'hôte dont l'adresse est : " + diaryAddress);
@@ -151,16 +150,14 @@ public class App {
                     System.exit(1);
                 }
             }
-            else {
-                argAdresseDiary = args[1]; // Adresse du serveur Diary
-                if (argAdresseDiary.matches(regexIP)) {
-                    System.out.println("Recherche du Diary : " + args[1]);
-                    diaryAddress = args[1];
-                } else if (argAdresseDiary.equals("localhost")) {
-                    System.out.println("Machine exécuté en localhost : " + diaryAddress);
-                } else {
-                    System.out.println("Serveur exécuté sur un PC de l'ENSEEIHT...");
-                    diaryAddress = argAdresseDiary + ".enseeiht.fr";
+            if (args.length > 1) {
+                {
+                argPort = args[1]; // Adresse du serveur Diary
+                if (argPort.matches(regexPort)) {
+                    System.out.println("Port du Diary : " + args[1]);
+                    port = args[1];
+                } else  {
+                    port = "1099";
                 }
             }
         }

@@ -56,8 +56,10 @@ public class Machine {
             new Thread(() -> {
                 while (true) {
                     try {
+                        System.out.println("Mise à jour du Diary: " + daemonAddress);
                         synchronizeDiary(diary, daemon, clientName, daemonAddress);
-                        Thread.sleep(10000);
+                        Thread.sleep(5000);
+                        System.out.println("Enter a file name to download or 'exit' to quit:");
                     } catch (InterruptedException e) {
                         Thread.currentThread().interrupt();
                     }
@@ -68,10 +70,14 @@ public class Machine {
 
             // Prompt user to download files
             Scanner sc = new Scanner(System.in);
-            while (true) {
+            Boolean running = true;
+            while (running) {
                 System.out.println("Enter a file name to download or 'exit' to quit:");
                 String fileName = sc.nextLine();
                 if ("exit".equalsIgnoreCase(fileName.trim())) {
+                    System.out.println("Quitting ...");
+                    running = false;
+
                     break;
                 }
                 System.out.println("Enter the folder path to save the file (press Enter for default):");
@@ -101,9 +107,12 @@ public class Machine {
 
     private static void synchronizeDiary(Diary diary, Daemon daemon, String ownerName, String ownerAddress) {
         List<String> filesNames;
-    
+        System.out.println("Début compression des fichiers ...");
         daemon.compressSharedFiles();
+        System.out.println("Fin compression des fichiers.");
+        System.out.println("Début mise à jour de la database...");
         daemon.updateDatabase();
+        System.out.println("Mise à jour de la database finie");
 
         filesNames = daemon.getFilesNames();
         

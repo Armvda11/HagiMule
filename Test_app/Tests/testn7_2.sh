@@ -10,11 +10,13 @@ DIARY="goldorak"
 MAJGIT="cd Documents/S7/Projet_Hagimule/HagiMule && git pull"
 
 # Delete all files in the data folder recursively
-CLEAN="cd Documents/S7/Projet_Hagimule/HagiMule && rm -rf data/data*/* && killall java"
+CLEAN="cd Documents/S7/Projet_Hagimule/HagiMule; exec rm -rf data/data*/*; exec rm -rf logs/*"
 COMMAND_SERVER="cd Documents/S7/Projet_Hagimule/HagiMule/Test_app && java -jar app.jar server; bash"
+COMMAND_SERVER="cd Documents/S7/Projet_Hagimule/HagiMule/Test_app && java -jar app.jar server; exec pkill -f "java -jar app.jar"; exec echo All processes terminated."
 COMMAND="cd Documents/S7/Projet_Hagimule/HagiMule/Test_app && java -jar app.jar machine "$DIARY" 8088 data/data30/shared/ data/data30/received/ zst 25 5"
 
-sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no "$USER@$DIARY" "$CLEAN"
+
+gnome-terminal -- bash -c sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no "$USER@$DIARY" ""$CLEAN"; exec pkill -f "java -jar app.jar"; echo Cleaned""
 sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no "$USER@$HOST" "$CLEAN"
 gnome-terminal -- sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no "$USER@$DIARY" "$COMMAND_SERVER; bash"
 # On attend que le serveur Diary soit bien lancé
