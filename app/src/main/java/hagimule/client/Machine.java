@@ -56,10 +56,9 @@ public class Machine {
             new Thread(() -> {
                 while (true) {
                     try {
-                        System.out.println("Mise à jour du Diary: " + daemonAddress);
                         synchronizeDiary(diary, daemon, clientName, daemonAddress);
                         Thread.sleep(5000);
-                        System.out.println("Enter a file name to download or 'exit' to quit:");
+                        System.out.println("\n \n Enter a file name to download or 'exit' to quit:");
                     } catch (InterruptedException e) {
                         Thread.currentThread().interrupt();
                     }
@@ -110,9 +109,7 @@ public class Machine {
         System.out.println("Début compression des fichiers ...");
         daemon.compressSharedFiles();
         System.out.println("Fin compression des fichiers.");
-        System.out.println("Début mise à jour de la database...");
         daemon.updateDatabase();
-        System.out.println("Mise à jour de la database finie");
 
         filesNames = daemon.getFilesNames();
         
