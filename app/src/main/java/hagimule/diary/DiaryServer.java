@@ -12,7 +12,7 @@ public class DiaryServer {
     public static void main(String[] args) {
         try {
             // Reading execution parameters (diary address and port)
-            String diaryAddress = (args.length > 0) ? args[0] : "hjklm";
+            String diaryAddress = (args.length > 0) ? args[0] : "localhost";
             int diaryPort = (args.length > 1) ? Integer.parseInt(args[1]) : 1099;
 
             System.out.println("Diary address: " + diaryAddress);

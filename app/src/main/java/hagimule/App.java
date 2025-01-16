@@ -26,6 +26,8 @@ public class App {
         String argLatence = null; // Latence à simuler
         String NbSourcesMax = null; // Nombre de sources maximum
 
+
+        // Anciens traitement des lignes de commandes
         // switch (args.length) {
         //     case 0 -> {
         //         System.out.println("Veuillez fournir un argument pour spécifier le programme à exécuter.");
@@ -119,8 +121,8 @@ public class App {
                     int portNumber = Integer.parseInt(argPort);
                     // Vérifier si le port est dans la plage valide (0-65535)
                     if (portNumber >= 0 && portNumber <= 65535) {
-                    System.out.println("Exécution sur le port : " + argPort);
-                    port = argPort;
+                        System.out.println("Exécution sur le port : " + argPort);
+                        port = argPort;
                     } else {
                     System.out.println(port + " n'est pas un port valide (plage 0-65535).");
                     }
@@ -164,7 +166,7 @@ public class App {
         // Exécuter le programme correspondant à l'argument
         // le choix le application à lancer
         switch (args[0].toLowerCase()) {
-            case "machine" -> startMachine(diaryAddress, argPort, argPathShared, argPathDefaultReceived, argCompressor, argLatence, NbSourcesMax); // Appelle la méthode startMachine
+            case "machine" -> startMachine(diaryAddress, port, argPathShared, argPathDefaultReceived, argCompressor, argLatence, NbSourcesMax); // Appelle la méthode startMachine
             case "server" -> startDiaryServer(diaryAddress, port); // Appelle la méthode startDiaryServer
             case "create-files" -> startFileCreator(diaryAddress, port); // Appelle ClientfileCreator
             case "daemon" -> startDaemon(diaryAddress, port); // Appelle ClientUser
@@ -198,7 +200,7 @@ public class App {
 
     public static void startMachine(String argAdresseDiary, String argPort, String argPathShared, String argPathDefaultReceived, String argCompressor, String argLatence, String NbSourcesMax) {
         try {
-            System.out.println("Démarrage de la machine...");
+            System.out.println("Démarrage de la machine..."+ argAdresseDiary + " port : " + argPort);
             Machine.main(new String[]{argAdresseDiary, argPort, argPathShared, argPathDefaultReceived, argCompressor, argLatence, NbSourcesMax}); // Appelle le main du client
         } catch (Exception e) {
             System.out.println("Erreur lors du démarrage de la machine :");
