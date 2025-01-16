@@ -151,7 +151,6 @@ public class App {
                     e.printStackTrace();
                     System.exit(1);
                 }
-            }
             if (args.length > 1) {
                 argPort = args[1]; // Adresse du serveur Diary
                 if (argPort.matches(regexPort)) {
@@ -162,7 +161,9 @@ public class App {
                 }
             } else {
                 port = "1099";
-            }
+            }    
+          }
+
         // Exécuter le programme correspondant à l'argument
         // le choix le application à lancer
         switch (args[0].toLowerCase()) {
